@@ -6,13 +6,13 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 - Post Management: View, create, edit, and delete posts.
 - Filtering and Sorting: Easily browse posts by course, date, or title.
 - User Profiles: Update personal details and manage user-specific posts.
-- 
+  
 ## Technologies Used
 - React.js: Frontend library for building user interfaces.
 - React Router: For navigation between views.
 - CSS: Custom styling for the app.
-- 
-## Pages and Components
+  
+## Pages and Components:
 
 ### Pages
 1. Homepage
@@ -21,18 +21,21 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 2. About
    - Contains information about the platform and its creators.
    - Provides links to sign-up and log-in pages.
-3. All Posts
+3. Posts
    - Lists all posts with pagination or infinite scroll for better user experience.
    - Includes options to filter posts by course, sort by date, and search by title.
    - Each post is displayed using the **PostCard** component.
-4. Profile
+4. PostDetails
+   - Displays the full details of a single post, including title, content, author, date, and comments (if applicable).
+   - Includes "Edit" and "Delete" buttons for the post owner.
+5. Profile
    - Displays the user's information (name, email, profile picture).
    - Allows users to update their details.
    - Includes links to view posts created by the user.
-5. Create Post
+6. Create Post
    - A form for users to add new posts to the forum.
    - Includes fields such as title, description, course, and tags.
-   - 
+     
 ### Components
 1. Navbar
    - Without logging in: Displays the logo, "About Us," and buttons for "Login" and "Sign-Up."
@@ -48,15 +51,12 @@ This repository contains the frontend code for **IronHub**, a single-page applic
    - A reusable component to display individual posts.
    - Displays the post's title, description (truncated), author, and date.
    - Includes a button to view the full post.
-3. PostDetails
-   - Displays the full details of a single post, including title, content, author, date, and comments (if applicable).
-   - Includes "Edit" and "Delete" buttons for the post owner.
-4. Filters
+3. Filters
    - Component for filtering and sorting posts on the "All Posts" page.
    - Includes radio buttons for course selection, sorting options, and a search bar for titles.
-5. Form
+4. Forms
    - Used for both creating and editing posts.
    - Includes validation to ensure required fields are completed.
-6. UserMenu
+5. UserMenu
    - A dropdown menu in the navbar for profile access, user posts, and logging out.
    - Displays the user's name and profile picture when logged in.
