@@ -1,0 +1,12 @@
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 20px 10px;
+
+  #gif {
+    width: 100%;
+    max-width: 100%;
+    height: auto; 
+  }
+}
