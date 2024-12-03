@@ -1,0 +1,14 @@
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    width: 90%;
+    background-color: rgb(222, 221, 221);
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 20px;
+
+    
+}
