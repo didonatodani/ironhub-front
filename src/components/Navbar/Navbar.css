@@ -1,16 +1,25 @@
+.navbar-container {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100vw;
+  height: 55px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  padding: 15px 25px 20px 12px;
 }
 
 .links {
   list-style: none;
   display: flex;
-  gap: 10px
-
+  gap: 30px
 }
 
-.logo {
-  
+.links li:hover {
+  transform: scale(1.02);
+  font-weight: 500;
 }
+
+
+
