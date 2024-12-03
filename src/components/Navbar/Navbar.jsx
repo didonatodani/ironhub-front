@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import Logo from "../../assets/IronHub.svg";
+// import Logo from "../../assets/IronHub.svg";
 import "./Navbar.css"
 
 function Navbar() {
@@ -9,7 +9,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="logo">
           <NavLink>
-            <img src={Logo} alt="ironhub-logo" />
+            {/* <img src={Logo} alt="ironhub-logo" /> */}
           </NavLink>
         </div>
         <ul className="links">
