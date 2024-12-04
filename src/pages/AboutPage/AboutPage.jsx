@@ -1,8 +1,18 @@
 import "./AboutPage.css"
+import teamData from "../../data/team.json"
+import AboutCard from "../../components/AboutCard/AboutCard"
 
 function AboutPage(){
+
+
     return(
-        <h1>ABOUT</h1>
+        <>
+        {
+            teamData.map((member, index)=>{
+                return <AboutCard key={index} member={member}/>
+            })
+        }
+        </>
     )
 }
 
