@@ -9,6 +9,7 @@ import PostDetailsPage from "./pages/PostDetailsPage/PostDetailsPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import PostForm from "./components/Forms/PostForm.jsx";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/posts" element={<PostsPage />} />
-        <Route path="/posts/:id" element={<PostDetailsPage />} />
+        {/* just for now!!! */}
+        <Route path="/postform" element={<PostForm/>}/>
+        <Route path="/posts/:_id" element={<PostDetailsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
