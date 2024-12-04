@@ -20,7 +20,7 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/posts" element={<PostsPage />} />
         <Route path="/posts/:id" element={<PostDetailsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/:userId" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
