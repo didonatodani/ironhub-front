@@ -6,7 +6,8 @@
         "name": "Nigel Ferreres",
         "linkedin": "https://www.linkedin.com/in/nigel-ferreres-felix/",
         "github": "https://github.com/NigelFerrefe",
-        "description": "With a background in History and a Masters in Digital Humanities, I bring the past into the future through technology. My background includes a deep dive into 3D animation and interactive design, and now, as a future web developer at Ironhack, I combine creativity with coding to shape the digital world."
+        "description": "With a background in History and a Masters in Digital Humanities, I bring the past into the future through technology. My background includes a deep dive into 3D animation and interactive design, and now, as a future web developer at Ironhack, I combine creativity with coding to shape the digital world.",
+        "image": "../assets/avatar.jpg"
     },
     {
         "_id": {
@@ -15,7 +16,8 @@
         "name": "Dani Di Donato",
         "linkedin": "https://www.linkedin.com/in/dani-di-donato-web-dev/",
         "github": "https://github.com/didonatodani/",
-        "description": "I have always been curious about other cultures and languages, which led me to study English Translation and develop skills to quickly understand new grammar constructions and vocabulary. But now, my interest in technology has led me to discover WEB DEVELOPMENT as a way to combine all these passions: learning languages, build projects from zero, and using creativity and technology as my main tools."
+        "description": "I have always been curious about other cultures and languages, which led me to study English Translation and develop skills to quickly understand new grammar constructions and vocabulary. But now, my interest in technology has led me to discover WEB DEVELOPMENT as a way to combine all these passions: learning languages, build projects from zero, and using creativity and technology as my main tools.",
+        "image": "../assets/avatar.jpg"
     },
     {
         "_id": {
@@ -24,6 +26,7 @@
         "name": "Piet-Hein Schouten",
         "linkedin": "https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/",
         "github": "https://github.com/phsworks",
-        "description": ""
+        "description": "",
+        "image": "../assets/avatar.jpg"
     }
 ]

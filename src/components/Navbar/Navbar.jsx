@@ -13,10 +13,10 @@ function Navbar() {
           </NavLink>
         </div>
         <ul className="links">
-          <NavLink to={"/auth"}>
+          <NavLink to={"/auth/signup"}>
             <li>Signup</li>
           </NavLink>
-          <NavLink to={"/auth"}>
+          <NavLink to={"/auth/login"}>
             <li>Login</li>
           </NavLink>
         </ul>

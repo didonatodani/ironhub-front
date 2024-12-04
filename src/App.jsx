@@ -2,7 +2,6 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
-import AuthPage from "./pages/AuthPage/AuthPage.jsx";
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 import PostsPage from "./pages/PostsPage/PostsPage.jsx";
 import PostDetailsPage from "./pages/PostDetailsPage/PostDetailsPage.jsx";
@@ -23,7 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/auth/signup" element={<SignupForm />} />
+        <Route path="/auth/login" element={<LoginForm />} />
         <Route path="/posts" element={<PostsPage />} />
         <Route path="/posts/:_id" element={<PostDetailsPage />} />
         <Route path="/:userId" element={<ProfilePage />} />
