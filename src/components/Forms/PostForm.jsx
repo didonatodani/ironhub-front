@@ -10,17 +10,17 @@ function PostForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
-//   const likes = 0;
+  //   const likes = 0;
 
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {
-        // name??, course?? FROM CONTEXT!!
+      // name??, course?? FROM CONTEXT!!
       title,
       description,
       link,
       picture,
-    //   likes,????
+      //   likes,????
     };
     // console.log(newPost);
 

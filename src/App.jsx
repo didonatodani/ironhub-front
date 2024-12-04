@@ -13,8 +13,8 @@ import Footer from "./components/Footer/Footer.jsx";
 // just testing components:
 import PostForm from "./components/Forms/PostForm.jsx";
 import ReplyForm from "./components/Forms/ReplyForm.jsx";
-import LoginForm from "./components/Forms/LoginForm.jsx"
-import SignupForm from "./components/Forms/SignupForm.jsx"
+import LoginForm from "./components/Forms/LoginForm.jsx";
+import SignupForm from "./components/Forms/SignupForm.jsx";
 
 function App() {
   return (
@@ -25,11 +25,11 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/posts" element={<PostsPage />} />
-        {/* just for now!!! */}
-        <Route path="/test" element={<ReplyForm/>}/>
         <Route path="/posts/:_id" element={<PostDetailsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
+        {/* just for now!!! */}
+        <Route path="/test" element={<ReplyForm />} />
       </Routes>
       <Footer />
     </>

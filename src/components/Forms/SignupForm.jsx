@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./GeneralFormStyles.css";
-import logo from "../../assets/Logo.svg"
-
+import logo from "../../assets/Logo.svg";
 
 function SignupForm() {
   const [name, setName] = useState("");

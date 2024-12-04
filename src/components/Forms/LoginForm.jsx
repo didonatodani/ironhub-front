@@ -1,6 +1,6 @@
 import "./GeneralFormStyles.css";
 import { useState } from "react";
-import logo from "../../assets/Logo.svg"
+import logo from "../../assets/Logo.svg";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
