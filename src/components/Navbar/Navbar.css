@@ -1,0 +1,26 @@
+.navbar-container {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100vw;
+  height: 55px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px 20px 12px;
+  align-items: center;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: 30px
+}
+
+.links li:hover {
+  transform: scale(1.02);
+  font-weight: 500;
+}
+
+
+
