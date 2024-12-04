@@ -4,7 +4,6 @@
   width: 100vw;
   padding: 40px 20px;
   gap: 50px;
-  border: 1px solid green;
   background-color: #fff;
   #gif {
     width: 100%;
@@ -12,23 +11,81 @@
     height: auto;
   }
 }
-
 .description-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid red;
-
   h1 {
     font-size: 30px;
   }
-  
 
   #about-btn {
     width: 180px;
     height: 50px;
-    background-color: transparent;
-    font-size: 16px;
-    margin: 0 auto;
-  }
+    background: linear-gradient(to bottom, #3B64B2 5%, #4D84E6 100%);
+    background-color: #4D84E6;
+    border-radius: 6px;
+    border: 1px solid #4D84E6;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 16px; /* Adjusted from .myButton's font size to match #about-btn */
+    font-weight: bold;
+    padding: 6px 24px; /* Kept from .myButton for consistency */
+    margin: 0 auto; /* From #about-btn */
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #1570cd;
+    display: inline-block;
+    text-align: center; /* Added for centering text */
+}
+
+#about-btn:hover {
+    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
+    background-color: #4D84E6;
+}
+
+}
+
+@media (min-width > 650px) and (max-width: 1023px) {
+
+}
+
+@media (min-width: 1024px) {
+    .homepage-container {
+        display: flex;
+        flex-direction: row-reverse;
+        #gif {
+            width: 50%;
+            max-width: 100%;
+            height: auto;
+          }
+    }
+    .description-container {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      gap: 50px;
+      .description-title {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      h1 {
+        font-size: 48px;
+      }
+      h2 {
+        font-size: 32px;
+      }
+      p {
+        font-size: 20px;
+      }
+      #about-btn {
+        width: 200px;
+        height: 60px;
+        background-color: transparent;
+        font-size: 20px;
+        margin: 0 auto;
+      }
+    }
+
 }

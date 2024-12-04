@@ -11,7 +11,7 @@ function HomePage() {
     <div className="homepage-container">
       <img id="gif" src={heroGif} alt="gif on students working on computers" />
       <section className="description-container">
-        <article>
+        <article className="description-title">
           <h1>IronHub </h1>
           <h2>Your Digital Campus Forum</h2>
         </article>
