@@ -20,3 +20,15 @@
         text-overflow: ellipsis;
     }
 }
+.da{
+    border: 2px rgb(255, 145, 0) solid;
+    border-left: 15px rgb(255, 145, 0) solid;
+}
+.we{
+    border: 2px #5bb7d3 solid;
+    border-left: 15px #5bb7d3 solid;
+}
+.ux{
+    border: 2px rgb(175, 82, 222) solid;
+    border-left: 15px rgb(175, 82, 222) solid;
+}
