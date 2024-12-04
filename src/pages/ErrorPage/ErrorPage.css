@@ -1,0 +1,28 @@
+.error-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    border: 1px solid white;
+    padding-bottom: 20px;
+  }
+  .back-to-home-button {
+    border-style: none;
+    background-color: #008BBB;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: white;
+    font-size: 18px;
+  }
+  .back-to-home-button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+
+
+}
