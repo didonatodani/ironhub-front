@@ -1,9 +1,36 @@
-import "./ProfilePage.css"
+import "./ProfilePage.css";
+import ProfileCard from "../../components/ProfileCard.jsx/ProfileCard";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
-function ProfilePage(){
-    return(
-        <h1>Profile Page</h1>
-    )
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+function ProfilePage() {
+  const [user, setUser] = useState(null);
+
+  const { userId } = useParams()
+
+
+useEffect(() => {
+    axios
+      .get(`${API_URL}/user/${userId}`)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [userId]);
+
+  return (
+    <>
+      <div className="profile-container">
+      {user ? <ProfileCard user={user} /> : <p>Loading user information...</p>}
+      </div>
+    </>
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

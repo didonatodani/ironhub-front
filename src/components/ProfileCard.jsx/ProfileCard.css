@@ -1,0 +1,41 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 30px;
+  width: 90vw;
+  margin-left: 10px;
+  margin-right: 20px;
+  border-radius: 20px;
+  background-color: white;
+  line-height: 1.86;
+  margin-top: 20px;
+}
+
+.heading-profile {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100px;
+    border: 1px solid rgba(205, 205, 205, 0.471);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 50%;
+    height: 95px;
+    padding: 5px;
+  }
+  small {
+    font-size: 10px;
+    font-weight: 300;
+  }
+}
+
+.profile-info {
+
+  p {
+    font-size: 14px;
+  }
+
+
+}
