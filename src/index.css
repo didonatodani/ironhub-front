@@ -16,7 +16,7 @@ h1, h2, h3{
     color: black;
 }
 
-p, a, button, span, small, label, input, fieldset{
+p, a, button, span, small, label, input, fieldset, textarea{
     font-family: "Inter", sans-serif;
     color: black;
     font-size: 18px;

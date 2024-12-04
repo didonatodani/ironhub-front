@@ -1,84 +1,85 @@
 import "./GeneralFormStyles.css";
-import logo from "../../assets/Logo.svg"
+import logo from "../../assets/Logo.svg";
+import { useState } from "react";
+//import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function PostForm() {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+  const [picture, setPicture] = useState("");
+//   const likes = 0;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const newPost = {
+        // name??, course?? FROM CONTEXT!!
+      title,
+      description,
+      link,
+      picture,
+    //   likes,????
+    };
+    // console.log(newPost);
+
+    // axios
+    //   .post(`${API_URL}/posts`, newPost)
+
+    //   // agregar en post() como tercer parametro  {
+    //   //     headers: { Authorization: `Bearer ${token}` }
+    //   //   });
+
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  }
+
   return (
     <section className="post-form-section">
-        <img src={logo} alt="ironhub logo" className="form-logo"/>
-      <form className="post-form">
-        <div className="form-div fullName">
-          <label htmlFor="fullName">Name:</label>
-          <input type="text" name="fullName" id="fullName" />
-        </div>
-        <fieldset className="form-div">
-          <legend>Select your course</legend>
-          <div className="field-div">
-            <div>
-              <input
-                type="radio"
-                id="web"
-                name="course"
-                value="Web Development"
-                defaultChecked
-              />
-              <label htmlFor="web">W.D.</label>
-            </div>
-            <div>
-              <input type="radio" id="ux" name="course" value="UX/UI Design" />
-              <label htmlFor="ux">UX/UI</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="data"
-                name="course"
-                value="Data Analytics"
-              />
-              <label htmlFor="ux">D.A.</label>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset className="form-div">
-          <legend>Select you schedule</legend>
-          <div className="field-div">
-            <div>
-              <input
-                type="radio"
-                id="full-time"
-                name="schedule"
-                value="Full-time"
-                defaultChecked
-              />
-              <label htmlFor="">Full-time</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="part-time"
-                name="schedule"
-                value="Part-time"
-              />
-              <label htmlFor="">Part-time</label>
-            </div>
-          </div>
-        </fieldset>
+      <img src={logo} alt="ironhub logo" className="form-logo" />
+      <form className="post-form" onSubmit={handleSubmit}>
         <div className="form-div title">
           <label htmlFor="title">Title:</label>
-          <input type="text" name="title" id="title" />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
         <div className="form-div description">
           <label htmlFor="description">Description:</label>
-          <textarea id="description"/>
+          <textarea
+            id="description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
         </div>
         <div className="form-div link">
           <label htmlFor="link">Link (optional):</label>
-          <input type="url" name="link" id="link" />
+          <input
+            type="url"
+            name="link"
+            id="link"
+            onChange={(e) => setLink(e.target.value)}
+          />
         </div>
-        <div className="form-div image">
-          <label htmlFor="image">Image (optional):</label>
-          <input type="url" name="image" id="image" />
+        <div className="form-div picture">
+          <label htmlFor="picture">Image (optional):</label>
+          <input
+            type="url"
+            name="picture"
+            id="picture"
+            onChange={(e) => setPicture(e.target.value)}
+          />
         </div>
-        <button type="submit">Send</button>
+        <button type="submit" className="submit-btn">
+          Send
+        </button>
       </form>
     </section>
   );

@@ -9,7 +9,12 @@ import PostDetailsPage from "./pages/PostDetailsPage/PostDetailsPage.jsx";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+
+// just testing components:
 import PostForm from "./components/Forms/PostForm.jsx";
+import ReplyForm from "./components/Forms/ReplyForm.jsx";
+import LoginForm from "./components/Forms/LoginForm.jsx"
+import SignupForm from "./components/Forms/SignupForm.jsx"
 
 function App() {
   return (
@@ -21,7 +26,7 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/posts" element={<PostsPage />} />
         {/* just for now!!! */}
-        <Route path="/postform" element={<PostForm/>}/>
+        <Route path="/test" element={<ReplyForm/>}/>
         <Route path="/posts/:_id" element={<PostDetailsPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
