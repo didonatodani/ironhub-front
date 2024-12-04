@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import PostCard from "../../components/PostCard/PostCard";
-import "./PostsPage.css";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
+import PostCard from "../../components/PostCard/PostCard";
+
+import "./PostsPage.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostsPage() {
   const [postsArray, setPostsArray] = useState([]);
 
-
   useEffect(() => {
     axios
       .get(`${API_URL}/posts`)
       .then((res) => {
-        console.log(res.data);
         setPostsArray(res.data);
       })
       .catch((err) => {
@@ -24,7 +25,11 @@ function PostsPage() {
   return (
     <section className="posts-container">
       {postsArray.map((post, index) => {
-        return <PostCard key={index} post={post}/>;
+        return (
+          <Link key={index}to={"/posts/:id"} className={`post-card ${post.course?.course.toLowerCase().slice(0,2)}`}>
+            <PostCard post={post} />
+          </Link>
+        );
       })}
     </section>
   );
