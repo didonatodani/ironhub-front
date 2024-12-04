@@ -3,6 +3,7 @@ function AboutCard({ member }) {
   return (
     <article className="about-card">
       <h2>{name}</h2>
+      <p>{description}</p>
     </article>
   );
 }
