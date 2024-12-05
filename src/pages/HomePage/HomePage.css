@@ -1,7 +1,7 @@
 .homepage-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   padding: 40px 20px;
   gap: 50px;
   background-color: #fff;
@@ -29,14 +29,14 @@
     box-shadow: inset 0px 1px 0px 0px #97c4fe;
     cursor: pointer;
     color: #ffffff;
-    font-size: 16px; /* Adjusted from .myButton's font size to match #about-btn */
+    font-size: 16px; 
     font-weight: bold;
-    padding: 6px 24px; /* Kept from .myButton for consistency */
-    margin: 0 auto; /* From #about-btn */
+    padding: 6px 24px;
+    margin: 0 auto; 
     text-decoration: none;
     text-shadow: 0px 1px 0px #1570cd;
     display: inline-block;
-    text-align: center; /* Added for centering text */
+    text-align: center;
 }
 
 #about-btn:hover {
