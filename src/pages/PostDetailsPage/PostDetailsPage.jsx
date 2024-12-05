@@ -29,6 +29,7 @@ function PostDetailsPage() {
   const handleNavigate = () => navigate("/posts")
 
   const scrollToTop = () => {
+    //Scroll to top
     window.scrollTo({
       top: 0,
       behavior: "smooth",
