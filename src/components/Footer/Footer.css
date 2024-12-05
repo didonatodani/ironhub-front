@@ -1,75 +1,158 @@
 .footer-container {
-    border: 1px solid red;
-    width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  gap: 30px;
+  margin-top: 20px;
+  background-color: #f7bd4a;
+  small {
+    font-size: 10px;
+  }
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-size: 14px;
+  }
+}
+
+.social-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.links-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.github-repositories {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  p {
+    font-size: 14px;
+  }
+  img {
+    width: 30px;
+  }
+}
+
+button {
+  background: linear-gradient(to bottom, #3b64b2 5%, #4d84e6 100%);
+  background-color: #4d84e6;
+  border-radius: 6px;
+  border: 1px solid #4d84e6;
+  box-shadow: inset 0px 1px 0px 0px #97c4fe;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 24px;
+  margin: 0 auto;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #1570cd;
+  display: inline-block;
+  text-align: center;
+}
+button:hover {
+  background: linear-gradient(to bottom, #4d84e6 5%, #3b64b2 100%);
+  background-color: #4d84e6;
+}
+
+@media (min-width: 650px) and (max-width: 1023px) {
+  .footer-container {
+    small {
+      font-size: 14px;
+    }
+  }
+  .text-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    text-align: center;
+    align-items: end;
+    width: 100%;
+    margin: 0 auto;
     padding: 20px;
-    margin-top: 20px;
-    gap: 20px;
-    text-align: center;
   }
-  
+  .info-container {
+    width: 50%;
+    display: flex;
+    gap: 30px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+  .social-info {
+    display: flex;
+    gap: 10px;
+  }
+
+  .github-repositories {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    width: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    small {
+      font-size: 16px;
+    }
+  }
+  .text-container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+  }
   .info-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid green;
-    width: 80%;
-  
-    .small-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      small {
-        font-size: 12px;
-      }
-    }
-  
-    .social-info {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-  
-      .social-member {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-  
-        p {
-          font-size: 12px;
-        }
-  
-        .social-links {
-          display: flex;
-          flex-direction: row;
-          gap: 5px;
-        }
-      }
-    }
+    padding: 10px;
   }
-  .links-info {
+  .social-info {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border: 1px solid blue;
-    width: 40%;
+    gap: 10px;
+    margin-top: 5px;
   }
   .github-repositories {
     display: flex;
     flex-direction: column;
-    p {
-      font-size: 12px;
-    }
+    gap: 20px;
+    padding-top: 10px;
+    width: 40%;
   }
-  
-  .homepage-btn {
-    button {
-      font-size: 12px;
-      padding: 5px 10px;
-    }
+  .repository-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
-  
+  .repository-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
