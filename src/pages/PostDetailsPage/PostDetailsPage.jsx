@@ -1,14 +1,16 @@
 import "./PostDetailsPage.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import arrowUp from "../../assets/up-arrow.png"
+
 import replyIcon from "../../assets/reply-message.png";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostDetailsPage() {
   const { _id } = useParams();
   const [detailPost, setDetailPost] = useState(null);
-
+  const navigate = useNavigate()
   const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
@@ -23,6 +25,16 @@ function PostDetailsPage() {
         console.log(err);
       });
   }, [_id]);
+
+  const handleNavigate = () => navigate("/posts")
+
+  const scrollToTop = () => {
+    //Scroll to top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   if (!detailPost) {
     return <p>Loading...</p>;
@@ -60,9 +72,13 @@ function PostDetailsPage() {
               <img className="reply" src={replyIcon} alt="reply icon" />
               <p>Reply</p>
             </button>
+            <button onClick={handleNavigate}>Go back</button>
           </div>
         </div>
       </article>
+      <button id="btn-up" onClick={scrollToTop}>
+          <img src={arrowUp} alt="arrow up icon" />
+        </button>
     </div>
   );
 }

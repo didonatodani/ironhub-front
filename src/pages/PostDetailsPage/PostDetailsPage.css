@@ -51,7 +51,7 @@
   gap: 10px;
   max-width: 100%;
   padding: 5px 10px;
-  
+
   .reply {
     width: 25px;
     max-width: 100%;
@@ -72,7 +72,7 @@
   }
   .topic-container {
     p {
-        font-size: 22px;
+      font-size: 22px;
     }
   }
   .topic-header {
@@ -82,24 +82,25 @@
   }
   .reply-btn {
     .reply {
-        width: 28px;
-      }
+      width: 28px;
+    }
     p {
-        font-size: 24px;
+      font-size: 24px;
     }
   }
 }
 
-@media (min-width: 1024px) {
 
-    .detail-container {
-        width: 60%;
-    }
-    .detail-title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: end;
-        text-align: center;
-    }
+
+@media (min-width: 1024px) {
+  .detail-container {
+    width: 60%;
+  }
+  .detail-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    text-align: center;
+  }
 }
