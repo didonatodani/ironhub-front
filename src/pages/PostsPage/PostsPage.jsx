@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import PostCard from "../../components/PostCard/PostCard";
-
 import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
 
@@ -13,9 +12,13 @@ function PostsPage() {
   const [postsArray, setPostsArray] = useState([]);
   const [searchResult, setSearchResult] = useState(null);
 
+  const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
     axios
-      .get(`${API_URL}/posts`)
+      .get(`${API_URL}/posts`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((res) => {
         setPostsArray(res.data);
       })
@@ -51,12 +54,18 @@ function PostsPage() {
             {postsArray.map((post, index) => {
               return (
                 <Link
-                  key={index}
-                  to={`/posts/${post._id}`}
-                  className={`post-card ${post.course?.course
-                    .toLowerCase()
-                    .slice(0, 2)}`}
-                >
+                 
+            key={index}
+                  
+            to={`/posts/${post._id}`}
+                 
+            className={`post-card ${post.course?.course
+                    
+              .toLowerCase()
+                    
+              .slice(0,  2)}`}
+                
+          >
                   <PostCard post={post} />
                 </Link>
               );
