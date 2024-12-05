@@ -28,15 +28,20 @@ function Searchbar({setSearchResult }) {
         headers: { Authorization: `Bearer ${storedToken}` },
         params: { title }
       });
-      console.log(response.data);
+      if (response.data.length === 0) {
+        setSearchResult("The problem you are looking for does not exist. Create a new one!");
+      } else {
+        setSearchResult(response.data);
+      }
       setSearchResult(response.data);
     } catch (error) {
       console.log("This is the error", error);
+      setSearchResult("An error occurred while searching.");
     }
   };
 
   return (
-    <div>
+    <div className="input-container">
       <input
         className="input-search"
         type="text"

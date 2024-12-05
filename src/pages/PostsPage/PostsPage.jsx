@@ -33,17 +33,18 @@ function PostsPage() {
         <Searchbar setSearchResult={setSearchResult} />
       </section>
       <section className="posts-container">
-        {searchResult ? (
+        {searchResult  ? (
           // IF we have an input, show it
           searchResult.map((result) => {
             return (
               <Link
                 key={result._id}
                 to={`/posts/${result._id}`}
-                className={`post-card ${result.course
+                className={`post-card ${result.course?.course
                   ?.toLowerCase()
                   .slice(0, 2)}`}
               >
+
                 <PostCard post={result} />
               </Link>
             );
