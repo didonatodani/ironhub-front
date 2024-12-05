@@ -92,7 +92,6 @@ function PostsPage() {
                   key={index}
                   to={`/posts/${post._id}`}
                   className={`post-card ${post.course?.toLowerCase().slice(0, 2)}`}
-                  className={`post-card ${post.course?.toLowerCase().slice(0, 2)}`}
                 >
                   <PostCard post={post} />
                 </Link>
