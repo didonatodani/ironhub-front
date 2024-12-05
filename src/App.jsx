@@ -23,6 +23,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <div className="content">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -32,8 +33,10 @@ function App() {
         <Route path="/posts/:_id" element={<IsPrivate><PostDetailsPage /></IsPrivate>} />
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/newpost" element={<IsPrivate><PostForm /></IsPrivate>} />
+        {/* just for now!!! */}
+        <Route path="/test" element={<ReplyForm />} />
       </Routes>
+      </div>
       <Footer />
     </>
   );
