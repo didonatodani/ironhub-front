@@ -7,6 +7,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function Searchbar({setSearchResult }) {
   const [searchTitle, setSearchTitle] = useState("");
+  const storedToken = localStorage.getItem("authToken");
 
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -19,13 +20,13 @@ function Searchbar({setSearchResult }) {
     else {
       searchPostByTitle(query);
     }
-   
   };
 
   const searchPostByTitle = async (title) => {
     try {
       const response = await axios.get(`${API_URL}/posts/search`, {
-        params: { title },
+        headers: { Authorization: `Bearer ${storedToken}` },
+        params: { title }
       });
       console.log(response.data);
       setSearchResult(response.data);

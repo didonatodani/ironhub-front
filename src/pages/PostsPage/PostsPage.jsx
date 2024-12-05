@@ -54,18 +54,14 @@ function PostsPage() {
             {postsArray.map((post, index) => {
               return (
                 <Link
-                 
-            key={index}
-                  
-            to={`/posts/${post._id}`}
-                 
-            className={`post-card ${post.course?.course
-                    
-              .toLowerCase()
-                    
-              .slice(0,  2)}`}
-                
-          >
+                  key={index}
+                  to={`/posts/${post._id}`}
+                  className={`post-card ${post.course?.course
+
+                    .toLowerCase()
+
+                    .slice(0, 2)}`}
+                >
                   <PostCard post={post} />
                 </Link>
               );
