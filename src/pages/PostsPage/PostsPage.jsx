@@ -13,7 +13,6 @@ function PostsPage() {
   const [searchResult, setSearchResult] = useState(null);
 
   const storedToken = localStorage.getItem("authToken");
-
   useEffect(() => {
     axios
       .get(`${API_URL}/posts`, {
@@ -56,11 +55,7 @@ function PostsPage() {
                 <Link
                   key={index}
                   to={`/posts/${post._id}`}
-                  className={`post-card ${post.course?.course
-
-                    .toLowerCase()
-
-                    .slice(0, 2)}`}
+                  className={`post-card ${post.course?.toLowerCase().slice(0, 2)}`}
                 >
                   <PostCard post={post} />
                 </Link>

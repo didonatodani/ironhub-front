@@ -32,7 +32,7 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
         
         {/* just for now!!! */}
-        <Route path="/test" element={<ReplyForm />} />
+        <Route path="/test" element={<PostForm />} />
       </Routes>
       <Footer />
     </>

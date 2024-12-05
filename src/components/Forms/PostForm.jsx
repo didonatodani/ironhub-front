@@ -1,48 +1,90 @@
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
-import { useState } from "react";
-//import axios from "axios";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context";
+import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostForm() {
+  const { user } = useContext(AuthContext);
+
+  const [name, setName] = useState("");
+  const [course, setCourse] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
-  //   const likes = 0;
 
+  const navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
+ console.log(user)
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {
-      // name??, course?? FROM CONTEXT!!
+      name: user._id,
+      course,
       title,
       description,
       link,
       picture,
-      //   likes,????
     };
-    // console.log(newPost);
+    console.log(newPost)
+    axios
+      .post(`${API_URL}/posts`, newPost, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
 
-    // axios
-    //   .post(`${API_URL}/posts`, newPost)
-
-    //   // agregar en post() como tercer parametro  {
-    //   //     headers: { Authorization: `Bearer ${token}` }
-    //   //   });
-
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+      .then((res) => {
+        console.log("post sent successfully")
+        navigate("/posts");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
     <section className="post-form-section">
       <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
+        <fieldset className="form-div">
+          <legend>Course</legend>
+          <div className="field-div">
+            <div>
+              <input
+                type="radio"
+                id="web"
+                name="course"
+                value="Web Development"
+                onChange={(e) => setCourse(e.target.value)}
+                defaultChecked
+              />
+              <label htmlFor="web">W.D.</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="ux"
+                name="course"
+                value="UX/UI Design"
+                onChange={(e) => setCourse(e.target.value)}
+              />
+              <label htmlFor="ux">UX/UI</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="data"
+                name="course"
+                value="Data Analytics"
+                onChange={(e) => setCourse(e.target.value)}
+              />
+              <label htmlFor="ux">D.A.</label>
+            </div>
+          </div>
+        </fieldset>
         <div className="form-div title">
           <label htmlFor="title">Title:</label>
           <input
