@@ -11,16 +11,23 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostsPage() {
   const [postsArray, setPostsArray] = useState([]);
   const [searchResult, setSearchResult] = useState(null);
+  const [course, setCourse] = useState("All Courses");
+  const [sortBy, setSortBy] = useState("created");
+  const [order, setOrder] = useState("asc");
 
-  // const [course, setCourse] = useState("")
-  // const [order, setOrder] = useState("asc")
-  // const [filterByUser, setFilterByUser] = useState(false)
+
 
   const storedToken = localStorage.getItem("authToken");
-  useEffect(() => {
 
+
+  useEffect(() => {
+    const query = new URLSearchParams({
+      course,
+      sortBy,
+      order,
+    })
     axios
-      .get(`${API_URL}/posts`, {
+      .get(`${API_URL}/posts?${query.toString()}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => {
@@ -29,7 +36,7 @@ function PostsPage() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [course, sortBy, order]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -43,28 +50,30 @@ function PostsPage() {
       <section>
         <Searchbar setSearchResult={setSearchResult} />
 
-        {/* <div className="filter-controls"> */}
-          {/* <label> */}
-            {/* Select Course:
+        <div className="filter-controls">
+          <label>
             <select value={course} onChange={(e) => setCourse(e.target.value)}>
               <option value="">All Courses</option>
               <option value="Web Development">Web Development</option>
               <option value="UX/UI Design">UX/Ui Design</option>
               <option value="Data Analytics">Data Analytics</option>
             </select>
-          </label> */}
-          {/* <label>
+          </label>
+          <label>
             Order:
             <select value={order} onChange={(e) => setOrder(e.target.value)}>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
-          </label> */}
-          {/* <label>
-            <input type="checkbox" checked={filterByUser} onChange={(e) => setFilterByUser(e.target.checked)} />
-            Show my posts only:
-          </label> */}
-        {/* </div> */}
+          </label>
+          <label>
+            Sort By:
+            <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+              <option value="created">Date</option>
+              <option value="title">Title</option>
+            </select>
+          </label>
+        </div>
       </section>
 
       <section className="posts-container">
