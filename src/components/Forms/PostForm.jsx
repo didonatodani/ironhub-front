@@ -19,7 +19,7 @@ function PostForm() {
 
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
- console.log(user)
+
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {
@@ -30,14 +30,13 @@ function PostForm() {
       link,
       picture,
     };
-    console.log(newPost)
+
     axios
       .post(`${API_URL}/posts`, newPost, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
-
       .then((res) => {
-        console.log("post sent successfully")
+        console.log("post sent successfully");
         navigate("/posts");
       })
       .catch((err) => {

@@ -1,5 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
+
+// Components and Pages
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
@@ -12,9 +14,9 @@ import SignupForm from "./components/Forms/SignupForm.jsx";
 import LoginForm from "./components/Forms/LoginForm.jsx";
 import IsPrivate from "./components/IsPrivate/IsPrivate.jsx";
 import IsPublic from "./components/IsPublic/IsPublic.jsx";
+import PostForm from "./components/Forms/PostForm.jsx";
 
 // just testing components:
-import PostForm from "./components/Forms/PostForm.jsx";
 import ReplyForm from "./components/Forms/ReplyForm.jsx";
 
 function App() {
@@ -30,9 +32,7 @@ function App() {
         <Route path="/posts/:_id" element={<IsPrivate><PostDetailsPage /></IsPrivate>} />
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
-        
-        {/* just for now!!! */}
-        <Route path="/test" element={<PostForm />} />
+        <Route path="/newpost" element={<IsPrivate><PostForm /></IsPrivate>} />
       </Routes>
       <Footer />
     </>

@@ -1,12 +1,17 @@
 import "./Navbar.css";
 import Logo from "../../assets/Ironhub-logo.png";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context.jsx";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const { isLoggedIn, user, logOut } = useContext(AuthContext);
+  const [isDropped, setIsDropped] = useState(false);
+
+  function showMenu() {
+    setIsDropped(!isDropped);
+  }
 
   return (
     <div className="navbar-container">
@@ -17,18 +22,23 @@ function Navbar() {
           </NavLink>
         </div>
         {isLoggedIn ? (
-          <ul className="links logged-in">
-            {/* fix path of these two navlinks */}
-            <NavLink to={`/${user._id}`}>
-              <li>My Profile</li>
-            </NavLink>
-            <NavLink to={"/posts/"}>
-              <li>Posts</li>
-            </NavLink>
-            <button onClick={logOut}>
-              <li>Log Out</li>
-            </button>
-          </ul>
+          <>
+            <NavLink to={"/posts/"}>All Posts</NavLink>
+            <NavLink to={"/newpost"}>New Post</NavLink>
+            <div className="dropdown">
+              <button onClick={showMenu}>{user.name} ⬇ </button>
+              {isDropped && (
+                <ul className="links logged-in">
+                  <NavLink to={`/${user._id}`}>
+                    <li>My Profile</li>
+                  </NavLink>
+                  <button onClick={logOut}>
+                    <li>Log Out</li>
+                  </button>
+                </ul>
+              )}
+            </div>
+          </>
         ) : (
           <ul className="links logged-out">
             <NavLink to={"/auth/signup"}>
