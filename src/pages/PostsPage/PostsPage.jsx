@@ -5,6 +5,7 @@ import axios from "axios";
 import PostCard from "../../components/PostCard/PostCard";
 import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import arrowUp from "../../assets/up-arrow.png"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -26,6 +27,13 @@ function PostsPage() {
         console.log(err);
       });
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -70,6 +78,9 @@ function PostsPage() {
           </section>
         )}
       </section>
+        <button id="btn-up" onClick={scrollToTop}>
+          <img src={arrowUp} alt="arrow up icon" />
+        </button>
     </>
   );
 }

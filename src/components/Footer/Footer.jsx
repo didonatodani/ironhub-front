@@ -3,13 +3,6 @@ import linkedInLogo from "../../assets/linkedin.png";
 import githubLogo from "../../assets/github.png";
 
 function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <section className="footer-container">
       <div className="text-container">
@@ -38,10 +31,6 @@ function Footer() {
               </a>
             </div>
           </div>
-        </article>
-
-        <article className="homepage-btn">
-          <button onClick={scrollToTop}>Back to top</button>
         </article>
       </div>
       <small>© 2024 IronHub. All rights reserved.</small>
