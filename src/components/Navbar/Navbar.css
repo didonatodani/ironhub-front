@@ -14,18 +14,13 @@
 .links {
   list-style: none;
   gap: 30px;
-  /* display: none; */
-  /* position:absolute;
-  top:100%;
-  left:0;
-  background:#eee;
-  padding:0; */
+
 }
 
 .links li:hover {
   transform: scale(1.02);
   font-weight: 500;
-  /* display: block; */
+
 }
 
 
