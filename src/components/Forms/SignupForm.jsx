@@ -1,4 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+// Importing styles and images
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
 
@@ -12,8 +18,28 @@ function SignupForm() {
   const [languages, setLanguages] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    const requestBody = {
+      name,
+      email,
+      course,
+      schedule,
+      linkedin,
+      picture,
+      languages,
+      password,
+    };
+    axios.post(`${API_URL}/auth/signup`, requestBody)
+      .then((res) => {
+        navigate("/auth/login")
+      .catch((err) => {
+        console.log(err);
+      });
+    });
   }
 
   return (

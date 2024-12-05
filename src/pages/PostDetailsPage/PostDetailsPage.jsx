@@ -9,9 +9,13 @@ function PostDetailsPage() {
   const { _id } = useParams();
   const [detailPost, setDetailPost] = useState(null);
 
+  const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
     axios
-      .get(`${API_URL}/posts/${_id}`)
+      .get(`${API_URL}/posts/${_id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((res) => {
         setDetailPost(res.data);
       })
@@ -23,7 +27,6 @@ function PostDetailsPage() {
   if (!detailPost) {
     return <p>Loading...</p>;
   }
-  console.log(detailPost);
 
   const { name, title, description, created, picture, link, course } =
     detailPost;

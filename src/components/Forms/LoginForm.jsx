@@ -1,13 +1,37 @@
+import { useState, useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import "./GeneralFormStyles.css";
-import { useState } from "react";
 import logo from "../../assets/Logo.svg";
+import { AuthContext } from "../../context/auth.context";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   function handleSubmit(e) {
     e.preventDefault();
+    const newLogin = {
+      email,
+      password,
+    };
+
+    axios
+      .post(`${API_URL}/auth/login`, newLogin)
+      .then((res) => {
+        storeToken(res.data.authToken);
+        authenticateUser();
+        navigate("/posts");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -29,6 +53,7 @@ function LoginForm() {
             type="password"
             name="password"
             id="password"
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
