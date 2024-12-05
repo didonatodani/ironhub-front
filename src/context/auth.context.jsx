@@ -41,13 +41,22 @@ function AuthProviderWrapper(props) {
     }
   }
 
+  function removeToken(){
+    localStorage.removeItem("authToken")
+  }
+
+  function logOut(){
+    removeToken();
+    authenticateUser()
+  }
+
   useEffect(() => {
     authenticateUser();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser }}
+      value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOut }}
     >
       {props.children}
     </AuthContext.Provider>
