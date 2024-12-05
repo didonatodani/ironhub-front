@@ -20,7 +20,7 @@ function Navbar() {
         {isLoggedIn ? (
           <ul className="links logged-in">
             {/* fix path of these two navlinks */}
-            <NavLink to={"/:userId"}> 
+            <NavLink to={"/:userId"}>
               <li>My Profile</li>
             </NavLink>
             <NavLink to={"/:userId/"}>
