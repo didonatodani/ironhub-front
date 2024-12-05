@@ -1,58 +1,54 @@
 import React from "react";
 import "./ProfileCard.css";
-import PostCard from "../PostCard/PostCard";
+
 
 function ProfileCard({ user }) {
   if (!user) {
     return <p>Loading...</p>; // Render a loading message if user is null
   }
   const formattedDate = new Date(user.createdAt).toLocaleDateString("en-GB");
-  const posts = user.posts
-  console.log("this is the title of the post", posts);
+  const posts = user.posts;
+  console.log("this are the user posts" , posts);
+
+
 
   return (
     <>
       <div className="user-info">
         <div className="heading-profile">
+          <p>{user?.name}</p>
           <img src={user.picture} alt="user-profile-image" />
-          <p>
-            <b> {user?.name}</b>
-          </p>
+          <span> {user.course}</span>
           <small>User since: {formattedDate}</small>
         </div>
-        <div className="profile-info">
-          <h3>Bio:</h3>
+        <div className="profile-details">
           <p>
             Name:
-            <b> {user?.name}</b>
+            <br></br>
+            <span>{user?.name}</span>
           </p>
           <p>
-            Email:
-            <b> {user.email} </b>
+            Email: <br></br> <span>{user.email}</span>{" "}
           </p>
           <p>
-            Course:
-            <b> {user.course}</b>
+            Course-type: <br></br> <span>{user.schedule}</span>{" "}
           </p>
           <p>
-            Course-type:
-            <b> {user.schedule}</b>
-          </p>
-          <p> Languages:
-            <b>{user.language}</b>
+            Languages: <br></br>
+            <span>{user.language}</span>{" "}
           </p>
         </div>
       </div>
       <div className="user-posts">
-        <h2>posts: </h2>
+        <h2>Posts:</h2>
         {posts.length > 0 ? (
-          <ul>
+          <div className="post">
             {posts.map((post) => (
-              <li key={post._id}>
-                <h3>{post.title}</h3>
-              </li>
+              <ul>
+                <li key={post._id}>{post.title}</li>
+              </ul>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No posts available.</p>
         )}

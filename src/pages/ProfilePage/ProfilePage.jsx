@@ -1,7 +1,7 @@
 import "./ProfilePage.css";
 import ProfileCard from "../../components/ProfileCard.jsx/ProfileCard";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -11,6 +11,7 @@ function ProfilePage() {
   const [user, setUser] = useState(null);
 
   const { userId } = useParams()
+  const navigate = useNavigate();
 
 
 useEffect(() => {
@@ -21,13 +22,15 @@ useEffect(() => {
       })
       .catch((err) => {
         console.log(err);
+        navigate("*")
+
       });
   }, [userId]);
 
   return (
     <>
       <div className="profile-container">
-      {user ? <ProfileCard user={user} /> : <p>Loading user information...</p>}
+      {<ProfileCard user={user} /> }
       </div>
     </>
   );
