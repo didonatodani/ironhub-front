@@ -7,8 +7,10 @@ function ProfileCard({ user }) {
     return <p>Loading...</p>; // Render a loading message if user is null
   }
   const formattedDate = new Date(user.createdAt).toLocaleDateString("en-GB");
+
+  // do we need this??
   const posts = user.posts;
-  console.log("this are the user posts" , posts);
+  // console.log("this are the user posts" , posts);
 
 
 

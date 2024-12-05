@@ -13,14 +13,17 @@
 
 .links {
   list-style: none;
-  display: flex;
-  gap: 30px
+  gap: 30px;
+
 }
 
 .links li:hover {
   transform: scale(1.02);
   font-weight: 500;
+
 }
+
+
 
 
 

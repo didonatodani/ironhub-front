@@ -4,6 +4,7 @@ import axios from "axios";
 import PostCard from "../../components/PostCard/PostCard";
 import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import arrowUp from "../../assets/up-arrow.png"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -16,7 +17,6 @@ function PostsPage() {
   // const [filterByUser, setFilterByUser] = useState(false)
 
   const storedToken = localStorage.getItem("authToken");
-
   useEffect(() => {
 
     axios
@@ -30,6 +30,13 @@ function PostsPage() {
         console.log(err);
       });
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -61,7 +68,7 @@ function PostsPage() {
       </section>
 
       <section className="posts-container">
-        {searchResult ? (
+        {searchResult  ? (
           // IF we have an input, show it
           searchResult.map((result) => {
             return (
@@ -71,6 +78,7 @@ function PostsPage() {
                 className={`post-card ${result.course.toLowerCase()
                   .slice(0, 2)}`}
               >
+
                 <PostCard post={result} />
               </Link>
             );
@@ -84,6 +92,7 @@ function PostsPage() {
                   key={index}
                   to={`/posts/${post._id}`}
                   className={`post-card ${post.course?.toLowerCase().slice(0, 2)}`}
+                  className={`post-card ${post.course?.toLowerCase().slice(0, 2)}`}
                 >
                   <PostCard post={post} />
                 </Link>
@@ -92,6 +101,9 @@ function PostsPage() {
           </section>
         )}
       </section>
+        <button id="btn-up" onClick={scrollToTop}>
+          <img src={arrowUp} alt="arrow up icon" />
+        </button>
     </>
   );
 }

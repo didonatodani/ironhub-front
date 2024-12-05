@@ -1,8 +1,7 @@
 import "./PostCard.css";
 
 function PostCard({ post }) {
-  const { created, description, course, likes, link, name, picture, title } = post;
-
+  const { created, description, course, link, name, picture, title } = post;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
 
   return (
