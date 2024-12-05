@@ -10,7 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostForm() {
   const { user } = useContext(AuthContext);
 
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [course, setCourse] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
