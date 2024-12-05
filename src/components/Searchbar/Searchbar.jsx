@@ -13,7 +13,7 @@ function Searchbar({setSearchResult }) {
     console.log(query);
     setSearchTitle(query);
     if (query.trim() === "") {
-      // When the input is empty, you see all post
+      // When the input is empty, you see all posts
       setSearchResult(null);
     } 
     else {
