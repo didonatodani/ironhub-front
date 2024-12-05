@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const { isLoggedIn, user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   return (
     <div className="navbar-container">
@@ -20,11 +19,11 @@ function Navbar() {
         {isLoggedIn ? (
           <ul className="links logged-in">
             {/* fix path of these two navlinks */}
-            <NavLink to={"/:userId"}>
+            <NavLink to={`/${user._id}`}>
               <li>My Profile</li>
             </NavLink>
-            <NavLink to={"/:userId/"}>
-              <li>My Posts</li>
+            <NavLink to={"/posts/"}>
+              <li>Posts</li>
             </NavLink>
             <button onClick={logOut}>
               <li>Log Out</li>
