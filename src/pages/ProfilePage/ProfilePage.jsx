@@ -4,19 +4,20 @@ import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
 
-  const { userId } = useParams()
-  const navigate = useNavigate();
+  const storedToken = localStorage.getItem("authToken");
+  const { userId } = useParams();  const navigate = useNavigate();
 
 
-useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`${API_URL}/user/${userId}`)
+      .get(`${API_URL}/user/${userId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((res) => {
         setUser(res.data);
       })
@@ -30,7 +31,7 @@ useEffect(() => {
   return (
     <>
       <div className="profile-container">
-      {<ProfileCard user={user} /> }
+      {user ? <ProfileCard user={user} /> : <p>Loading user information...</p>}
       </div>
     </>
   );

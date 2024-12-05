@@ -12,7 +12,6 @@ function ReplyForm() {
   }
   return (
     <section className="post-form-section">
-      <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
         <div className="form-div description">
           <label htmlFor="description">Description:</label>

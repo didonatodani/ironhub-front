@@ -1,0 +1,61 @@
+.about-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+    gap: 10px;
+    padding: 10px;
+    margin: 10px auto;
+    min-height: fit-content;
+    width: 90%;
+    max-width: 360px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+    .img-div {
+        width: 300px;
+        height: 360px;
+        object-fit: contain;
+        background-position: center;
+        background-size:cover;
+        border-radius: 20px;
+    }
+    .about-descr-div{
+        text-align: center;
+        p{
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+            margin: 0 auto;
+            width: 90%;
+            transition: opacity 500ms ease, max-height 1s ease, visibility 0s 500ms;
+        }
+        .social-logo{
+            margin: 20px 10px;
+            border-radius: 6px;
+        }
+    }
+}
+
+.about-card:hover, .about-card:active{
+    p {
+        max-height: fit-content;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 500ms ease, max-height 1s ease, visibility 0s;
+    }
+}
+
+
+
+.dan {
+    background-image: url("../../src/assets/dan.jpg");
+}
+
+.nig{
+    background-color: aliceblue;
+}
+
+.pie{
+    background-color: antiquewhite;
+}
