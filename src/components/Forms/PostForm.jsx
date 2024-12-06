@@ -11,7 +11,7 @@ function PostForm() {
   const { user } = useContext(AuthContext);
 
   // const [name, setName] = useState("");
-  const [course, setCourse] = useState("");
+  const [course, setCourse] = useState("Web Development");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
@@ -80,7 +80,7 @@ function PostForm() {
                 value="Data Analytics"
                 onChange={(e) => setCourse(e.target.value)}
               />
-              <label htmlFor="ux">D.A.</label>
+              <label htmlFor="data">D.A.</label>
             </div>
           </div>
         </fieldset>

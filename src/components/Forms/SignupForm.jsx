@@ -11,8 +11,8 @@ import logo from "../../assets/Logo.svg";
 function SignupForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [course, setCourse] = useState("");
-  const [schedule, setSchedule] = useState("");
+  const [course, setCourse] = useState("Web Development");
+  const [schedule, setSchedule] = useState("Full-time");
   const [linkedin, setLinkedin] = useState("");
   const [picture, setPicture] = useState("");
   const [languages, setLanguages] = useState("");
@@ -33,6 +33,8 @@ function SignupForm() {
       languages,
       password,
     };
+    console.log(requestBody)
+
     axios.post(`${API_URL}/auth/signup`, requestBody)
       .then((res) => {
         navigate("/auth/login")
@@ -96,7 +98,7 @@ function SignupForm() {
                 value="Data Analytics"
                 onChange={(e) => setCourse(e.target.value)}
               />
-              <label htmlFor="ux">D.A.</label>
+              <label htmlFor="data">D.A.</label>
             </div>
           </div>
         </fieldset>
