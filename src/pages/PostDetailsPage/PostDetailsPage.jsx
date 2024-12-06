@@ -60,7 +60,7 @@ function PostDetailsPage() {
               </div>
               {user._id === name._id && (
                 <>
-                  <button onClick={() => setShowEditForm(true)}>
+                  <button className="small-blue-button" onClick={() => setShowEditForm(true)}>
                     Edit Post
                   </button>
                   <DeleteButton id={_id} storedToken={storedToken}/>
