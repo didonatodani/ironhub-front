@@ -1,42 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 /*
 HEADINGS: font-family: "Lato", sans-serif;
 TEXTS: font-family: "Inter", sans-serif;*/
-
 :root {
     /* WE FOLLOW THESE STYLES: https://www.realtimecolors.com/?colors=0a0b0b-f9fbfb-00c4fa-a6cdd8-79bfd2&fonts=Inter-Inter */
     /* GENERAL TEXT */
-    --text: #0a0b0b;
-    --background: #f9fbfb;
+    --text: #0A0B0B;
+    --background: #F9FBFB;
     /* PRIMARY FOR H1, PRIMARY BUTTON */
-    --primary: #00c4fa; 
+    --primary: #00C4FA;
     /* SECONDARY FOR FOOTER,  SECONDARY BUTTON */
-    --secondary: #a6cdd8;
+    --secondary: #A6CDD8;
     /* LIGHT BACKGROUND: */
-    --light-background: #e8f2f4;
+    --light-background: #E8F2F4;
     /* ACCENT FOR ICONS */
-    --accent: #79bfd2; 
+    --accent: #79BFD2;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html,
 body {
     height: 100%;
 }
-
 h1,
 h2,
 h3 {
     font-family: "Lato", sans-serif;
     color: black;
 }
-
 p,
 a,
 button,
@@ -50,72 +44,43 @@ textarea {
     color: black;
     font-size: 18px;
 }
-
 a {
     text-decoration: none;
 }
-
 /* class for blue buttons */
-.general-button {
+#home-button {
     width: 180px;
     height: 70px;
-    background: linear-gradient(to bottom, #3B64B2 5%, #4D84E6 100%);
-    background-color: #4D84E6;
-    border-radius: 10px;
-    border: 1px solid #4D84E6;
-    box-shadow: inset 0px 1px 0px 0px #97C4FE;
-    cursor: pointer;
-    color: #FFFFFF;
-    font-size: 20px;
-    padding: 6px 24px;
-    margin: 0 auto;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #1570CD;
-    display: inline-block;
     text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 auto;
 }
-
-.general-button:hover {
-    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
-    background-color: #4D84E6;
-}
-
-/* class for white buttons */
-/* CHANGE NAME OF IT!!! */
-
-.small-blue-button {
-    min-width: 100px;
-    max-width: 150px;
+/* general class for pair of buttons */
+.primary-button, .secondary-button {
+    font-size: 15px;
+    min-width: 150px;
     min-height: 50px;
-
-    max-height: 100px;
     border-radius: 10px;
-    background-color: #4D84E6;
-    border: 2px #4D84E6 solid;
-    color: #FFFFFF;
-    padding: 5px 10px;
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 10px 15px;
+    border: none;
 }
-
-.small-blue-button:hover {
-    background: linear-gradient(to bottom, #d8d8d8 5%, #FFFFFF 100%);
-    background-color: #4D84E6;
-    color: #3B64B2;
+.secondary-button {
+    background-color: var(--secondary);
+    color: var(--text);
 }
-
-.white-button {
-    min-width: 100px;
-    max-width: 150px;
-    min-height: 50px;
-    max-height: 100px;
-    border-radius: 10px;
-    border: 2px #4D84E6 solid;
-    color: #3B64B2;
-    padding: 5px 10px;
+.primary-button:hover{
+    background: linear-gradient(to bottom, #63DDFF 5%, var(--primary) 100%);
+    box-shadow: 0 20px 80px -10px var(--primary);
 }
-
-
-.white-button:hover {
-    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
-    background-color: #4D84E6;
+.secondary-button:hover{
+    background: linear-gradient(to bottom, #C6EAF4 5%, var(--secondary) 100%);
+}
+.primary-button:hover, .secondary-button:hover {
+    cursor: pointer;
+    transform: translate(0, -3px);
+    transition: transform ease 0.2s;
     color: #FFFFFF;
 }

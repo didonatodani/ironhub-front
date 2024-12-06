@@ -64,7 +64,7 @@ function PostsPage() {
             </select>
           </div>
           <NavLink to={"/newpost"}>
-            <button id="general-button">Add A Post</button>
+            <button className="primary-button">Add A Post</button>
           </NavLink>
         </div>
       </section>

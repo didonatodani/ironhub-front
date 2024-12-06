@@ -1,29 +1,75 @@
 .navbar-container {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 100vw;
-  height: 55px;
+  height: 70px;
+
 }
 
-.navbar {
+.navbar, .navbar-logged-in {
   display: flex;
   justify-content: space-between;
   padding: 15px 25px 20px 12px;
-  align-items: center;
+  align-items: flex-start;
+
+}
+
+.navbar-logged-in {
+  padding-bottom: 150px;
+}
+
+.user-nav {
+  border-style: none;
+  margin: 0px 20px 5px 0px;
+  background-color: transparent;
+  width: 110px;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+
+
+  .user-picture {
+    border: 1px solid rgba(158, 158, 158, 0.471);
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 70px;
+    background-color: transparent;
+    cursor: pointer;
+  }
 }
 
 .links {
   list-style: none;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
 }
+
+.links li {
+  font-size: 16px;
+}
+
 
 .links li:hover {
   transform: scale(1.02);
   font-weight: 500;
+  cursor: pointer;
 
 }
 
 .logged-in{
   z-index: 2;
   position: absolute;
+  border: 1px solid rgba(188, 188, 188, 0.507);
+  border-radius: 5px;
+  padding: 3px 40px 3px 8px;
+  text-align: left;
+
+
+  button {
+    border-style: none;
+    background-color: transparent;
+    text-align: left;
+  }
 }
