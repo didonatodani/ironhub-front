@@ -27,7 +27,7 @@ function LoginForm() {
       .then((res) => {
         storeToken(res.data.authToken);
         authenticateUser();
-        navigate("/posts");
+        navigate("/posts/");
       })
       .catch((err) => {
         console.log(err);
