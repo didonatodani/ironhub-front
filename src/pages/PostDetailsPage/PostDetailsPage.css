@@ -60,6 +60,11 @@
     max-width: 100%;
   }
 }
+.replies-container {
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+}
 
 @media (min-width: 650px) and (max-width: 1023px) {
   .detail-container {
