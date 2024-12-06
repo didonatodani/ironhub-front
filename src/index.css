@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-/* 
+/*
 HEADINGS: font-family: "Lato", sans-serif;
 TEXTS: font-family: "Inter", sans-serif;*/
 
@@ -26,4 +26,27 @@ p, a, button, span, small, label, input, fieldset, textarea{
 
 a{
     text-decoration: none;
+}
+#general-button {
+    width: 180px;
+    height: 70px;
+    background: linear-gradient(to bottom, #3B64B2 5%, #4D84E6 100%);
+    background-color: #4D84E6;
+    border-radius: 10px;
+    border: 1px solid #4D84E6;
+    box-shadow: inset 0px 1px 0px 0px #97c4fe;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 6px 24px;
+    margin: 0 auto;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #1570cd;
+    display: inline-block;
+    text-align: center;
+}
+
+#general-button:hover {
+    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
+    background-color: #4D84E6;
 }

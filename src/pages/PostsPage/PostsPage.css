@@ -23,3 +23,47 @@
     height: auto;
   }
 }
+
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 30px;
+
+  #general-button {
+    width: 120px;
+    height: 62px;
+  }
+}
+
+.custom-select {
+  text-align: center;
+}
+
+.custom-select select {
+  appearance: none;
+  font-size: 15px;
+  padding: 20px;
+  border: 1px solid #F7BC49;;
+  border-radius: 0.25rem;
+  color: #000;
+
+}
+
+.custom-select select:hover {
+  cursor: pointer;
+  border: 1px solid #F7BC49;
+}
+
+.custom-select select option {
+  background-color: #F7BC49 ;
+}
+
+
+
+
+
+
+
+
