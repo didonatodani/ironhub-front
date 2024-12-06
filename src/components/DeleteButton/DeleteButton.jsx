@@ -20,6 +20,6 @@ function DeleteButton({ id, storedToken}) {
         console.log(err);
       });
   }
-  return <button onClick={deletePost}>Delete Post</button>;
+  return <button onClick={deletePost} className="white-button">Delete Post</button>;
 }
 export default DeleteButton;

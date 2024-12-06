@@ -4,24 +4,54 @@
 HEADINGS: font-family: "Lato", sans-serif;
 TEXTS: font-family: "Inter", sans-serif;*/
 
-*{
+:root {
+    /* WE FOLLOW THESE STYLES: https://www.realtimecolors.com/?colors=0a0b0b-f9fbfb-00c4fa-a6cdd8-79bfd2&fonts=Inter-Inter */
+    /* GENERAL TEXT */
+    --text: #0a0b0b;
+    --background: #f9fbfb;
+    /* PRIMARY FOR H1, PRIMARY BUTTON */
+    --primary: #00c4fa; 
+    /* SECONDARY FOR FOOTER,  SECONDARY BUTTON */
+    --secondary: #a6cdd8;
+    /* LIGHT BACKGROUND: */
+    --light-background: #e8f2f4;
+    /* ACCENT FOR ICONS */
+    --accent: #79bfd2; 
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
     height: 100%;
 }
-h1, h2, h3{
+
+h1,
+h2,
+h3 {
     font-family: "Lato", sans-serif;
     color: black;
 }
-p, a, button, span, small, label, input, fieldset, textarea{
+
+p,
+a,
+button,
+span,
+small,
+label,
+input,
+fieldset,
+textarea {
     font-family: "Inter", sans-serif;
     color: black;
     font-size: 18px;
 }
-a{
+
+a {
     text-decoration: none;
 }
 
@@ -44,6 +74,7 @@ a{
     display: inline-block;
     text-align: center;
 }
+
 .general-button:hover {
     background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
     background-color: #4D84E6;
@@ -52,20 +83,34 @@ a{
 /* class for white buttons */
 /* CHANGE NAME OF IT!!! */
 
-.small-blue-button{
-    width: 100px;
-    height: 50px;
+.small-blue-button {
+    min-width: 100px;
+    max-width: 150px;
+    min-height: 50px;
+
+    max-height: 100px;
     border-radius: 10px;
     background-color: #4D84E6;
     border: 2px #4D84E6 solid;
+    color: #FFFFFF;
+    padding: 5px 10px;
+}
+
+.small-blue-button:hover {
+    background: linear-gradient(to bottom, #d8d8d8 5%, #FFFFFF 100%);
+    background-color: #4D84E6;
     color: #3B64B2;
 }
-.white-button{
-    width: 100px;
-    height: 50px;
+
+.white-button {
+    min-width: 100px;
+    max-width: 150px;
+    min-height: 50px;
+    max-height: 100px;
     border-radius: 10px;
     border: 2px #4D84E6 solid;
     color: #3B64B2;
+    padding: 5px 10px;
 }
 
 

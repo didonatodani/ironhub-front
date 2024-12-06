@@ -64,8 +64,8 @@ function EditPostForm({
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
-            placeholder={description}
             onChange={(e) => setEditedDescription(e.target.value)}
+            value={description}
           />
         </div>
         <div className="form-div link">
