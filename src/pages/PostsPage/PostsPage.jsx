@@ -13,7 +13,7 @@ function PostsPage() {
   const [searchResult, setSearchResult] = useState(null);
   const [course, setCourse] = useState("All Courses");
   const [sortBy, setSortBy] = useState("created");
-  const [order, setOrder] = useState("asc");
+  const [order, setOrder] = useState("desc");
 
 
 
