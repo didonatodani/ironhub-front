@@ -45,7 +45,7 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
     }
   };
 
-  const handleCancel = () => setIsEditing(false); // Close the form without saving
+  const handleCancel = () => setIsEditing(true); // Close the form without saving
 
   return (
     <section className="post-form-section">
