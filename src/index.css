@@ -8,6 +8,7 @@ TEXTS: font-family: "Inter", sans-serif;*/
     /* WE FOLLOW THESE STYLES: https://www.realtimecolors.com/?colors=0a0b0b-f9fbfb-00c4fa-a6cdd8-79bfd2&fonts=Inter-Inter */
     /* GENERAL TEXT */
     --text: #0a0b0b;
+    --subtitles: #80989f;
     --background: #f9fbfb;
     /* PRIMARY FOR H1, PRIMARY BUTTON */
     --primary: #00c4fa; 
@@ -56,66 +57,64 @@ a {
 }
 
 /* class for blue buttons */
-.general-button {
+#home-button {
     width: 180px;
     height: 70px;
-    background: linear-gradient(to bottom, #3B64B2 5%, #4D84E6 100%);
-    background-color: #4D84E6;
-    border-radius: 10px;
-    border: 1px solid #4D84E6;
-    box-shadow: inset 0px 1px 0px 0px #97C4FE;
-    cursor: pointer;
-    color: #FFFFFF;
-    font-size: 20px;
-    padding: 6px 24px;
-    margin: 0 auto;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #1570CD;
-    display: inline-block;
     text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    margin: 0 auto;
 }
 
-.general-button:hover {
-    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
-    background-color: #4D84E6;
-}
+/* general class for pair of buttons */
 
-/* class for white buttons */
-/* CHANGE NAME OF IT!!! */
-
-.small-blue-button {
-    min-width: 100px;
-    max-width: 150px;
-    min-height: 50px;
-
-    max-height: 100px;
+.primary-button, .secondary-button {
+    font-size: 15px;
+    min-width: 110px;
+    min-height: 40px;
     border-radius: 10px;
-    background-color: #4D84E6;
-    border: 2px #4D84E6 solid;
+    background-color: var(--primary);
+    color: var(--text);
+    padding: 10px 15px;
+    border: none;
+    margin: 0 auto;
+}
+
+.secondary-button {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+.primary-button:hover{
+    background: linear-gradient(to bottom, #63ddff 5%, var(--primary) 100%);
+    box-shadow: 0 20px 80px -10px var(--primary);
+}
+.secondary-button:hover{
+    background: linear-gradient(to bottom, #c6eaf4 5%, var(--secondary) 100%);
+}
+
+.primary-button:hover, .secondary-button:hover {
+    cursor: pointer;
+    transform: translate(0, -3px);
+    transition: transform ease 0.2s;
     color: #FFFFFF;
-    padding: 5px 10px;
+}
+.secondary-button.danger-button{
+    background: var(--light-background);
+    border: 2px solid var(--secondary);
+    color:  var(--subtitles);
+    font-weight: 500;
+}
+.secondary-button.danger-button:hover{
+    background-color: var(--secondary);
+    transform: none;
+    border: none;
+    color: var(--light-background)
 }
 
-.small-blue-button:hover {
-    background: linear-gradient(to bottom, #d8d8d8 5%, #FFFFFF 100%);
-    background-color: #4D84E6;
-    color: #3B64B2;
-}
-
-.white-button {
-    min-width: 100px;
-    max-width: 150px;
-    min-height: 50px;
-    max-height: 100px;
-    border-radius: 10px;
-    border: 2px #4D84E6 solid;
-    color: #3B64B2;
-    padding: 5px 10px;
-}
-
-
-.white-button:hover {
-    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
-    background-color: #4D84E6;
-    color: #FFFFFF;
+@media (min-width: 650px){
+    .primary-button, .secondary-button {
+        font-size: 15px;
+        min-width: 150px;
+        min-height: 50px;
+    }
 }

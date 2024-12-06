@@ -21,7 +21,7 @@ function HomePage() {
           courses. Sign up or log in to start exploring today!
         </p>
         <p>Made for students by students.</p>
-        <button id="general-button" onClick={handleNavigate}>
+        <button id="home-button" onClick={handleNavigate} className="primary-button">
           Discover Our Story.
         </button>
       </section>

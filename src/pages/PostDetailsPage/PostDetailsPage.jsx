@@ -59,34 +59,34 @@ function PostDetailsPage() {
                 <p>{course}</p>
               </div>
               {user._id === name._id && (
-                <>
-                  <button className="small-blue-button" onClick={() => setShowEditForm(true)}>
+                <div className="crud-buttons">
+                  <DeleteButton id={_id} storedToken={storedToken} />
+                  <button
+                    className="primary-button"
+                    onClick={() => setShowEditForm(true)}
+                  >
                     Edit Post
                   </button>
-                  <DeleteButton id={_id} storedToken={storedToken}/>
-                </>
+                </div>
               )}
             </div>
             <div className="topic-container">
-              <div>
-                <hr />
-                <div className="topic-header">
-                  <p>{name?.name}</p>
-                  <p>{formattedDate}</p>
-                </div>
+              <div className="topic-header">
+                {/* add user picture here */}
+                {/* <img src={user.picture} alt="" /> */}
+                <p>{name?.name}</p>
+                <p>{formattedDate}</p>
               </div>
-              <div>
+              <div className="topic-body">
                 <p>{description}</p>
-                <br />
-                <p>Image: {picture}</p>
-                <br />
-                <p>Link: {link}</p>
+                <p className="link-text">Image: {picture}</p>
+                <p className="link-text">Link: {link}</p>
               </div>
               <div className="btns-container">
                 {/* <button>Like</button> */}
                 <button className="reply-btn">
                   <img className="reply" src={replyIcon} alt="reply icon" />
-                  <p>Reply</p>
+                  Reply
                 </button>
                 <button onClick={handleNavigate}>Go back</button>
               </div>

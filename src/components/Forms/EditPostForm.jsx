@@ -87,10 +87,18 @@ function EditPostForm({
             placeholder={picture}
             onChange={(e) => setEditedPicture(e.target.value)}
           />
-        </div><button onClick={()=>setShowEditForm(false)}>Cancel</button>
-        <button type="submit" className="submit-btn">
-          Save Changes
-        </button>
+        </div>
+        <div className="submit-buttons">
+          <button
+            onClick={() => setShowEditForm(false)}
+            className="secondary-button danger-button"
+          >
+            Cancel
+          </button>
+          <button type="submit" className="primary-button ">
+            Save Changes
+          </button>
+        </div>
       </form>
     </section>
   );

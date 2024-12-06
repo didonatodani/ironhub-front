@@ -1,42 +1,62 @@
 .page-container {
-  background-color: #fff;
   padding: 20px 0;
   width: 100vw;
-  overflow-x: hidden;
+  /* this height will depend on navbar height!!! */
+  min-height: 95vh;
+  align-content: center;
 }
 
 .detail-container {
+  background-color: var(--light-background);
   width: 90%;
+  padding: 30px 20px;
   margin: 0 auto;
   border-radius: 20px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+}
+.main-post-header{
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  width: 100%;
+  .detail-title {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 20px;
+    h2{
+      color: var(--primary);
+      font-weight: 900;
+    }
+    
+  }
+  .crud-buttons{
+    display: flex;
+    justify-content: space-around;
+    
+  }
+}
 
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-/* .main-post-header{
-  display: flex;
-} */
-.detail-title {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 20px;
-}
 
 .topic-container {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow-x: auto;
 }
 .topic-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-top: 1px solid #90aeb6;
+  padding-top: 10px;
   p {
     font-size: 14px;
+    color: #90aeb6;
   }
 }
 
@@ -45,6 +65,17 @@
   flex-direction: row;
   justify-content: end;
   gap: 10px;
+}
+.topic-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  .link-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 .reply-btn {
   display: flex;
@@ -98,12 +129,24 @@
 @media (min-width: 1024px) {
   .detail-container {
     width: 60%;
+
   }
+  .main-post-header{
+    flex-direction: row;
+    .crud-buttons{
+      height: fit-content;
+      gap: 10px;
+      button{
+        box-shadow: none;
+      }
+    }
+  }
+
   .detail-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
+    align-items: start;
     text-align: center;
   }
 }

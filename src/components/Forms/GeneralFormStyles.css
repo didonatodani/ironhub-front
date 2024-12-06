@@ -1,10 +1,10 @@
 .post-form-section {
-    background-color: rgb(222, 221, 221);
+    background-color: var(--light-background);
     width: 90%;
     max-width: 600px;
     min-height: 600px;
     margin: 20px auto;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -13,9 +13,10 @@
 
     label,
     fieldset {
-        border-radius: 25px;
+        padding: 5px;
+        border-radius: 10px;
         border-bottom-left-radius: none;
-        color: rgb(96, 96, 96);
+        color: var(--text);
         padding-bottom: 5px;
     }
 
@@ -38,15 +39,19 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 70%;
+        width: 100%;
         padding: 5px;
 
         input,
         textarea {
             border: none;
-            border-radius: 20px;
-            padding: 5px;
+            border-radius: 10px;
+            padding: 10px;
             min-height: 20px;
+            color: var(--subtitles);
+        }
+        textarea{
+            min-height: 150px;
         }
     }
 
@@ -62,12 +67,11 @@
         }
     }
 
-    .submit-btn {
-        background-color: rgb(45, 53, 76);
-        color: white;
-        padding: 5px 30px;
-        border-radius: 20px;
-        margin: 20px auto;
+    .submit-buttons{
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
 
 }
