@@ -1,9 +1,11 @@
 .post-card{
     border: 2px #5bb7d3 solid;
     border-left: 15px #5bb7d3 solid;
-    padding: 5px;
+    padding: 20px;
+    border-radius: 10px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.712);
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     .post-card-header{
         display: flex;
         justify-content: space-between;
@@ -18,6 +20,10 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    span {
+        font-weight: 200;
     }
 }
 .da{

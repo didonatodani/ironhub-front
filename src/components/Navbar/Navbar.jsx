@@ -13,20 +13,23 @@ function Navbar() {
     setIsDropped(!isDropped);
   }
 
+  console.log(user);
+
+
   return (
     <div className="navbar-container">
-      <nav className="navbar">
-        <div className="logo">
-          <NavLink to={"/"}>
-            <img width={120} src={Logo} alt="ironhub-logo" />
-          </NavLink>
-        </div>
         {isLoggedIn ? (
           <>
-            <NavLink to={"/posts/"}>All Posts</NavLink>
-            <NavLink to={"/newpost"}>New Post</NavLink>
+      <nav className="navbar-logged-in">
+
+        <div className="logo">
+          <NavLink to={"/posts/"}>
+            <img width={120} src={Logo} alt="ironhub-logo" />
+          </NavLink>
+          </div>
             <div className="dropdown">
-              <button onClick={showMenu}>{user.name} ⬇ </button>
+
+              <button className="user-nav" onClick={showMenu}><img className="user-picture" width={50} src={user.picture}  alt="picture-user" /> </button>
               {isDropped && (
                 <ul className="links logged-in">
                   <NavLink to={`/${user._id}`}>
@@ -38,19 +41,30 @@ function Navbar() {
                 </ul>
               )}
             </div>
+       </nav>
           </>
         ) : (
-          <ul className="links logged-out">
-            <NavLink to={"/auth/signup"}>
-              <li>Signup</li>
-            </NavLink>
-            <NavLink to={"/auth/login"}>
-              <li>Login</li>
-            </NavLink>
-          </ul>
+          <>
+           <nav className="navbar">
+
+            <div className="logo">
+              <NavLink to={"/"}>
+                <img width={120} src={Logo} alt="ironhub-logo" />
+              </NavLink>
+            </div>
+            <ul className="links logged-out">
+              <NavLink to={"/auth/signup"}>
+                <li>Signup</li>
+              </NavLink>
+              <NavLink to={"/auth/login"}>
+                <li>Login</li>
+              </NavLink>
+            </ul>
+           </nav>
+          </>
         )}
-      </nav>
-    </div>
+
+      </div>
   );
 }
 

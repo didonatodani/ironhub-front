@@ -21,10 +21,10 @@
 
   img {
     width: 100px;
-    border: 1px solid rgba(205, 205, 205, 0.471);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 90px;
+    border: 1px solid rgba(158, 158, 158, 0.471);
     border-radius: 50%;
-    height: 95px;
+    object-fit: cover;
     padding: 5px;
     margin-top: 10px;
     margin-bottom: 10px;

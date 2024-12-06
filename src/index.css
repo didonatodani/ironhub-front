@@ -1,43 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
 /*
 HEADINGS: font-family: "Lato", sans-serif;
 TEXTS: font-family: "Inter", sans-serif;*/
-
 :root {
     /* WE FOLLOW THESE STYLES: https://www.realtimecolors.com/?colors=0a0b0b-f9fbfb-00c4fa-a6cdd8-79bfd2&fonts=Inter-Inter */
     /* GENERAL TEXT */
-    --text: #0a0b0b;
+    --text: #0A0B0B;
     --subtitles: #80989f;
-    --background: #f9fbfb;
+    --background: #F9FBFB;
     /* PRIMARY FOR H1, PRIMARY BUTTON */
-    --primary: #00c4fa; 
+    --primary: #00C4FA;
     /* SECONDARY FOR FOOTER,  SECONDARY BUTTON */
-    --secondary: #a6cdd8;
+    --secondary: #A6CDD8;
     /* LIGHT BACKGROUND: */
-    --light-background: #e8f2f4;
+    --light-background: #E8F2F4;
     /* ACCENT FOR ICONS */
-    --accent: #79bfd2; 
+    --accent: #79BFD2;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 html,
 body {
     height: 100%;
 }
-
 h1,
 h2,
 h3 {
     font-family: "Lato", sans-serif;
     color: black;
 }
-
 p,
 a,
 button,
@@ -51,15 +45,16 @@ textarea {
     color: black;
     font-size: 18px;
 }
-
 a {
     text-decoration: none;
 }
-
 /* class for blue buttons */
+#home-button {
 #home-button {
     width: 180px;
     height: 70px;
+    text-align: center;
+    display: inline-block;
     text-align: center;
     display: inline-block;
     font-size: 20px;
