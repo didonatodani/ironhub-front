@@ -8,6 +8,7 @@ import "./PostDetailsPage.css";
 import arrowUp from "../../assets/up-arrow.png";
 import replyIcon from "../../assets/reply-message.png";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
+import ReplyCard from "../../components/ReplyCard/ReplyCard";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -48,6 +49,7 @@ function PostDetailsPage() {
   const { name, title, description, created, picture, link, course } =
     detailPost;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
+
   return (
     <section className="page-container">
       {!showEditForm ? (
@@ -105,6 +107,17 @@ function PostDetailsPage() {
           setShowEditForm={setShowEditForm}
         />
       )}
+      <section className="replies-container">
+        {detailPost.replies && detailPost.replies.length > 0 ? (
+          detailPost.replies.map((reply) => (
+            <div key={reply._id}>
+              <ReplyCard reply={reply} setDetailPost={setDetailPost}/>
+            </div>
+          ))
+        ) : (
+          <p>No replies yet. Be the first to reply!</p>
+        )}
+      </section>
     </section>
   );
 }

@@ -1,0 +1,22 @@
+.reply-container {
+    border: 1px solid red;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: var(--light-background);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.hr {
+    display: flex;
+}
+.reply-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    p {
+      font-size: 14px;
+    }
+}
