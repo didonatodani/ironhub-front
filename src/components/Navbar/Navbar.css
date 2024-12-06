@@ -23,7 +23,7 @@
 
 }
 
-
-
-
-
+.logged-in{
+  z-index: 2;
+  position: absolute;
+}

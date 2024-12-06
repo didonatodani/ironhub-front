@@ -6,16 +6,19 @@
 }
 
 .detail-container {
-  background-color: rgb(222, 221, 221);
   width: 90%;
   margin: 0 auto;
   border-radius: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
+/* .main-post-header{
+  display: flex;
+} */
 .detail-title {
   display: flex;
   flex-direction: column;
