@@ -41,20 +41,6 @@ function ProfileCard({ user }) {
           </p>
         </div>
       </div>
-      <div className="user-posts">
-        <h2>Posts:</h2>
-        {posts.length > 0 ? (
-          <div className="post">
-            {posts.map((post) => (
-              <ul>
-                <li key={post._id}>{post.title}</li>
-              </ul>
-            ))}
-          </div>
-        ) : (
-          <p>No posts available.</p>
-        )}
-      </div>
     </>
   );
 }
