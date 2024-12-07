@@ -13,9 +13,6 @@ function Navbar() {
     setIsDropped(!isDropped);
   }
 
-  console.log(user);
-
-
   return (
     <div className="navbar-container">
         {isLoggedIn ? (

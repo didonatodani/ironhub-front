@@ -10,7 +10,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostForm() {
   const { user } = useContext(AuthContext);
 
-  // const [name, setName] = useState("");
   const [course, setCourse] = useState("Web Development");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -20,10 +19,13 @@ function PostForm() {
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
 
+  console.log("add course info in token to use it here", user);
+
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {
       name: user._id,
+
       course,
       title,
       description,

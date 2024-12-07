@@ -14,7 +14,7 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
-
+// we could add the option whether to save token or not!!
   function handleSubmit(e) {
     e.preventDefault();
     const newLogin = {
