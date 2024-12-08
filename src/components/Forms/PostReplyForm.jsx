@@ -1,64 +1,46 @@
-import { AuthContext } from "../../context/auth.context";
 import { useState, useContext } from "react";
 import axios from "axios";
 import "./GeneralFormStyles.css";
-
+import { AuthContext } from "../../context/auth.context";
 const API_URL = import.meta.env.VITE_API_URL;
 
-function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
+function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const { user } = useContext(AuthContext);
-  const [description, setDescription] = useState(reply.description);
-  const [link, setLink] = useState(reply.link);
-  const [picture, setPicture] = useState(reply.picture);
+  const [description, setDescription] = useState("");
+  const [link, setLink] = useState("");
+  const [picture, setPicture] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Log the initial data before the update
-    console.log('Submitting reply update with data:', { description, link, picture });
-  
-    const editedReply = {
+
+    const newReply = {
       name: user._id,
       description,
       link,
       picture,
     };
-  
+
     try {
-      // Send the PUT request to update the reply
-      const response = await axios.put(
-        `${API_URL}/posts/${reply.postId}/reply/${reply._id}`,
-        editedReply,
+      const response = await axios.post(
+        `${API_URL}/posts/${postId}/reply/`,
+        newReply,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-
-      setDetailPost((prevPost) => {
-        // Map over the replies and update the one that matches
-        const updatedReplies = prevPost.replies.map((eachPost) =>
-          eachPost._id === reply._id ? { ...response.data } : eachPost
-        );
-      
-        // Log the updated replies state
-        console.log("Updated replies:", updatedReplies);
-      
-        return { ...prevPost, replies: updatedReplies };
-      });
-      setIsEditing(false);
-  
+      // Add the newly created reply to the post's replies in state
+      setDetailPost((prevPost) => ({
+        ...prevPost,
+        replies: [...prevPost.replies, response.data.reply],
+      }));
+      setShowReplyForm(false)
     } catch (error) {
-      console.error("Error updating reply:", error);
+      console.error("Error creating reply:", error.response.data);
     }
   };
-  
-  
-
-  const handleCancel = () => setIsEditing(false); 
-
+  const handleCancel = () => setShowReplyForm(false);
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>
@@ -90,12 +72,13 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
             onChange={(e) => setPicture(e.target.value)}
           />
         </div>
-        <button type="submit" className="submit-btn">Update</button>
+        <button type="submit" className="submit-btn">
+          Update
+        </button>
         <button type="button" onClick={handleCancel}>Cancel</button>
       </form>
     </section>
   );
 }
 
-
-export default ReplyForm;
+export default PostReplyForm;

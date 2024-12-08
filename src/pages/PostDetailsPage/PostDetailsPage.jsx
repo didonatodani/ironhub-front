@@ -9,6 +9,7 @@ import arrowUp from "../../assets/up-arrow.png";
 import replyIcon from "../../assets/reply-message.png";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";
+import PostReplyForm from "../../components/Forms/PostReplyForm";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -17,6 +18,7 @@ function PostDetailsPage() {
   const { user } = useContext(AuthContext);
   const [detailPost, setDetailPost] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
+  const [showReplyForm, setShowReplyForm] = useState(false);
 
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
@@ -49,6 +51,8 @@ function PostDetailsPage() {
   const { name, title, description, created, picture, link, course } =
     detailPost;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
+
+  const toggleReplyForm = () => setShowReplyForm(!showReplyForm);
 
   return (
     <section className="page-container">
@@ -86,7 +90,11 @@ function PostDetailsPage() {
               </div>
               <div className="btns-container">
                 {/* <button>Like</button> */}
-                <button className="reply-btn">
+                {/* Reply button with conditional rendering */}
+                <button
+                  className="reply-btn"
+                  onClick={() => setShowReplyForm(true)}
+                >
                   <img className="reply" src={replyIcon} alt="reply icon" />
                   Reply
                 </button>
@@ -107,15 +115,27 @@ function PostDetailsPage() {
           setShowEditForm={setShowEditForm}
         />
       )}
+      {/* Conditionally render the ReplyForm */}
+      {showReplyForm && (
+        <PostReplyForm
+          postId={_id}
+          setDetailPost={setDetailPost}
+          setShowReplyForm={setShowReplyForm}
+        />
+      )}
       <section className="replies-container">
         {detailPost.replies && detailPost.replies.length > 0 ? (
           detailPost.replies.map((reply) => (
-            <div key={reply._id}>
-              <ReplyCard reply={reply} setDetailPost={setDetailPost}/>
-            </div>
+            <ReplyCard
+              key={reply._id}
+              reply={reply}
+              setDetailPost={setDetailPost}
+            />
           ))
         ) : (
-          <p>No replies yet. Be the first to reply!</p>
+          <section className="reply-container">
+          <h3>No replies yet. Be the first to reply!</h3>
+          </section>
         )}
       </section>
     </section>

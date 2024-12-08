@@ -16,7 +16,6 @@ function Footer() {
         </article>
 
         <article className="github-repositories">
-          <p>Check our repositories:</p>
           <div className="repository-row">
             <div className="repository-column">
               <p>Frontend repository:</p>
