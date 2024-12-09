@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -14,6 +16,8 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { setErrorMessage, showErrorPopup, setShowErrorPopup } =
+    useContext(PopupContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +34,8 @@ function LoginForm() {
         navigate("/posts/");
       })
       .catch((err) => {
-        console.log(err);
+        setShowErrorPopup(true);
+        setErrorMessage(err.response.data.message);
       });
   }
 
@@ -61,6 +66,7 @@ function LoginForm() {
           Send
         </button>
       </form>
+      {showErrorPopup && <ErrorPopup />}
     </section>
   );
 }

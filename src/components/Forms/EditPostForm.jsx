@@ -65,7 +65,7 @@ function EditPostForm({
           <textarea
             id="description"
             onChange={(e) => setEditedDescription(e.target.value)}
-            value={description}
+            defaultValue={description}
           />
         </div>
         <div className="form-div link">

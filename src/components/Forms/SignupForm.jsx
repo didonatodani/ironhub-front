@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { PopupContext } from "../../context/popups.context";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 // Importing styles and images
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
+import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -17,6 +20,9 @@ function SignupForm() {
   const [picture, setPicture] = useState("");
   const [languages, setLanguages] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setErrorMessage, showErrorPopup, setShowErrorPopup, setConfirmationMessage, showConfirmationMessage, setShowConfirmationMessage } =
+    useContext(PopupContext);
 
   const navigate = useNavigate();
 
@@ -33,15 +39,21 @@ function SignupForm() {
       languages,
       password,
     };
-    console.log(requestBody)
 
-    axios.post(`${API_URL}/auth/signup`, requestBody)
+    axios
+      .post(`${API_URL}/auth/signup`, requestBody)
       .then((res) => {
-        navigate("/auth/login")
+        console.log(res)
+        // setShowConfirmationMessage(true)
+        // setConfirmationMessage("New user created sucessfully")
+        // navigate("/auth/login")
+      })
       .catch((err) => {
-        console.log(err);
+        setShowErrorPopup(true)
+        setErrorMessage(err.response.data.message)
+        
       });
-    });
+    
   }
 
   return (
@@ -168,6 +180,8 @@ function SignupForm() {
           Send
         </button>
       </form>
+      {showErrorPopup && <ErrorPopup />}
+      {showConfirmationMessage && <ConfirmationPopup/>}
     </section>
   );
 }
