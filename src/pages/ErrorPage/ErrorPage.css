@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  min-height: calc(100vh - 100px);
 
   img {
     border: 1px solid white;
