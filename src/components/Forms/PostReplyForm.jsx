@@ -95,7 +95,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
             onChange={(e) => handleFileUpload(e)}
           />
         </div>
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="primary-button">
           Update
         </button>
         <button type="button" onClick={handleCancel}>

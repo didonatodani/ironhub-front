@@ -45,11 +45,18 @@ function ReplyCard({ reply, setDetailPost }) {
         </div>
         <p>{description}</p>
         <img src={picture} alt="picture" />
-        <p>Link: {link}</p>
+        <p>
+          Link:{" "}
+          {link && (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              {link}
+            </a>
+          )}
+        </p>
         <div className="reply-btns">
           {name._id === user._id && (
             <>
-              {!isEditing && <button onClick={handleEditing}>Edit</button>}
+              {!isEditing && <button onClick={handleEditing} className="primary-button">Edit</button>}
               {isEditing && (
                 <ReplyForm
                   reply={reply}

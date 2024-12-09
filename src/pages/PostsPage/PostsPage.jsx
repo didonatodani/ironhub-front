@@ -43,9 +43,9 @@ function PostsPage() {
   };
 
   return (
-    <>
+    <div className="dashboard">
       <section className="search-section">
-          <Searchbar setSearchResult={setSearchResult} />
+        <Searchbar setSearchResult={setSearchResult} />
         <div className="filter-controls">
           <div className="custom-select">
             <select value={course} onChange={(e) => setCourse(e.target.value)}>
@@ -63,11 +63,11 @@ function PostsPage() {
               <option value="asc">Oldest</option>
             </select>
           </div>
+        <div className="add-post">
           <NavLink to={"/newpost"}>
             <button className="primary-button">Add A Post</button>
           </NavLink>
         </div>
-        <div className="searchbar">
         </div>
       </section>
 
@@ -109,7 +109,7 @@ function PostsPage() {
       <button id="btn-up" onClick={scrollToTop}>
         <img src={arrowUp} alt="arrow up icon" />
       </button>
-    </>
+    </div>
   );
 }
 
