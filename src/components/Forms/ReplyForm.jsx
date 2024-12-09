@@ -13,22 +13,17 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
 
   const storedToken = localStorage.getItem("authToken");
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // Log the initial data before the update
-    console.log('Submitting reply update with data:', { description, link, picture });
-  
+
     const editedReply = {
       name: user._id,
       description,
       link,
       picture,
     };
-  
+
     try {
-      // Send the PUT request to update the reply
       const response = await axios.put(
         `${API_URL}/posts/${reply.postId}/reply/${reply._id}`,
         editedReply,
@@ -42,22 +37,16 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
         const updatedReplies = prevPost.replies.map((eachPost) =>
           eachPost._id === reply._id ? { ...response.data } : eachPost
         );
-      
-        // Log the updated replies state
-        console.log("Updated replies:", updatedReplies);
-      
+
         return { ...prevPost, replies: updatedReplies };
       });
       setIsEditing(false);
-  
     } catch (error) {
       console.error("Error updating reply:", error);
     }
   };
-  
-  
 
-  const handleCancel = () => setIsEditing(false); 
+  const handleCancel = () => setIsEditing(false);
 
   return (
     <section className="post-form-section">
@@ -90,12 +79,15 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
             onChange={(e) => setPicture(e.target.value)}
           />
         </div>
-        <button type="submit" className="submit-btn">Update</button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        <button type="submit" className="submit-btn">
+          Update
+        </button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
       </form>
     </section>
   );
 }
-
 
 export default ReplyForm;

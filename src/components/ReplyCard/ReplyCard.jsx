@@ -9,26 +9,21 @@ import { useParams } from "react-router-dom";
 
 function ReplyCard({ reply, setDetailPost }) {
   const { _id, created, description, link, name, picture } = reply;
-  const {postId} = useParams();
+  const { postId } = useParams();
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
   const { user } = useContext(AuthContext);
   const storedToken = localStorage.getItem("authToken");
 
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log("Rendering reply:", reply);
-  const handleEditing = () => {
-    console.log("Reply before editing:", reply); // Log before updating
-
-    setIsEditing(true);
-  };
+  const handleEditing = () => setIsEditing(true);
 
   const handleDelete = async () => {
     try {
       await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      // Optionally update the parent state to remove the reply
+      
       setDetailPost((prevPost) => ({
         ...prevPost,
         replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
@@ -37,7 +32,6 @@ function ReplyCard({ reply, setDetailPost }) {
       console.log("Error deleting reply: ", error);
     }
   };
-  
 
   return (
     <>
@@ -53,7 +47,6 @@ function ReplyCard({ reply, setDetailPost }) {
         <p>Image: {picture}</p>
         <p>Link: {link}</p>
         <div className="reply-btns">
-          {console.log("name._id:", name._id, "user._id:", user._id)}
           {name._id === user._id && (
             <>
               {!isEditing && <button onClick={handleEditing}>Edit</button>}
@@ -65,8 +58,12 @@ function ReplyCard({ reply, setDetailPost }) {
                   setDetailPost={setDetailPost}
                 />
               )}
-              <button onClick={handleDelete} className="secondary-button danger-button">Delete</button>
-              
+              <button
+                onClick={handleDelete}
+                className="secondary-button danger-button"
+              >
+                Delete
+              </button>
             </>
           )}
         </div>

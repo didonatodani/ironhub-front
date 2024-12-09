@@ -30,16 +30,20 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
+      console.log("The response: ",response.data.reply);
+      
       // Add the newly created reply to the post's replies in state
-      setDetailPost((prevPost) => ({
+       setDetailPost((prevPost) => ({
         ...prevPost,
-        replies: [...prevPost.replies, response.data.reply],
+         replies: [...prevPost.replies, response.data.reply],
       }));
+      
       setShowReplyForm(false)
     } catch (error) {
       console.error("Error creating reply:", error.response.data);
     }
   };
+
   const handleCancel = () => setShowReplyForm(false);
   return (
     <section className="post-form-section">
