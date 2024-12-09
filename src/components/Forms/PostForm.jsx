@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
+import service from "../../services/file-upload.service"
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -16,6 +17,27 @@ function PostForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
+
+  const handleFileUpload = (e) => {
+
+     const uploadData = new FormData();
+
+     // imageUrl => this name has to be the same as in the model since we pass
+     // req.body to .create() method when creating a new movie in '/api/movies' POST route
+     uploadData.append("picture", e.target.files[0]);
+     console.log([...uploadData.entries()]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setPicture(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  }
+
+
 
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
@@ -111,12 +133,14 @@ function PostForm() {
         </div>
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
+          <label htmlFor="file-upload" className="file-upload">
           <input
-            type="url"
+            type="file"
             name="picture"
             id="picture"
-            onChange={(e) => setPicture(e.target.value)}
+            onChange={(e) => handleFileUpload(e)}
           />
+          </label>
         </div>
         <button type="submit" className="primary-button">
           Send

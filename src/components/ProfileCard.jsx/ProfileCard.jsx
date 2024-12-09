@@ -8,10 +8,7 @@ function ProfileCard({ user }) {
   }
   const formattedDate = new Date(user.createdAt).toLocaleDateString("en-GB");
 
-  // do we need this??
-  const posts = user.posts;
-  // console.log("this are the user posts" , posts);
-
+  // const [showEditProfileForm, setShowEditProfile] = useState(false);
 
 
   return (
