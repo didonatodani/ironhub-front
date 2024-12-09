@@ -19,8 +19,6 @@ function PostForm() {
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
 
-  console.log("add course info in token to use it here", user);
-
   function handleSubmit(e) {
     e.preventDefault();
     const newPost = {

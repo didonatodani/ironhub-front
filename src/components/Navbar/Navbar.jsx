@@ -15,18 +15,23 @@ function Navbar() {
 
   return (
     <div className="navbar-container">
-        {isLoggedIn ? (
-          <>
-      <nav className="navbar-logged-in">
-
-        <div className="logo">
-          <NavLink to={"/posts/"}>
-            <img width={120} src={Logo} alt="ironhub-logo" />
-          </NavLink>
-          </div>
+      {isLoggedIn ? (
+        <>
+          <nav className="navbar-logged-in">
+            <div className="logo">
+              <NavLink to={"/posts/"}>
+                <img width={120} src={Logo} alt="ironhub-logo" />
+              </NavLink>
+            </div>
             <div className="dropdown">
-
-              <button className="user-nav" onClick={showMenu}><img className="user-picture" width={50} src={user.picture}  alt="picture-user" /> </button>
+              <button className="user-nav" onClick={showMenu}>
+                <img
+                  className="user-picture"
+                  width={50}
+                  src={user.picture}
+                  alt="picture-user"
+                />{" "}
+              </button>
               {isDropped && (
                 <ul className="links logged-in">
                   <NavLink to={`/${user._id}`}>
@@ -38,30 +43,26 @@ function Navbar() {
                 </ul>
               )}
             </div>
-       </nav>
-          </>
-        ) : (
-          <>
-           <nav className="navbar">
-
+          </nav>
+        </>
+      ) : (
+        <>
+          <nav className="navbar">
             <div className="logo">
               <NavLink to={"/"}>
                 <img width={120} src={Logo} alt="ironhub-logo" />
               </NavLink>
             </div>
             <ul className="links logged-out">
-              <NavLink to={"/auth/signup"}>
-                <li>Signup</li>
+              <NavLink to={"/auth/signup"} className={"primary-button"}>
+                Signup
               </NavLink>
-              <NavLink to={"/auth/login"}>
-                <li>Login</li>
-              </NavLink>
+              <NavLink to={"/auth/login"} className={"secondary-button"}>Login</NavLink>
             </ul>
-           </nav>
-          </>
-        )}
-
-      </div>
+          </nav>
+        </>
+      )}
+    </div>
   );
 }
 

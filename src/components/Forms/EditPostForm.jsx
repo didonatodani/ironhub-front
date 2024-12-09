@@ -17,6 +17,7 @@ function EditPostForm({
   const { course, title, description, link, picture } = detailPost;
 
   const [editedTitle, setEditedTitle] = useState(title);
+  // const [editedCourse, setEditedCourse] = useState(course)
   const [editedDescription, setEditedDescription] = useState(description);
   const [editedLink, setEditedLink] = useState(link);
   const [editedPicture, setEditedPicture] = useState(picture);
@@ -26,7 +27,7 @@ function EditPostForm({
 
     const editedPost = {
       name: user._id,
-      course: course,
+      // course: editedCourse, or to course
       title: editedTitle,
       description: editedDescription,
       link: editedLink,
@@ -60,6 +61,44 @@ function EditPostForm({
             onChange={(e) => setEditedTitle(e.target.value)}
           />
         </div>
+        {/* <fieldset className="form-div">
+          <legend>Course</legend>
+          <div className="field-div">
+            <div>
+              <input
+                type="radio"
+                id="web"
+                name="course"
+                value="Web Development"
+                onChange={(e) => setEditedCourse(e.target.value)}
+                // defaultChecked={course}
+              />
+              <label htmlFor="web">W.D.</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="ux"
+                name="course"
+                value="UX/UI Design"
+                onChange={(e) => setEditedCourse(e.target.value)}
+                // defaultChecked={course}
+              />
+              <label htmlFor="ux">UX/UI</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="data"
+                name="course"
+                value="Data Analytics"
+                onChange={(e) => setEditedCourse(e.target.value)}
+                // defaultChecked={course}
+              />
+              <label htmlFor="data">D.A.</label>
+            </div>
+          </div>
+        </fieldset> */}
         <div className="form-div description">
           <label htmlFor="description">Description:</label>
           <textarea
