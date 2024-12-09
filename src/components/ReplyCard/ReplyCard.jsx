@@ -23,7 +23,7 @@ function ReplyCard({ reply, setDetailPost }) {
       await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      
+
       setDetailPost((prevPost) => ({
         ...prevPost,
         replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
@@ -45,11 +45,18 @@ function ReplyCard({ reply, setDetailPost }) {
         </div>
         <p>{description}</p>
         <p>Image: {picture}</p>
-        <p>Link: {link}</p>
+        <p>
+          Link:{" "}
+          {link && (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              {link}
+            </a>
+          )}
+        </p>
         <div className="reply-btns">
           {name._id === user._id && (
             <>
-              {!isEditing && <button onClick={handleEditing}>Edit</button>}
+              {!isEditing && <button onClick={handleEditing} className="primary-button">Edit</button>}
               {isEditing && (
                 <ReplyForm
                   reply={reply}

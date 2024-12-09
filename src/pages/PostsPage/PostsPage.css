@@ -1,12 +1,17 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100vw;
+  margin: 0 auto;
+}
+
 .search-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  padding-top: 30px ;
 }
-
 
 .posts-container {
   display: flex;
@@ -26,17 +31,15 @@
   right: 2rem;
   z-index: 1;
   border: none;
-  background-color: #00C4FA;
+  background-color: #00c4fa;
   padding: 10px 10px 5px 10px;
   cursor: pointer;
   border-radius: 50%;
-
 
   img {
     width: 25px;
     height: auto;
   }
-
 }
 
 #btn-up:hover {
@@ -44,17 +47,12 @@
 }
 
 .filter-controls {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding-bottom: 30px;
-
-  .primary-button {
-    width: 140px;
-    height: 62px;
-  }
-
+  padding: 25px;
 }
 
 .custom-select {
@@ -67,11 +65,10 @@
   align-items: center;
   appearance: none;
   font-size: 15px;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid var(--primary);
   border-radius: 0.25rem;
   color: #000;
-
 }
 
 .custom-select select:hover {
@@ -80,28 +77,36 @@
 }
 
 .custom-select select option {
-  background-color: #00c4fa ;
+  background-color: #00c4fa;
+  text-align: center;
 }
 
-
 @media (min-width: 650px) and (max-width: 1023px) {
-
+  .filter-controls {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+   
+  }
+  .custom-select select {
+    font-size: 18px;
+    padding: 20px;
+  }
 }
 @media (min-width: 1024px) {
   .search-section {
     flex-direction: row;
-    width: 93vw;
+    justify-content: center;
+    margin: 0 auto;
+    width: 70%;
   }
-  .filter-controls {
-    padding-bottom: 0px;
+  .custom-select select {
+    font-size: 18px;
+    padding: 15px;
   }
-
-
+  .primary-button {
+    font-size: 18px;
+    
+  }
 }
-
-
-
-
-
-
-

@@ -25,11 +25,13 @@
 @media (min-width: 650px) and (max-width: 1023px) {
   .input-search {
     width: 80%;
+    
   }
 }
 @media (min-width: 1024px) {
   .input-search {
     width: 90%;
+    height: 55px;
   }
 
 

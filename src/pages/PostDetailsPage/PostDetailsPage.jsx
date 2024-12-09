@@ -85,19 +85,24 @@ function PostDetailsPage() {
               <div className="topic-body">
                 <p>{description}</p>
                 <p className="link-text">Image: {picture}</p>
-                <p className="link-text">Link: {link}</p>
+                <p>
+                  Link:{" "}
+                  {link && (
+                    <a className="link-text" href={link} target="_blank">
+                      {link}
+                    </a>
+                  )}
+                </p>
               </div>
               <div className="btns-container">
-                {/* <button>Like</button> */}
-                {/* Reply button with conditional rendering */}
                 <button
-                  className="reply-btn"
+                  className="primary-button reply-button-container"
                   onClick={() => setShowReplyForm(true)}
                 >
                   <img className="reply" src={replyIcon} alt="reply icon" />
                   Reply
                 </button>
-                <button onClick={handleNavigate}>Go back</button>
+                <button className="secondary-button danger-button" onClick={handleNavigate}>Go back</button>
               </div>
             </div>
           </article>
@@ -132,8 +137,8 @@ function PostDetailsPage() {
             />
           ))
         ) : (
-          <section className="reply-container">
-          <h3>No replies yet. Be the first to reply!</h3>
+          <section className="noreply-container">
+            <p>No replies yet. Be the first to reply!</p>
           </section>
         )}
       </section>

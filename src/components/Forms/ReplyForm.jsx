@@ -79,10 +79,10 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
             onChange={(e) => setPicture(e.target.value)}
           />
         </div>
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="primary-button">
           Update
         </button>
-        <button type="button" onClick={handleCancel}>
+        <button type="button" onClick={handleCancel} className="secondary-button danger-button">
           Cancel
         </button>
       </form>
