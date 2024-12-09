@@ -108,7 +108,7 @@ a {
 
 .file-upload {
     background-color: #c2e5ec;
-    width: 30vw;
+    width: 100%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin-bottom: 20px;
 }
