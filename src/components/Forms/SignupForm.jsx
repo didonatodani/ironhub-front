@@ -46,7 +46,7 @@ function SignupForm() {
         console.log(res)
         // setShowConfirmationMessage(true)
         // setConfirmationMessage("New user created sucessfully")
-        // navigate("/auth/login")
+        navigate("/auth/login")
       })
       .catch((err) => {
         setShowErrorPopup(true)
