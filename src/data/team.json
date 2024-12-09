@@ -6,8 +6,8 @@
         "name": "Nigel Ferreres",
         "linkedin": "https://www.linkedin.com/in/nigel-ferreres-felix/",
         "github": "https://github.com/NigelFerrefe",
-        "description": "With a background in History and a Masters in Digital Humanities, I bring the past into the future through technology. My background includes a deep dive into 3D animation and interactive design, and now, as a future web developer at Ironhack, I combine creativity with coding to shape the digital world.",
-        "image": "../assets/avatar.jpg"
+        "description": "I am a web developer with experience in digital design and creativity. My background in History and a Master's in Digital Humanities from the University of Barcelona have given me a unique perspective to approach projects from a critical and multidisciplinary approach. Currently, as a student at Ironhack, I am specialized in frontend development using technologies such as React.js and JavaScript, creating dynamic and user-centered applications.",
+        "image": "../assets/Nigel.png"
     },
     {
         "_id": {
@@ -26,7 +26,7 @@
         "name": "Piet-Hein Schouten",
         "linkedin": "https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/",
         "github": "https://github.com/phsworks",
-        "description": "",
+        "description": "Hi! I’m Piet-Hein, a web developer with a background in marketing and entrepreneurship. I have a passion for building engaging, user-friendly digital experiences and enjoy combining my technical skills with a strategic business mindset, always aiming to bridge the gap between innovative tech and practical, user-centered design.",
         "image": "../assets/avatar.jpg"
     }
 ]
