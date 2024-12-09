@@ -24,7 +24,7 @@ function Navbar() {
 
         <div className="logo">
           <NavLink to={"/posts/"}>
-            <img width={120} src={Logo} alt="ironhub-logo" />
+            <img width={140} src={Logo} alt="ironhub-logo" />
           </NavLink>
           </div>
             <div className="dropdown">

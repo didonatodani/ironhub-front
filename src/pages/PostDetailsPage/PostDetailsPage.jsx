@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import EditPostForm from "../../components/Forms/EditPostForm";
 
 import "./PostDetailsPage.css";
-import arrowUp from "../../assets/up-arrow.png";
+// import arrowUp from "../../assets/up-arrow.png";
 import replyIcon from "../../assets/reply-message.png";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";

@@ -18,26 +18,26 @@ function ProfileCard({ user }) {
     <>
       <div className="user-info">
         <div className="heading-profile">
-          <p>{user?.name}</p>
+          <h2>{user?.name}</h2>
           <img src={user.picture} alt="user-profile-image" />
           <span> {user.course}</span>
           <small>User since: {formattedDate}</small>
         </div>
         <div className="profile-details">
+          <button className="primary-button">Edit Profile</button>
           <p>
             Name:
-            <br></br>
             <span>{user?.name}</span>
           </p>
           <p>
-            Email: <br></br> <span>{user.email}</span>{" "}
+            Email: <span>{user.email}</span>
           </p>
           <p>
-            Course-type: <br></br> <span>{user.schedule}</span>{" "}
+            Course-type:  <span>{user.schedule}</span>
           </p>
           <p>
-            Languages: <br></br>
-            <span>{user.language}</span>{" "}
+            Languages:
+            <span>{user?.language}</span>
           </p>
         </div>
       </div>

@@ -4,7 +4,7 @@ import axios from "axios";
 import PostCard from "../../components/PostCard/PostCard";
 import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import arrowUp from "../../assets/up-arrow.png";
+import arrowUp from "../../assets/arrow-up.png";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -44,8 +44,8 @@ function PostsPage() {
 
   return (
     <>
-      <section>
-        <Searchbar setSearchResult={setSearchResult} />
+      <section className="search-section">
+          <Searchbar setSearchResult={setSearchResult} />
         <div className="filter-controls">
           <div className="custom-select">
             <select value={course} onChange={(e) => setCourse(e.target.value)}>
@@ -66,6 +66,8 @@ function PostsPage() {
           <NavLink to={"/newpost"}>
             <button className="primary-button">Add A Post</button>
           </NavLink>
+        </div>
+        <div className="searchbar">
         </div>
       </section>
 
