@@ -5,12 +5,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import EditPostForm from "../../components/Forms/EditPostForm";
 
 import "./PostDetailsPage.css";
-// import arrowUp from "../../assets/up-arrow.png";
 import replyIcon from "../../assets/reply-message.png";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";
 import PostReplyForm from "../../components/Forms/PostReplyForm";
-
+import arrowUp from "../../assets/arrow-up.png";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostDetailsPage() {
