@@ -84,7 +84,8 @@ function PostDetailsPage() {
               </div>
               <div className="topic-body">
                 <p>{description}</p>
-                <p className="link-text">Image: {picture}</p>
+                {/* <p className="link-text">Image: {picture}</p> */}
+                <img src={picture} alt="picture" />
                 <p className="link-text">Link: {link}</p>
               </div>
               <div className="btns-container">

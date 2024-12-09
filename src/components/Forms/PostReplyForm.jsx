@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import "./GeneralFormStyles.css";
 import { AuthContext } from "../../context/auth.context";
+import service from "../../services/file-upload.service";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
@@ -11,6 +12,24 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const [picture, setPicture] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("picture", e.target.files[0]);
+
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setPicture(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,13 +50,13 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
         }
       );
       console.log("The response: ",response.data.reply);
-      
+
       // Add the newly created reply to the post's replies in state
        setDetailPost((prevPost) => ({
         ...prevPost,
          replies: [...prevPost.replies, response.data.reply],
       }));
-      
+
       setShowReplyForm(false)
     } catch (error) {
       console.error("Error creating reply:", error.response.data);
@@ -69,17 +88,19 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
           <input
-            type="url"
+            type="file"
             name="picture"
             id="picture"
-            value={picture}
-            onChange={(e) => setPicture(e.target.value)}
+            className="file-upload"
+            onChange={(e) => handleFileUpload(e)}
           />
         </div>
         <button type="submit" className="submit-btn">
           Update
         </button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
       </form>
     </section>
   );
