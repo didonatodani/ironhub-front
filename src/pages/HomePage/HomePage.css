@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-height: calc(100vh - 100px);
   padding: 40px 20px;
   gap: 50px;
   background-color: #fff;
@@ -9,6 +10,7 @@
     width: 100%;
     max-width: 100%;
     height: auto;
+    object-fit: cover;
   }
 }
 .description-container {
@@ -22,10 +24,10 @@
   #about-btn {
     width: 180px;
     height: 50px;
-    background: linear-gradient(to bottom, #3B64B2 5%, #4D84E6 100%);
-    background-color: #4D84E6;
+    background: linear-gradient(to bottom, #3b64b2 5%, #4d84e6 100%);
+    background-color: #4d84e6;
     border-radius: 10px;
-    border: 1px solid #4D84E6;
+    border: 1px solid #4d84e6;
     box-shadow: inset 0px 1px 0px 0px #97c4fe;
     cursor: pointer;
     color: #ffffff;
@@ -37,55 +39,50 @@
     text-shadow: 0px 1px 0px #1570cd;
     display: inline-block;
     text-align: center;
-}
+  }
 
-#about-btn:hover {
-    background: linear-gradient(to bottom, #4D84E6 5%, #3B64B2 100%);
-    background-color: #4D84E6;
-}
-
+  #about-btn:hover {
+    background: linear-gradient(to bottom, #4d84e6 5%, #3b64b2 100%);
+    background-color: #4d84e6;
+  }
 }
 
 @media (min-width > 650px) and (max-width: 1023px) {
-
 }
 
 @media (min-width: 1024px) {
-    .homepage-container {
-        display: flex;
-        flex-direction: row-reverse;
-        #gif {
-            width: 50%;
-            max-width: 100%;
-            height: auto;
-          }
+  .homepage-container {
+    display: flex;
+    flex-direction: row-reverse;
+    #gif {
+      width: 50%;
     }
-    .description-container {
+  }
+  .description-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+    .description-title {
       display: flex;
-      justify-content: center;
-      text-align: center;
-      gap: 50px;
-      .description-title {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
-      h1 {
-        font-size: 48px;
-      }
-      h2 {
-        font-size: 32px;
-      }
-      p {
-        font-size: 20px;
-      }
-      #about-btn {
-        width: 200px;
-        height: 60px;
-        background-color: transparent;
-        font-size: 20px;
-        margin: 0 auto;
-      }
+      flex-direction: column;
+      gap: 30px;
     }
-
+    h1 {
+      font-size: 48px;
+    }
+    h2 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 20px;
+    }
+    #about-btn {
+      width: 200px;
+      height: 60px;
+      background-color: transparent;
+      font-size: 20px;
+      margin: 0 auto;
+    }
+  }
 }
