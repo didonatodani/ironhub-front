@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProfileCard.css";
+import EditProfileForm from "../Forms/EditProfileForm";
 
 
 function ProfileCard({ user }) {
@@ -30,7 +31,7 @@ function ProfileCard({ user }) {
             Email: <span>{user.email}</span>
           </p>
           <p>
-            Course-type:  <span>{user.schedule}</span>
+            Course-type: <span>{user.schedule}</span>
           </p>
           <p>
             Languages:
@@ -38,6 +39,14 @@ function ProfileCard({ user }) {
           </p>
         </div>
       </div>
+      : (
+      <EditProfileForm
+        id={_id}
+        storedToken={storedToken}
+        user={user}
+        setShowEditProfile={setShowEditProfile}
+      />
+      )
     </>
   );
 }

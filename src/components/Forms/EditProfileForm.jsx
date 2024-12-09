@@ -4,93 +4,112 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-function EditPostForm({
+function EditProfileForm({
   id,
   storedToken,
-  detailPost,
-  setDetailPost,
-  setShowEditForm,
+  user,
+  setShowEditProfile,
 }) {
-  const { user } = useContext(AuthContext);
-  const { course, title, description, link, picture } = detailPost;
+  const { name, email, course, schedule, languages, picture } = user;
 
-  const [editedTitle, setEditedTitle] = useState(title);
-  const [editedDescription, setEditedDescription] = useState(description);
-  const [editedLink, setEditedLink] = useState(link);
+  const [editedName, setEditedName] = useState(name);
+  const [editedEmail, setEditedEmail] = useState(email);
+  const [editedCourse, setEditedCourse] = useState(course);
+  const [editedSchedule, setEditedSchedule] = useState(schedule);
+  const [editedLanguages, setEditedLanguages] = useState(languages);
   const [editedPicture, setEditedPicture] = useState(picture);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    const editedPost = {
-      name: user._id,
-      course: course,
-      title: editedTitle,
-      description: editedDescription,
-      link: editedLink,
+    const editedProfile = {
+      user: user._id,
+      name: name,
+      email: editedEmail,
+      course: editedCourse,
+      schedule: editedSchedule,
+      languages: editedLanguages,
       picture: editedPicture,
     };
 
     axios
-      .put(`${API_URL}/posts/${id}`, editedPost, {
+      .put(`${API_URL}/user/${userId}`, editedProfile {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => {
-        setDetailPost(res.data);
-        setShowEditForm(false);
-        console.log("post edited successfully");
+        setUser(res.data);
       })
       .catch((err) => {
         console.log(err);
+        navigate("*")
+
       });
-  }
 
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>
-        <div className="form-div title">
-          <label htmlFor="title">Title:</label>
+        <div className="form-div name">
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
-            name="title"
-            id="title"
-            placeholder={title}
-            onChange={(e) => setEditedTitle(e.target.value)}
+            name="name"
+            id="name"
+            placeholder={name}
+            onChange={(e) => setEditedName(e.target.value)}
           />
         </div>
-        <div className="form-div description">
-          <label htmlFor="description">Description:</label>
+        <div className="form-div email">
+          <label htmlFor="email">Email: </label>
           <textarea
-            id="description"
-            onChange={(e) => setEditedDescription(e.target.value)}
-            value={description}
+            id="email"
+            onChange={(e) => setEditedEmail(e.target.value)}
+            value={email}
           />
         </div>
-        <div className="form-div link">
-          <label htmlFor="link">Link (optional):</label>
-          <input
-            type="url"
-            name="link"
-            id="link"
-            placeholder={link}
-            onChange={(e) => setEditedLink(e.target.value)}
+        <div className="form-div course">
+          <label htmlFor="email">Course: </label>
+          <textarea
+            id="course"
+            onChange={(e) => setEditedCourse(e.target.value)}
+            value={course}
           />
         </div>
         <div className="form-div picture">
-          <label htmlFor="picture">Image (optional):</label>
+          <label htmlFor="picture">Image:</label>
           <input
-            type="url"
+            type="file"
             name="picture"
             id="picture"
             placeholder={picture}
             onChange={(e) => setEditedPicture(e.target.value)}
           />
         </div>
+        <div className="form-div schedule">
+          <label htmlFor="link">Schedule:</label>
+          <input
+            type="url"
+            name="schedule"
+            id="schedule"
+            placeholder={link}
+            onChange={(e) => setEditedSchedule(e.target.value)}
+          />
+        </div>
+        <div className="form-div language">
+          <label htmlFor="link">Language: </label>
+          <input
+            type="url"
+            name="languages"
+            id="languages"
+            placeholder={languages}
+            onChange={(e) => setEditedLanguages(e.target.value)}
+          />
+        </div>
         <div className="submit-buttons">
           <button
-            onClick={() => setShowEditForm(false)}
+            onClick={() => setShowEditProfile(false)}
             className="secondary-button danger-button"
           >
             Cancel
@@ -104,4 +123,4 @@ function EditPostForm({
   );
 }
 
-export default EditPostForm;
+export default EditProfileForm;
