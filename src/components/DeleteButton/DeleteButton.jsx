@@ -1,13 +1,13 @@
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
-function DeleteButton({ id, storedToken}) {
+
+function DeleteButton({ id, storedToken }) {
   const navigate = useNavigate();
 
   function deletePost() {
-
-// ADD POP UP HERE TO CONFIRM THE USER WANTS TO DELETE THE POST!!!!
     axios
       .delete(`${API_URL}/posts/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -20,6 +20,18 @@ function DeleteButton({ id, storedToken}) {
         console.log(err);
       });
   }
-  return <button onClick={deletePost} className="secondary-button danger-button">Delete Post</button>;
+
+  function confirmDelete() {
+
+    if (ok) {
+      deletePost();
+    }
+  }
+
+  return (
+    <button onClick={confirmDelete} className="secondary-button danger-button">
+      Delete Post
+    </button>
+  );
 }
 export default DeleteButton;
