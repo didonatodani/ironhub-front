@@ -1,36 +1,22 @@
 import "./ReplyCard.css";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context.jsx";
 import { useState, useContext } from "react";
 import ReplyForm from "../Forms/EditReplyForm.jsx";
-import axios from "axios";
-const API_URL = import.meta.env.VITE_API_URL;
 import { useParams } from "react-router-dom";
+import ErrorPopup from "../Popups/ErrorPopup.jsx";
 
 function ReplyCard({ reply, setDetailPost }) {
   const { _id, created, description, link, name, picture } = reply;
   const { postId } = useParams();
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
   const { user } = useContext(AuthContext);
+  const {setDeleteOn, setShowErrorPopup, setDeleteReply, showErrorPopup, deleteReply, setErrorMessage} = useContext(PopupContext);
   const storedToken = localStorage.getItem("authToken");
 
   const [isEditing, setIsEditing] = useState(false);
 
   const handleEditing = () => setIsEditing(true);
-
-  const handleDelete = async () => {
-    try {
-      await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      });
-
-      setDetailPost((prevPost) => ({
-        ...prevPost,
-        replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
-      }));
-    } catch (error) {
-      console.log("Error deleting reply: ", error);
-    }
-  };
 
   return (
     <>
@@ -65,7 +51,7 @@ function ReplyCard({ reply, setDetailPost }) {
                 />
               )}
               <button
-                onClick={handleDelete}
+                onClick={()=>{setShowErrorPopup(true), setDeleteOn(true), setDeleteReply(true), setErrorMessage("Are you sure you want to delete the reply?")}}
                 className="secondary-button danger-button"
               >
                 Delete
@@ -73,6 +59,7 @@ function ReplyCard({ reply, setDetailPost }) {
             </>
           )}
         </div>
+        {(showErrorPopup && deleteReply) && <ErrorPopup postId={postId} storedToken={storedToken} _id={_id} setDetailPost={setDetailPost}/>}
       </article>
     </>
   );

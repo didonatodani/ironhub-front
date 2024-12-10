@@ -4,9 +4,11 @@ import { PopupContext } from "../../context/popups.context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-function ErrorPopup({ id, storedToken }) {
+function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
+
   const {
     errorMessage,
     setShowErrorPopup,
@@ -14,11 +16,15 @@ function ErrorPopup({ id, storedToken }) {
     setDeleteOn,
     setShowConfirmation,
     setConfirmationMessage,
+    deletePost,
+    setDeletePost,
+    deleteReply,
+    setDeleteReply,
   } = useContext(PopupContext);
 
   const navigate = useNavigate();
 
-  function deletePost() {
+  function deletePostFunc() {
     axios
       .delete(`${API_URL}/posts/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -27,26 +33,48 @@ function ErrorPopup({ id, storedToken }) {
         setShowConfirmation(true);
         setConfirmationMessage("Post deleted successfully");
         setTimeout(() => {
+          setDeletePost(false)
           setShowConfirmation(false);
           navigate("/posts");
-        }, 1500);
+        }, 1200);
       })
       .catch((err) => {
         console.log(err);
       });
+    }
+    
+  const deleteReplyFunc = async () => {
+    try {
+      await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      
+      setDetailPost((prevPost) => ({
+        ...prevPost,
+        replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
+      }));
+      setShowConfirmation(true);
+      setConfirmationMessage("Reply deleted successfully");
+      setTimeout(() => {
+        setDeleteReply(false)
+        setShowConfirmation(false);
+      }, 1200);
+  } catch (error) {
+    console.log("Error deleting reply: ", error);
   }
-
+};
+    
   return (
     <article className="pop-up-container error">
       <img src={errorIcon} alt="error icon" />
-      <h3 className="error-h3">ERROR</h3>
+      <h3 className="error-h3">{deleteOn ? "WARNING" : "ERROR"}</h3>
       <p>{errorMessage}</p>
 
       {deleteOn ? (
         <>
           <button
             onClick={() => {
-              deletePost();
+              (deletePost ? deletePostFunc() : deleteReply ? deleteReplyFunc() : "" )
               setShowErrorPopup(false);
             }}
             className="secondary-button error-button"

@@ -8,6 +8,8 @@ function PopupProviderWrapper(props) {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [deleteOn, setDeleteOn] = useState(false);
+  const [detelePost, setDeletePost] = useState(false);
+  const [deleteReply, setDeleteReply] = useState(false);
 
   return (
     <PopupContext.Provider
@@ -21,7 +23,11 @@ function PopupProviderWrapper(props) {
         showConfirmation,
         setShowConfirmation,
         deleteOn,
-        setDeleteOn
+        setDeleteOn,
+        detelePost,
+        setDeletePost,
+        deleteReply,
+        setDeleteReply,
       }}
     >
       {props.children}
