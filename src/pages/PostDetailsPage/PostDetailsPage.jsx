@@ -6,20 +6,20 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import EditPostForm from "../../components/Forms/EditPostForm";
 import ErrorPopup from "../../components/Popups/ErrorPopup";
-import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";
 import PostReplyForm from "../../components/Forms/PostReplyForm";
 
 import "./PostDetailsPage.css";
 import replyIcon from "../../assets/reply-message.png";
 import arrowUp from "../../assets/arrow-up.png";
+import ConfirmationPopup from "../../components/Popups/ConfirmationPopup";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostDetailsPage() {
   const { _id } = useParams();
   const { user } = useContext(AuthContext);
-  const { setErrorMessage, showErrorPopup, setShowErrorPopup } =
+  const { setDeleteOn, showErrorPopup, setShowErrorPopup, showConfirmation } =
     useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
@@ -72,7 +72,14 @@ function PostDetailsPage() {
               </div>
               {user._id === name._id && (
                 <div className="crud-buttons">
-                  <DeleteButton id={_id} storedToken={storedToken} />
+                  <button
+                    onClick={() => {
+                      setShowErrorPopup(true), setDeleteOn(true);
+                    }}
+                    className="secondary-button danger-button"
+                  >
+                    Delete Post
+                  </button>
                   <button
                     className="primary-button"
                     onClick={() => setShowEditForm(true)}
@@ -155,7 +162,8 @@ function PostDetailsPage() {
           </section>
         )}
 
-        {showErrorPopup && <ErrorPopup />}
+        {showErrorPopup && <ErrorPopup id={_id} storedToken={storedToken} />}
+        {showConfirmation && <ConfirmationPopup />}
       </section>
     </section>
   );
