@@ -20,8 +20,8 @@ function Navbar() {
       <nav className="navbar-logged-in">
 
         <div className="logo">
-          <NavLink to={"/posts/"}>
-            <img src={Logo} alt="ironhub-logo" />
+          <NavLink to={"/posts/"} onClick={()=>{setIsDropped(false)}}>
+            <img src={Logo}  alt="ironhub-logo" id="ironhub-logo"/>
           </NavLink>
           </div>
             <div className="dropdown">
@@ -29,7 +29,7 @@ function Navbar() {
               <button className="user-nav" onClick={showMenu}><img className="user-picture" width={50} src={user.picture}  alt="picture-user" /> </button>
               {isDropped && (
                 <ul className="links logged-in">
-                  <NavLink to={`/${user._id}`}>
+                  <NavLink to={`/${user._id}`} onClick={showMenu}>
                     <li>My Profile</li>
                   </NavLink>
                   <button onClick={logOut}>
