@@ -10,6 +10,7 @@ import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
 import ErrorPopup from "../Popups/ErrorPopup";
 import ConfirmationPopup from "../Popups/ConfirmationPopup";
+import service from "../../services/file-upload.service";
 
 
 function SignupForm() {
@@ -27,6 +28,25 @@ function SignupForm() {
     useContext(PopupContext);
 
   const navigate = useNavigate();
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("picture", e.target.files[0]);
+    console.log([...uploadData.entries()]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setPicture(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -161,13 +181,16 @@ function SignupForm() {
           />
         </div>
         <div className="form-div picture">
-          <label htmlFor="picture">Image:</label>
-          <input
-            type="url"
-            name="picture"
-            id="picture"
-            onChange={(e) => setPicture(e.target.value)}
-          />
+          <label htmlFor="picture">Image (optional):</label>
+          <label htmlFor="file-upload" className="file-upload">
+            <input
+              type="file"
+              id="picture"
+              onChange={(e) => {
+                handleFileUpload(e);
+              }}
+            />
+          </label>
         </div>
         <div className="form-div password">
           <label htmlFor="password">Password:</label>
@@ -183,7 +206,13 @@ function SignupForm() {
         </button>
       </form>
       {showErrorPopup && <ErrorPopup />}
-      {showConfirmation && <ConfirmationPopup navigate={navigate} isSignedUp={isSignedUp} setIsSignedUp={setIsSignedUp}/>}
+      {showConfirmation && (
+        <ConfirmationPopup
+          navigate={navigate}
+          isSignedUp={isSignedUp}
+          setIsSignedUp={setIsSignedUp}
+        />
+      )}
     </section>
   );
 }
