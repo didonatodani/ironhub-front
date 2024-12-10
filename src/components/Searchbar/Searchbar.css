@@ -15,6 +15,7 @@
   background-color: #F3F3F3;
   border-radius: 10px;
   transition: all 0.5s;
+
 }
 .input-search:focus, .input-search:hover {
   border: 2px solid #4A9DEC;
@@ -25,7 +26,7 @@
 @media (min-width: 650px) and (max-width: 1023px) {
   .input-search {
     width: 80%;
-    
+
   }
 }
 @media (min-width: 1024px) {

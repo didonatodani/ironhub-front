@@ -1,7 +1,7 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
   width: 100vw;
   margin: 0 auto;
 }
@@ -52,19 +52,24 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
+  padding: 32px;
 }
 
 .custom-select {
   text-align: center;
 }
 
+.primary-button {
+    font-size: 18px;
+    padding: 12px;
+  }
+
 .custom-select select {
   display: flex;
   justify-content: center;
   align-items: center;
   appearance: none;
-  font-size: 15px;
+  font-size: 18px;
   padding: 10px;
   border: 1px solid var(--primary);
   border-radius: 0.25rem;
@@ -87,12 +92,20 @@
     display: flex;
     justify-content: center;
     gap: 60px;
-   
+
   }
   .custom-select select {
     font-size: 18px;
     padding: 20px;
   }
+  .filter-controls {
+    gap: 12px;
+  };
+  .primary-button {
+    padding: 20px;
+
+  }
+
 }
 @media (min-width: 1024px) {
   .search-section {
@@ -105,8 +118,13 @@
     font-size: 18px;
     padding: 15px;
   }
+
+  .filter-controls {
+    gap: 12px;
+  };
+
   .primary-button {
-    font-size: 18px;
-    
+    padding: 20px;
+
   }
 }
