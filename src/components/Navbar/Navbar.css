@@ -1,15 +1,14 @@
 .navbar-container {
   width: 100vw;
   height: 100px;
-
 }
 
-.navbar, .navbar-logged-in {
+.navbar,
+.navbar-logged-in {
   display: flex;
   justify-content: space-between;
   padding: 20px 30px 20px 30px;
-  align-items: flex-start;
-
+  align-items: center;
 }
 
 .navbar-logged-in {
@@ -23,7 +22,6 @@
   width: 110px;
   display: flex;
   justify-content: flex-start;
-
 
   .user-picture {
     border: 1px solid rgba(158, 158, 158, 0.471);
@@ -43,22 +41,19 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
-
 }
 
 .links li {
   font-size: 16px;
 }
 
-
 .links li:hover {
   transform: scale(1.02);
   font-weight: 500;
   cursor: pointer;
-
 }
 
-.logged-in{
+.logged-in {
   z-index: 2;
   position: absolute;
   border: 1px solid rgba(188, 188, 188, 0.507);
@@ -67,10 +62,109 @@
   text-align: left;
   background-color: rgba(234, 234, 234, 0.3);
 
-
   button {
     border-style: none;
     background-color: transparent;
     text-align: left;
+  }
+}
+
+.logo {
+  width: 100%;
+  img {
+    width: 140px;
+  }
+}
+
+.logged-out {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+#nav-login,
+#nav-signup {
+  font-size: 15px;
+  min-width: 70px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#nav-login {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+#nav-signup {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+#nav-login:hover {
+  background: linear-gradient(to bottom, #63ddff 5%, var(--primary) 100%);
+  box-shadow: 0 20px 80px -10px var(--primary);
+  cursor: pointer;
+  transform: translate(0, -3px);
+  transition: transform ease 0.2s;
+  color: #ffffff;
+}
+
+#nav-signup:hover {
+  background: linear-gradient(to bottom, #c6eaf4 5%, var(--secondary) 100%);
+  cursor: pointer;
+  transform: translate(0, -3px);
+  transition: transform ease 0.2s;
+  color: #ffffff;
+}
+
+@media (min-width: 650px) and (max-width: 1023px) {
+  .logo {
+    img {
+      width: 150px;
+    }
+  }
+
+  .logged-out {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 80px;
+  }
+
+  #nav-login,
+  #nav-signup {
+    font-size: 20px;
+    min-width: 110px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    img {
+      width: 180px;
+    }
+  }
+
+  .logged-out {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #nav-login,
+  #nav-signup {
+    font-size: 22px;
+    min-width: 130px;
+    height: 50px;
   }
 }
