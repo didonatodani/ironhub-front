@@ -6,8 +6,8 @@
   align-items: center;
   text-align: center;
   padding: 20px;
-  gap: 30px;
-  margin-top: 20px;
+  gap: 22px;
+  margin-top: 15vh;
   background-color: var(--secondary);
   small {
     font-size: 10px;
@@ -50,14 +50,20 @@
   img {
     width: 30px;
   }
+
+  img:hover{
+    transform: scale(1.04);
+  }
+
 }
+
 
 
 
 @media (min-width: 650px) and (max-width: 1023px) {
   .footer-container {
     small {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
   .text-container {
@@ -94,7 +100,7 @@
 @media (min-width: 1024px) {
   .footer-container {
     small {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
   .text-container {
