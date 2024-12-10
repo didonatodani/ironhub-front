@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
+    // If it's an input field, prevent the text from being logged
+    if (element.is('input[type="password"], input[type="email"], input[type="text"]')) {
+      options = { ...options, log: false };
+    }
+    // Call the original type function
+    return originalFn(element, text, options);
+  });
+  
