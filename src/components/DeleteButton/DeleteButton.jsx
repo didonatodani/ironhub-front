@@ -21,15 +21,15 @@ function DeleteButton({ id, storedToken }) {
       });
   }
 
-  function confirmDelete() {
+  // function confirmDelete() {
 
-    if (ok) {
-      deletePost();
-    }
-  }
+  //   if (ok) {
+  //     deletePost();
+  //   }
+  // }
 
   return (
-    <button onClick={confirmDelete} className="secondary-button danger-button">
+    <button className="secondary-button danger-button">
       Delete Post
     </button>
   );

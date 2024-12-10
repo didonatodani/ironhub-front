@@ -6,6 +6,8 @@ import { PopupContext } from "../../context/popups.context";
 import axios from "axios";
 import ErrorPopup from "../Popups/ErrorPopup";
 import ConfirmationPopup from "../Popups/ConfirmationPopup";
+import service from "../../services/file-upload.service";
+
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -32,6 +34,28 @@ function EditPostForm({
   const [editedDescription, setEditedDescription] = useState(description);
   const [editedLink, setEditedLink] = useState(link);
   const [editedPicture, setEditedPicture] = useState(picture);
+  const [loadingImage, setLoadingImage] = useState(false);
+
+  const handleFileUpload = (e) => {
+    const uploadData = new FormData();
+    setLoadingImage(true);
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("picture", e.target.files[0]);
+    console.log([...uploadData.entries()]);
+
+    service
+      .uploadImage(uploadData)
+      .then((response) => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setLoadingImage(false);
+        setEditedPicture(response.fileUrl);
+      })
+      .catch((err) => console.log("Error while uploading the file: ", err));
+  };
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -97,13 +121,15 @@ function EditPostForm({
         </div>
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
-          <input
-            type="url"
-            name="picture"
-            id="picture"
-            placeholder={picture}
-            onChange={(e) => setEditedPicture(e.target.value)}
-          />
+          <label htmlFor="file-upload" className="file-upload">
+            <input
+              type="file"
+              id="picture"
+              onChange={(e) => {
+                handleFileUpload(e);
+              }}
+            />
+          </label>
         </div>
         <div className="submit-buttons">
           <button
@@ -112,7 +138,11 @@ function EditPostForm({
           >
             Cancel
           </button>
-          <button type="submit" className="primary-button ">
+          <button
+            disabled={loadingImage}
+            type="submit"
+            className="primary-button "
+          >
             Save Changes
           </button>
         </div>

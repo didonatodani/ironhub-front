@@ -15,12 +15,12 @@ function EditProfileForm({ id, storedToken, user, setShowEditProfile, setUser })
   const [editedSchedule, setEditedSchedule] = useState(schedule);
   const [editedLanguages, setEditedLanguages] = useState(languages);
   const [editedPicture, setEditedPicture] = useState(picture);
+  const [loadingImage, setLoadingImage] = useState(false)
 
-  const navigate = useNavigate();
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
-
+    setLoadingImage(true)
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
@@ -29,7 +29,8 @@ function EditProfileForm({ id, storedToken, user, setShowEditProfile, setUser })
     service
       .uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
+         console.log("response is: ", response);
+         setLoadingImage(false)
         // response carries "fileUrl" which we can use to update the state
         setEditedPicture(response.fileUrl);
       })
@@ -173,7 +174,7 @@ function EditProfileForm({ id, storedToken, user, setShowEditProfile, setUser })
         >
           Cancel
         </button>
-        <button type="submit" className="primary-button">
+        <button  disabled={loadingImage} type="submit" className="primary-button">
           Save Changes
         </button>
       </div>
