@@ -2,10 +2,11 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
+import { PopupContext } from "../../context/popups.context";
 
 function DeleteButton({ id, storedToken }) {
   const navigate = useNavigate();
+  const {showErrorPopup, setShowErrorPopup} = useContext(PopupContext);
 
   function deletePost() {
     axios
