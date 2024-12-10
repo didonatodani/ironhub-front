@@ -1,6 +1,6 @@
 .navbar-container {
   width: 100vw;
-  height: 100px;
+  height: 120px;
 }
 
 .navbar,
@@ -44,7 +44,8 @@
 }
 
 .links li {
-  font-size: 16px;
+  font-size: 20px;
+
 }
 
 .links li:hover {

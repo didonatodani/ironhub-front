@@ -15,6 +15,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostForm() {
   const { user } = useContext(AuthContext);
   const {
+    imageError,
+    setImageError,
+    imageMessage,
+    setImageMessage,
     setErrorMessage,
     showErrorPopup,
     setShowErrorPopup,
@@ -29,10 +33,7 @@ function PostForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
-  const [imageError, setImageError] = useState(false);
-  const [imageMessage, setImageMessage] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
-
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
@@ -62,6 +63,7 @@ function PostForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     const newPost = {
       name: user._id,
       course,
@@ -93,42 +95,30 @@ function PostForm() {
     <section className="post-form-section">
       <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
+        {/* Course Selection */}
         <fieldset className="form-div">
           <legend>Course</legend>
           <div className="field-div">
-            <div>
-              <input
-                type="radio"
-                id="web"
-                name="course"
-                value="Web Development"
-                onChange={(e) => setCourse(e.target.value)}
-                defaultChecked
-              />
-              <label htmlFor="web">W.D.</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="ux"
-                name="course"
-                value="UX/UI Design"
-                onChange={(e) => setCourse(e.target.value)}
-              />
-              <label htmlFor="ux">UX/UI</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="data"
-                name="course"
-                value="Data Analytics"
-                onChange={(e) => setCourse(e.target.value)}
-              />
-              <label htmlFor="data">D.A.</label>
-            </div>
+            {["Web Development", "UX/UI Design", "Data Analytics"].map(
+              (course, idx) => (
+                <div key={course}>
+                  <input
+                    type="radio"
+                    id={course.toLowerCase().replace(" ", "-")}
+                    name="course"
+                    value={course}
+                    onChange={(e) => setCourse(e.target.value)}
+                    defaultChecked={idx === 0}
+                  />
+                  <label htmlFor={course.toLowerCase().replace(" ", "-")}>
+                    {course.slice(0, 2).toUpperCase()}
+                  </label>
+                </div>
+              )
+            )}
           </div>
         </fieldset>
+
         <div className="form-div title">
           <label htmlFor="title">Title:</label>
           <input
@@ -166,13 +156,18 @@ function PostForm() {
           </label>
           {imageError && <small>{imageMessage}</small>}
         </div>
-        <button
-          disabled={loadingImage}
-          type="submit"
-          className="primary-button"
-        >
-          Send
-        </button>
+        <div className="post-buttons">
+          {/* FIX THIS BUTTON */}
+          {/* IF WE ADD: onClick={()=>{navigate("/posts")}} there is an error for cancelling the post request */}
+          <button className="secondary-button danger-button" onClick={()=>{navigate("/posts")}}>Go back</button>
+          <button
+            disabled={loadingImage}
+            type="submit"
+            className="primary-button"
+          >
+            Send
+          </button>
+        </div>
       </form>
 
       {showErrorPopup && <ErrorPopup />}

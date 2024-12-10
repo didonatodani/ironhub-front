@@ -10,6 +10,8 @@ function PopupProviderWrapper(props) {
   const [deleteOn, setDeleteOn] = useState(false);
   const [deletePost, setDeletePost] = useState(false);
   const [deleteReply, setDeleteReply] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [imageMessage, setImageMessage] = useState("");
 
   return (
     <PopupContext.Provider
@@ -28,6 +30,10 @@ function PopupProviderWrapper(props) {
         setDeletePost,
         deleteReply,
         setDeleteReply,
+        imageError,
+        setImageError,
+        imageMessage,
+        setImageMessage,
       }}
     >
       {props.children}
