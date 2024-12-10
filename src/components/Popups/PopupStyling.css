@@ -23,11 +23,16 @@
     .error-h3{
         color: #FF7B63;
     }
+    .confirm-h3{
+        color:var(--accent)
+    }
     p{
         color: var(--text);
     }
 
-
+}
+.confirmation {
+    border: 2px solid var(--accent);
 }
 .error{
     border: 2px solid #FF7B63;

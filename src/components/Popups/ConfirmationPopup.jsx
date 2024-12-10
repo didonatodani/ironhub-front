@@ -10,7 +10,7 @@ function ConfirmationPopup({ navigate, isSignedUp, setIsSignedUp }) {
   return (
     <article className="pop-up-container confirmation">
       <img src={checkIcon} alt="confirmation icon" />
-      <h3>GREAT!</h3>
+      <h3 className="confirm-h3">GREAT!</h3>
       <p>{confirmationMessage}</p>
       {isSignedUp && (
         <button

@@ -67,7 +67,10 @@
             align-items: center;
         }
     }
-
+    small{
+        color: #FF7B63;
+        text-align: center;
+    }
     .submit-buttons{
         margin-top: 20px;
         display: flex;
