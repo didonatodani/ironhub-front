@@ -52,7 +52,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 32px;
+  padding: 25px;
 }
 
 .custom-select {
@@ -61,7 +61,7 @@
 
 .primary-button {
     font-size: 18px;
-    padding: 12px;
+    padding: 8px;
   }
 
 .custom-select select {
