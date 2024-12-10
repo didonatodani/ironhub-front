@@ -1,5 +1,5 @@
-.error-popup {
-    background-color: var(--subtitles);
+.pop-up-container {
+    background-color: var(--background);
     border-radius: 20px;
     padding: 40px;
     text-align: center;
@@ -20,9 +20,18 @@
         font-size: 30px;
         color: var(--background);
     }
+    .error-h3{
+        color: #FF7B63;
+    }
     p{
-        color: var(--background);
+        color: var(--text);
     }
 
 
+}
+.error{
+    border: 2px solid #FF7B63;
+}
+.error-button{
+    background-color: #FF7B63;
 }

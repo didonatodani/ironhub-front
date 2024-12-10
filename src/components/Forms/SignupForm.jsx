@@ -8,8 +8,8 @@ const API_URL = import.meta.env.VITE_API_URL;
 // Importing styles and images
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
-import ErrorPopup from "../ErrorPopup/ErrorPopup";
-import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
+import ErrorPopup from "../Popups/ErrorPopup";
+import ConfirmationPopup from "../Popups/ConfirmationPopup";
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -20,8 +20,9 @@ function SignupForm() {
   const [picture, setPicture] = useState("");
   const [languages, setLanguages] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignedUp, setIsSignedUp] = useState(false)
 
-  const { setErrorMessage, showErrorPopup, setShowErrorPopup, setConfirmationMessage, showConfirmationMessage, setShowConfirmationMessage } =
+  const { setErrorMessage, showErrorPopup, setShowErrorPopup, setConfirmationMessage, showConfirmation, setShowConfirmation } =
     useContext(PopupContext);
 
   const navigate = useNavigate();
@@ -43,15 +44,14 @@ function SignupForm() {
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((res) => {
-        console.log(res)
-        // setShowConfirmationMessage(true)
-        // setConfirmationMessage("New user created sucessfully")
-        navigate("/auth/login")
+        setShowConfirmation(true)
+        setConfirmationMessage("New user created sucessfully")
+        setIsSignedUp(true)
+        
       })
       .catch((err) => {
         setShowErrorPopup(true)
         setErrorMessage(err.response.data.message)
-        
       });
     
   }
@@ -181,7 +181,7 @@ function SignupForm() {
         </button>
       </form>
       {showErrorPopup && <ErrorPopup />}
-      {showConfirmationMessage && <ConfirmationPopup/>}
+      {showConfirmation && <ConfirmationPopup navigate={navigate} isSignedUp={isSignedUp} setIsSignedUp={setIsSignedUp}/>}
     </section>
   );
 }
