@@ -19,8 +19,15 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostDetailsPage() {
   const { _id } = useParams();
   const { user } = useContext(AuthContext);
-  const { setDeleteOn, showErrorPopup, setShowErrorPopup, showConfirmation, setDeletePost, deleteReply, setErrorMessage } =
-    useContext(PopupContext);
+  const {
+    setDeleteOn,
+    showErrorPopup,
+    setShowErrorPopup,
+    showConfirmation,
+    setDeletePost,
+    deleteReply,
+    setErrorMessage,
+  } = useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -74,7 +81,12 @@ function PostDetailsPage() {
                 <div className="crud-buttons">
                   <button
                     onClick={() => {
-                      setShowErrorPopup(true), setDeleteOn(true), setDeletePost(true), setErrorMessage("Are you sure you want to delete the post?");
+                      setShowErrorPopup(true),
+                        setDeleteOn(true),
+                        setDeletePost(true),
+                        setErrorMessage(
+                          "Are you sure you want to delete the post?"
+                        );
                     }}
                     className="secondary-button danger-button"
                   >
@@ -162,7 +174,9 @@ function PostDetailsPage() {
           </section>
         )}
 
-        {(showErrorPopup && !deleteReply) && <ErrorPopup id={_id} storedToken={storedToken} />}
+        {showErrorPopup && !deleteReply && (
+          <ErrorPopup id={_id} storedToken={storedToken} />
+        )}
         {showConfirmation && <ConfirmationPopup />}
       </section>
     </section>

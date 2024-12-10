@@ -31,10 +31,12 @@ function PostForm() {
   const [picture, setPicture] = useState("");
   const [imageError, setImageError] = useState(false);
   const [imageMessage, setImageMessage] = useState("");
+  const [loadingImage, setLoadingImage] = useState(false);
+
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
-
+    setLoadingImage(true);
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
@@ -45,6 +47,7 @@ function PostForm() {
       .then((response) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
+        setLoadingImage(false);
         setPicture(response.fileUrl);
         setImageError(false);
       })
@@ -163,7 +166,11 @@ function PostForm() {
           </label>
           {imageError && <small>{imageMessage}</small>}
         </div>
-        <button type="submit" className="primary-button">
+        <button
+          disabled={loadingImage}
+          type="submit"
+          className="primary-button"
+        >
           Send
         </button>
       </form>

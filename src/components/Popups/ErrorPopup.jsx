@@ -8,7 +8,6 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
-
   const {
     errorMessage,
     setShowErrorPopup,
@@ -33,7 +32,7 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
         setShowConfirmation(true);
         setConfirmationMessage("Post deleted successfully");
         setTimeout(() => {
-          setDeletePost(false)
+          setDeletePost(false);
           setShowConfirmation(false);
           navigate("/posts");
         }, 1200);
@@ -41,14 +40,14 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
       .catch((err) => {
         console.log(err);
       });
-    }
-    
+  }
+
   const deleteReplyFunc = async () => {
     try {
       await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
-      
+
       setDetailPost((prevPost) => ({
         ...prevPost,
         replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
@@ -56,14 +55,14 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
       setShowConfirmation(true);
       setConfirmationMessage("Reply deleted successfully");
       setTimeout(() => {
-        setDeleteReply(false)
+        setDeleteReply(false);
         setShowConfirmation(false);
       }, 1200);
-  } catch (error) {
-    console.log("Error deleting reply: ", error);
-  }
-};
-    
+    } catch (error) {
+      console.log("Error deleting reply: ", error);
+    }
+  };
+
   return (
     <article className="pop-up-container error">
       <img src={errorIcon} alt="error icon" />
@@ -74,7 +73,11 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
         <>
           <button
             onClick={() => {
-              (deletePost ? deletePostFunc() : deleteReply ? deleteReplyFunc() : "" )
+              deletePost
+                ? deletePostFunc()
+                : deleteReply
+                ? deleteReplyFunc()
+                : "";
               setShowErrorPopup(false);
             }}
             className="secondary-button error-button"
