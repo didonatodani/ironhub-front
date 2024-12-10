@@ -31,7 +31,9 @@ function LoginForm() {
       .then((res) => {
         storeToken(res.data.authToken);
         authenticateUser();
-        navigate("/posts/");
+        setTimeout(() => {
+          navigate("/posts/");
+        }, 100);
       })
       .catch((err) => {
         setShowErrorPopup(true);

@@ -29,7 +29,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/auth/signup" element={<IsPublic><SignupForm /></IsPublic>} />
         <Route path="/auth/login" element={<IsPublic><LoginForm /></IsPublic>} />
-        <Route path="/posts" element={<IsPrivate><PostsPage /></IsPrivate>} />
+        <Route path="/posts/" element={<IsPrivate><PostsPage /></IsPrivate>} />
         <Route path="/newpost" element={<IsPrivate><PostForm /></IsPrivate>} />
         <Route path="/posts/:_id" element={<IsPrivate><PostDetailsPage /></IsPrivate>} />
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
