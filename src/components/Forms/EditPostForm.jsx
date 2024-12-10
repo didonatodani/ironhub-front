@@ -1,5 +1,4 @@
 import "./GeneralFormStyles.css";
-
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
@@ -80,7 +79,7 @@ function EditPostForm({
           setDetailPost(res.data);
           setShowEditForm(false)
           setShowConfirmation(false);
-        }, 1500);
+        }, 1200);
       })
       .catch((err) => {
         setShowErrorPopup(true);

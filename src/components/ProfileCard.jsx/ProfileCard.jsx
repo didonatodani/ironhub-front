@@ -1,20 +1,28 @@
 import React from "react";
 import "./ProfileCard.css";
 
-
 function ProfileCard({ user, setShowEditProfile }) {
+  const {
+    name,
+    picture,
+    course,
+    createdAt,
+    email,
+    schedule,
+    languages,
+    linkedin,
+  } = user;
   if (!user) {
     return <p>Loading...</p>;
   }
-
-  const formattedDate = new Date(user.createdAt).toLocaleDateString("en-GB");
+  const formattedDate = new Date(createdAt).toLocaleDateString("en-GB");
 
   return (
     <div className="user-info">
       <div className="heading-profile">
-        <h2>{user.name}</h2>
-        <img src={user.picture} alt="user-profile" />
-        <span>{user.course}</span>
+        <h2>{name}</h2>
+        <img src={picture} alt="user-profile" />
+        <span>{course}</span>
         <small>User since: {formattedDate}</small>
       </div>
       <div className="profile-details">
@@ -25,17 +33,22 @@ function ProfileCard({ user, setShowEditProfile }) {
           Edit Profile
         </button>
         <p>
-          Name: <span>{user.name}</span>
+          Name: <span>{name}</span>
         </p>
         <p>
-          Email: <span>{user.email}</span>
+          Email: <span>{email}</span>
         </p>
         <p>
-          Course-type: <span>{user.schedule}</span>
+          Course-type: <span>{schedule}</span>
         </p>
         <p>
-          Languages: <span>{user.languages}</span>
+          Languages: <span>{languages}</span>
         </p>
+        {linkedin && (
+          <p>
+            Linkedin: <span>{linkedin}</span>
+          </p>
+        )}
       </div>
     </div>
   );
