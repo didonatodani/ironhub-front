@@ -6,25 +6,30 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
-
 function ErrorPopup({ id, storedToken }) {
-  const { errorMessage, setShowErrorPopup, deleteOn, setDeleteOn, setShowConfirmation, setConfirmationMessage } =
-    useContext(PopupContext);
+  const {
+    errorMessage,
+    setShowErrorPopup,
+    deleteOn,
+    setDeleteOn,
+    setShowConfirmation,
+    setConfirmationMessage,
+  } = useContext(PopupContext);
 
   const navigate = useNavigate();
- 
+
   function deletePost() {
     axios
       .delete(`${API_URL}/posts/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => {
-        setShowConfirmation(true)
-        setConfirmationMessage("Post deleted successfully")
-        setTimeout(()=>{
-          setShowConfirmation(false)
-          navigate("/posts")
-        }, 1500)
+        setShowConfirmation(true);
+        setConfirmationMessage("Post deleted successfully");
+        setTimeout(() => {
+          setShowConfirmation(false);
+          navigate("/posts");
+        }, 1500);
       })
       .catch((err) => {
         console.log(err);
@@ -41,7 +46,7 @@ function ErrorPopup({ id, storedToken }) {
         <>
           <button
             onClick={() => {
-              deletePost()
+              deletePost();
               setShowErrorPopup(false);
             }}
             className="secondary-button error-button"

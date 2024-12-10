@@ -1,12 +1,16 @@
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
 import { useState, useContext } from "react";
 import axios from "axios";
 import "./GeneralFormStyles.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
+function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
   const { user } = useContext(AuthContext);
+  const { setShowConfirmation, setConfirmationMessage, setErrorMessage, setShowErrorPopup } =
+    useContext(PopupContext);
+
   const [description, setDescription] = useState(reply.description);
   const [link, setLink] = useState(reply.link);
   const [picture, setPicture] = useState(reply.picture);
@@ -40,13 +44,22 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
 
         return { ...prevPost, replies: updatedReplies };
       });
-      setIsEditing(false);
+      setIsEditing(false),
+        setShowConfirmation(true),
+        setConfirmationMessage("Reply edited successfully!"),
+        setTimeout(() => {
+          setShowConfirmation(false);
+        }, 1200);
     } catch (error) {
+      setShowErrorPopup(true)
+      setErrorMessage("Error updating reply")
       console.error("Error updating reply:", error);
     }
   };
 
-  const handleCancel = () => setIsEditing(false);
+  const handleCancel = () => {
+    setIsEditing(false);
+  };
 
   return (
     <section className="post-form-section">
@@ -82,7 +95,11 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
         <button type="submit" className="primary-button">
           Update
         </button>
-        <button type="button" onClick={handleCancel} className="secondary-button danger-button">
+        <button
+          type="button"
+          onClick={handleCancel}
+          className="secondary-button danger-button"
+        >
           Cancel
         </button>
       </form>
@@ -90,4 +107,4 @@ function ReplyForm({ reply, isEditing, setIsEditing, setDetailPost }) {
   );
 }
 
-export default ReplyForm;
+export default EditReplyForm;

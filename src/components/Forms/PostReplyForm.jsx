@@ -2,14 +2,27 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import "./GeneralFormStyles.css";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
+
 import service from "../../services/file-upload.service";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const { user } = useContext(AuthContext);
+  const {
+    showErrorPopup,
+    showConfirmation,
+    setShowConfirmation,
+    setConfirmationMessage,
+    setErrorMessage,
+    setShowErrorPopup,
+  } = useContext(PopupContext);
+
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
+  const [imageError, setImageError] = useState(false);
+  const [imageMessage, setImageMessage] = useState("");
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -20,15 +33,18 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
 
-
     service
       .uploadImage(uploadData)
       .then((response) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setPicture(response.fileUrl);
+        setImageError(false);
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
+      .catch((err) => {
+        setImageError(true);
+        setImageMessage(err.response.data.message.message);
+      });
   };
 
   const handleSubmit = async (e) => {
@@ -49,17 +65,23 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      console.log("The response: ",response.data.reply);
+      console.log("The response: ", response.data.reply);
 
       // Add the newly created reply to the post's replies in state
-       setDetailPost((prevPost) => ({
+      setDetailPost((prevPost) => ({
         ...prevPost,
-         replies: [...prevPost.replies, response.data.reply],
+        replies: [...prevPost.replies, response.data.reply],
       }));
 
-      setShowReplyForm(false)
+      setShowReplyForm(false);
+      setShowConfirmation(true);
+      setConfirmationMessage("Reply created successfully!");
+      setTimeout(() => {
+        setShowConfirmation(false);
+      }, 1200);
     } catch (error) {
-      console.error("Error creating reply:", error.response.data);
+      setShowErrorPopup(true);
+      setErrorMessage(error.response.data.message);
     }
   };
 
@@ -94,9 +116,10 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
             className="file-upload"
             onChange={(e) => handleFileUpload(e)}
           />
+          {imageError && <small>{imageMessage}</small>}
         </div>
         <button type="submit" className="primary-button">
-          Update
+          Save Reply
         </button>
         <button type="button" onClick={handleCancel}>
           Cancel

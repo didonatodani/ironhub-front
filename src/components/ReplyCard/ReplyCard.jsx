@@ -1,7 +1,7 @@
 import "./ReplyCard.css";
 import { AuthContext } from "../../context/auth.context";
 import { useState, useContext } from "react";
-import ReplyForm from "../Forms/ReplyForm.jsx";
+import ReplyForm from "../Forms/EditReplyForm.jsx";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 import { useParams } from "react-router-dom";

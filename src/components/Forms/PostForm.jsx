@@ -78,7 +78,7 @@ function PostForm() {
         setTimeout(() => {
           setShowConfirmation(false);
           navigate("/posts");
-        }, 1500);
+        }, 1200);
       })
       .catch((err) => {
         setShowErrorPopup(true);

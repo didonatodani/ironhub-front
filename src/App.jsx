@@ -17,7 +17,7 @@ import IsPublic from "./components/IsPublic/IsPublic.jsx";
 import PostForm from "./components/Forms/PostForm.jsx";
 
 // just testing components:
-import ReplyForm from "./components/Forms/ReplyForm.jsx";
+import EditReplyForm from "./components/Forms/EditReplyForm.jsx";
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
         {/* just for now!!! */}
-        <Route path="/test" element={<ReplyForm />} />
+        <Route path="/test" element={<EditReplyForm />} />
       </Routes>
       </div>
       <Footer />
