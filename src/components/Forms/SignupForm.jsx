@@ -11,6 +11,7 @@ import logo from "../../assets/Logo.svg";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 
+
 function SignupForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -51,9 +52,9 @@ function SignupForm() {
       .catch((err) => {
         setShowErrorPopup(true)
         setErrorMessage(err.response.data.message)
-        
+
       });
-    
+
   }
 
   return (
