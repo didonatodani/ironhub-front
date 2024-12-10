@@ -8,7 +8,7 @@ function PopupProviderWrapper(props) {
   const [confirmationMessage, setConfirmationMessage] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [deleteOn, setDeleteOn] = useState(false);
-  const [detelePost, setDeletePost] = useState(false);
+  const [deletePost, setDeletePost] = useState(false);
   const [deleteReply, setDeleteReply] = useState(false);
 
   return (
@@ -24,7 +24,7 @@ function PopupProviderWrapper(props) {
         setShowConfirmation,
         deleteOn,
         setDeleteOn,
-        detelePost,
+        deletePost,
         setDeletePost,
         deleteReply,
         setDeleteReply,

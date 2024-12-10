@@ -24,6 +24,7 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
   const navigate = useNavigate();
 
   function deletePostFunc() {
+    console.log(id)
     axios
       .delete(`${API_URL}/posts/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -73,11 +74,12 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
         <>
           <button
             onClick={() => {
+              // console.log("deletePost:", deletePost, "deleteReply:", deleteReply)
               deletePost
                 ? deletePostFunc()
                 : deleteReply
                 ? deleteReplyFunc()
-                : "";
+                : null
               setShowErrorPopup(false);
             }}
             className="secondary-button error-button"

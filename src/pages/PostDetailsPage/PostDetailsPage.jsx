@@ -27,6 +27,7 @@ function PostDetailsPage() {
     setDeletePost,
     deleteReply,
     setErrorMessage,
+    deletePost
   } = useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
@@ -81,12 +82,13 @@ function PostDetailsPage() {
                 <div className="crud-buttons">
                   <button
                     onClick={() => {
-                      setShowErrorPopup(true),
-                        setDeleteOn(true),
-                        setDeletePost(true),
+                      setShowErrorPopup(true)
+                        setDeleteOn(true)
+                        setDeletePost(true)
                         setErrorMessage(
                           "Are you sure you want to delete the post?"
-                        );
+                        )
+                        console.log(deletePost)
                     }}
                     className="secondary-button danger-button"
                   >
