@@ -21,7 +21,7 @@ function Navbar() {
 
         <div className="logo">
           <NavLink to={"/posts/"}>
-            <img width={140} src={Logo} alt="ironhub-logo" />
+            <img src={Logo} alt="ironhub-logo" />
           </NavLink>
           </div>
             <div className="dropdown">
@@ -51,10 +51,10 @@ function Navbar() {
             </div>
             <ul className="links logged-out">
               <NavLink to={"/auth/signup"}>
-                <li>Signup</li>
+                <li  id="nav-signup">Signup</li>
               </NavLink>
               <NavLink to={"/auth/login"}>
-                <li>Login</li>
+                <li  id="nav-login">Login</li>
               </NavLink>
             </ul>
            </nav>

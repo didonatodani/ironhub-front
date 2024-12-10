@@ -29,9 +29,11 @@ function LoginForm() {
     axios
       .post(`${API_URL}/auth/login`, newLogin)
       .then((res) => {
-        storeToken(res.data.authToken)
-        authenticateUser()
-        navigate("/posts/")
+        storeToken(res.data.authToken);
+        authenticateUser();
+        setTimeout(() => {
+          navigate("/posts/");
+        }, 100);
       })
       .catch((err) => {
         setShowErrorPopup(true);
