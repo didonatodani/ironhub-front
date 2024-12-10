@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 20px;
-  width: 95%;
+  width: 67%;
   background-color: var(--light-background);
   margin: 0 auto;
   border-radius: 20px;
@@ -50,9 +50,11 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   padding: 25px;
+  gap: 15px;
 }
 
 .custom-select {
@@ -60,7 +62,7 @@
 }
 
 .primary-button {
-    font-size: 18px;
+    font-size: 16px;
     padding: 8px;
   }
 
@@ -69,7 +71,7 @@
   justify-content: center;
   align-items: center;
   appearance: none;
-  font-size: 18px;
+  font-size: 16px;
   padding: 10px;
   border: 1px solid var(--primary);
   border-radius: 0.25rem;
@@ -121,6 +123,8 @@
 
   .filter-controls {
     gap: 12px;
+    flex-wrap: nowrap;
+    justify-content: space-around
   };
 
   .primary-button {

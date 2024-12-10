@@ -48,7 +48,7 @@ function PostsPage() {
         <Searchbar setSearchResult={setSearchResult} />
         <div className="filter-controls">
           <div className="custom-select">
-            <select value={course} onChange={(e) => setCourse(e.target.value)}>
+            <select value={course} onChange={(e) => setCourse(e.target.value)} >
               <option className="option" value="">
                 All Courses
               </option>
