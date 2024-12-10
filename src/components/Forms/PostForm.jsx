@@ -3,13 +3,25 @@ import logo from "../../assets/Logo.svg";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
+
 import axios from "axios";
-import service from "../../services/file-upload.service"
+import service from "../../services/file-upload.service";
+import ErrorPopup from "../Popups/ErrorPopup";
+import ConfirmationPopup from "../Popups/ConfirmationPopup";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostForm() {
   const { user } = useContext(AuthContext);
+  const {
+    setErrorMessage,
+    showErrorPopup,
+    setShowErrorPopup,
+    setShowConfirmation,
+    setConfirmationMessage,
+    showConfirmation,
+  } = useContext(PopupContext);
 
   // const [name, setName] = useState("");
   const [course, setCourse] = useState("Web Development");
@@ -17,15 +29,16 @@ function PostForm() {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
+  const [imageError, setImageError] = useState(false);
+  const [imageMessage, setImageMessage] = useState("");
 
   const handleFileUpload = (e) => {
+    const uploadData = new FormData();
 
-     const uploadData = new FormData();
-
-     // imageUrl => this name has to be the same as in the model since we pass
-     // req.body to .create() method when creating a new movie in '/api/movies' POST route
-     uploadData.append("picture", e.target.files[0]);
-     console.log([...uploadData.entries()]);
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("picture", e.target.files[0]);
+    //  console.log([...uploadData.entries()]);
 
     service
       .uploadImage(uploadData)
@@ -33,11 +46,13 @@ function PostForm() {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setPicture(response.fileUrl);
+        setImageError(false);
       })
-      .catch((err) => console.log("Error while uploading the file: ", err));
-  }
-
-
+      .catch((err) => {
+        setImageError(true);
+        setImageMessage(err.response.data.message.message);
+      });
+  };
 
   const navigate = useNavigate();
   const storedToken = localStorage.getItem("authToken");
@@ -58,11 +73,16 @@ function PostForm() {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => {
-        console.log("post sent successfully");
-        navigate("/posts");
+        setShowConfirmation(true);
+        setConfirmationMessage("Post created successfully!");
+        setTimeout(() => {
+          setShowConfirmation(false);
+          navigate("/posts");
+        }, 1500);
       })
       .catch((err) => {
-        console.log(err);
+        setShowErrorPopup(true);
+        setErrorMessage(err.response.data.message);
       });
   }
 
@@ -134,18 +154,23 @@ function PostForm() {
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
           <label htmlFor="file-upload" className="file-upload">
-          <input
-            type="file"
-            name="picture"
-            id="picture"
-            onChange={(e) => handleFileUpload(e)}
-          />
+            <input
+              type="file"
+              name="picture"
+              id="picture"
+              onChange={(e) => handleFileUpload(e)}
+            />
           </label>
+          {imageError && <small>{imageMessage}</small>}
         </div>
         <button type="submit" className="primary-button">
           Send
         </button>
       </form>
+
+      {showErrorPopup && <ErrorPopup />}
+
+      {showConfirmation && <ConfirmationPopup />}
     </section>
   );
 }

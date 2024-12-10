@@ -2,7 +2,10 @@ import "./GeneralFormStyles.css";
 
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
 import axios from "axios";
+import ErrorPopup from "../Popups/ErrorPopup";
+import ConfirmationPopup from "../Popups/ConfirmationPopup";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -13,6 +16,15 @@ function EditPostForm({
   setDetailPost,
   setShowEditForm,
 }) {
+  const {
+    setErrorMessage,
+    showErrorPopup,
+    setShowErrorPopup,
+    setShowConfirmation,
+    setConfirmationMessage,
+    showConfirmation,
+  } = useContext(PopupContext);
+
   const { user } = useContext(AuthContext);
   const { course, title, description, link, picture } = detailPost;
 
@@ -38,12 +50,17 @@ function EditPostForm({
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((res) => {
-        setDetailPost(res.data);
-        setShowEditForm(false);
-        console.log("post edited successfully");
+        setShowConfirmation(true);
+        setConfirmationMessage("Post edited successfully!");
+        setTimeout(() => {
+          setDetailPost(res.data);
+          setShowEditForm(false)
+          setShowConfirmation(false);
+        }, 1500);
       })
       .catch((err) => {
-        console.log(err);
+        setShowErrorPopup(true);
+        setErrorMessage(err.response.data.message);
       });
   }
 
@@ -100,6 +117,8 @@ function EditPostForm({
           </button>
         </div>
       </form>
+      {showErrorPopup && <ErrorPopup />}
+      {showConfirmation && <ConfirmationPopup />}
     </section>
   );
 }

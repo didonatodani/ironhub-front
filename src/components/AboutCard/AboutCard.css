@@ -54,15 +54,16 @@
 
 /* TEAM IMAGES: */
 .dan {
-    background-image: url("../../src/assets/dani.png");
+    /* background-image: url("../../src/assets/dani.png"); */
+    background-image: url("../../assets/dani.png");
 }
 
 .nig {
-    background-image: url("../../src/assets/Nigel.png");
+    background-image: url("../../assets/Nigel.png");
 }
 
 .pie {
-    background-image: url("../../src/assets/piet.png");
+    background-image: url("../../assets/piet.png");
 }
 
 /* ANIMATIONS */

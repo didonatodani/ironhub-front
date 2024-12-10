@@ -6,7 +6,7 @@ import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
-import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import ErrorPopup from "../Popups/ErrorPopup.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -29,9 +29,9 @@ function LoginForm() {
     axios
       .post(`${API_URL}/auth/login`, newLogin)
       .then((res) => {
-        storeToken(res.data.authToken);
-        authenticateUser();
-        navigate("/posts/");
+        storeToken(res.data.authToken)
+        authenticateUser()
+        navigate("/posts/")
       })
       .catch((err) => {
         setShowErrorPopup(true);

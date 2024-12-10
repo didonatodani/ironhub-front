@@ -1,20 +1,27 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
+import { PopupContext } from "../../context/popups.context";
 import { useParams, useNavigate } from "react-router-dom";
-import EditPostForm from "../../components/Forms/EditPostForm";
 
-import "./PostDetailsPage.css";
-import replyIcon from "../../assets/reply-message.png";
+import EditPostForm from "../../components/Forms/EditPostForm";
+import ErrorPopup from "../../components/Popups/ErrorPopup";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";
 import PostReplyForm from "../../components/Forms/PostReplyForm";
+
+import "./PostDetailsPage.css";
+import replyIcon from "../../assets/reply-message.png";
 import arrowUp from "../../assets/arrow-up.png";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostDetailsPage() {
   const { _id } = useParams();
   const { user } = useContext(AuthContext);
+  const { setErrorMessage, showErrorPopup, setShowErrorPopup } =
+    useContext(PopupContext);
+
   const [detailPost, setDetailPost] = useState(null);
   const [showEditForm, setShowEditForm] = useState(false);
   const [showReplyForm, setShowReplyForm] = useState(false);
@@ -51,7 +58,7 @@ function PostDetailsPage() {
     detailPost;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
 
-  const toggleReplyForm = () => setShowReplyForm(!showReplyForm);
+  // const toggleReplyForm = () => setShowReplyForm(!showReplyForm);
 
   return (
     <section className="page-container">
@@ -103,7 +110,12 @@ function PostDetailsPage() {
                   <img className="reply" src={replyIcon} alt="reply icon" />
                   Reply
                 </button>
-                <button className="secondary-button danger-button" onClick={handleNavigate}>Go back</button>
+                <button
+                  className="secondary-button danger-button"
+                  onClick={handleNavigate}
+                >
+                  Go back
+                </button>
               </div>
             </div>
           </article>
@@ -142,6 +154,8 @@ function PostDetailsPage() {
             <p>No replies yet. Be the first to reply!</p>
           </section>
         )}
+
+        {showErrorPopup && <ErrorPopup />}
       </section>
     </section>
   );
