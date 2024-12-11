@@ -12,7 +12,6 @@ function PostCard({ post }) {
       </div>
         <span>{course}</span>
       <h2>{title}</h2>
-      {/* <p id="post-card-description">{description}</p> */}
     </article>
   );
 }

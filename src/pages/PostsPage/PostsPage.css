@@ -16,15 +16,16 @@
 .posts-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
   gap: 20px;
-  width: 67%;
+  width: 85%;
   background-color: var(--light-background);
   margin: 0 auto;
   border-radius: 20px;
   padding: 20px;
 }
+
 #btn-up {
   position: fixed;
   bottom: 2rem;
@@ -96,6 +97,9 @@
     gap: 60px;
 
   }
+  .posts-container {
+    width: 70%;
+  }
   .custom-select select {
     font-size: 18px;
     padding: 20px;
@@ -115,6 +119,9 @@
     justify-content: center;
     margin: 0 auto;
     width: 70%;
+  }
+  .posts-container {
+    width: 67%;
   }
   .custom-select select {
     font-size: 18px;

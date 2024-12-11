@@ -14,6 +14,7 @@ function Navbar() {
     setIsDropped(!isDropped);
   }
 
+
   return (
     <div className="navbar-container">
       {isLoggedIn ? (
@@ -36,7 +37,7 @@ function Navbar() {
                   src={user.picture}
                   alt="picture-user"
                 />
-                <p className="user-profile-name">{user.name} </p>
+                <p className="user-profile-name">{user.name.split(" ")[0]} </p>
                 <img
                   className="open-icon"
                   width={20}

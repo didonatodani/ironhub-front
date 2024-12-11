@@ -1,4 +1,3 @@
-//Test
 describe("IronHub - Navigation", () => {
   it("Load content, visit the about page, and return to the home page", () => {
     cy.visit("https://ironhub-front.netlify.app/#/");
