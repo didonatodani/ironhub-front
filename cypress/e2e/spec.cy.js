@@ -1,3 +1,4 @@
+//Test
 describe("IronHub - Navigation", () => {
   it("Load content, visit the about page, and return to the home page", () => {
     cy.visit("https://ironhub-front.netlify.app/#/");
@@ -17,7 +18,6 @@ describe("IronHub - Navigation", () => {
     cy.get(".logo").click();
   });
 });
-
 describe("IronHub - Authentication", () => {
   it("Log in and visit all posts page", () => {
     cy.visit("https://ironhub-front.netlify.app/");
