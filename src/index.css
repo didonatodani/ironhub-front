@@ -8,6 +8,7 @@ TEXTS: font-family: "Inter", sans-serif;*/
     /* GENERAL TEXT */
     --text: #0A0B0B;
     --subtitles: #80989f;
+    --disabled-box-shadow: rgba(149, 157, 165, 0.2);
     --background: #F9FBFB;
     /* PRIMARY FOR H1, PRIMARY BUTTON */
     --primary: #00C4FA;
@@ -96,7 +97,7 @@ a {
 
 .primary-button:disabled {
     background-color: rgba(72, 96, 93, 0.488);
-    box-shadow: 0 20px 80px -10px rgba(149, 157, 165, 0.2);
+    box-shadow: 0 20px 80px -10px var(--disabled-box-shadow);
     cursor: progress;
 }
 
@@ -120,7 +121,7 @@ a {
 .file-upload {
     background-color: #c2e5ec;
     width: 100%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: var(--disabled-box-shadow) 0px 8px 24px;
     margin-bottom: 20px;
 }
 
