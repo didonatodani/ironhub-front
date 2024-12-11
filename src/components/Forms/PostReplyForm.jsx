@@ -86,6 +86,8 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   };
 
   const handleCancel = () => setShowReplyForm(false);
+
+  
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>

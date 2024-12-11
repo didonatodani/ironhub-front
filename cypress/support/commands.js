@@ -32,4 +32,21 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
     // Call the original type function
     return originalFn(element, text, options);
   });
+
+
+Cypress.Commands.add("login", () => {
+    cy.request({
+      method: "POST",
+      url: "https://iron-hub-backend.vercel.app/auth/login", 
+      body: {
+        email: "ferreresnigel@gmail.com",
+        password: "Ironhack1234"
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200); // Ensure login is successful
+      const { authToken } = response.body; // Extract the JWT token
+      // Save the token in localStorage to simulate authentication in the frontend
+      window.localStorage.setItem("authToken", authToken);
+    });
+  });
   
