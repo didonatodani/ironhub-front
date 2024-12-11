@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import Logo from "../../assets/Ironhub-logo.png";
+import ArrowDown from "../../assets/arrow-down.png"
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context.jsx";
@@ -15,18 +16,34 @@ function Navbar() {
 
   return (
     <div className="navbar-container">
-        {isLoggedIn ? (
-          <>
-      <nav className="navbar-logged-in">
-
-        <div className="logo">
-          <NavLink to={"/posts/"} onClick={()=>{setIsDropped(false)}}>
-            <img src={Logo}  alt="ironhub-logo" id="ironhub-logo"/>
-          </NavLink>
-          </div>
+      {isLoggedIn ? (
+        <>
+          <nav className="navbar-logged-in">
+            <div className="logo">
+              <NavLink
+                to={"/posts/"}
+                onClick={() => {
+                  setIsDropped(false);
+                }}
+              >
+                <img src={Logo} alt="ironhub-logo" id="ironhub-logo" />
+              </NavLink>
+            </div>
             <div className="dropdown">
-
-              <button className="user-nav" onClick={showMenu}><img className="user-picture" width={50} src={user.picture}  alt="picture-user" /> </button>
+              <button className="user-nav" onClick={showMenu}>
+                <img
+                  className="user-picture"
+                  src={user.picture}
+                  alt="picture-user"
+                />
+                <p className="user-profile-name">{user.name} </p>
+                <img
+                  className="open-icon"
+                  width={20}
+                  src={ArrowDown}
+                  alt="arrow-down"
+                />
+              </button>
               {isDropped && (
                 <ul className="links logged-in">
                   <NavLink to={`/${user._id}`} onClick={showMenu}>
@@ -38,12 +55,11 @@ function Navbar() {
                 </ul>
               )}
             </div>
-       </nav>
-          </>
-        ) : (
-          <>
-           <nav className="navbar">
-
+          </nav>
+        </>
+      ) : (
+        <>
+          <nav className="navbar">
             <div className="logo">
               <NavLink to={"/"}>
                 <img width={120} src={Logo} alt="ironhub-logo" />
@@ -51,17 +67,16 @@ function Navbar() {
             </div>
             <ul className="links logged-out">
               <NavLink to={"/auth/signup"}>
-                <li  id="nav-signup">Signup</li>
+                <li id="nav-signup">Signup</li>
               </NavLink>
               <NavLink to={"/auth/login"}>
-                <li  id="nav-login">Login</li>
+                <li id="nav-login">Login</li>
               </NavLink>
             </ul>
-           </nav>
-          </>
-        )}
-
-      </div>
+          </nav>
+        </>
+      )}
+    </div>
   );
 }
 

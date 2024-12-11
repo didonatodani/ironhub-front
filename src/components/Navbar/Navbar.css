@@ -7,7 +7,7 @@
 .navbar-logged-in {
   display: flex;
   justify-content: space-between;
-  padding: 20px 30px 20px 30px;
+  padding: 20px;
   align-items: center;
 }
 
@@ -17,24 +17,43 @@
 
 .user-nav {
   border-style: none;
-  margin: 0px 60px 2px 0px;
+  margin: 0px 10px 5px 0px;
   background-color: transparent;
-  width: 110px;
+  min-width: 100px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  cursor: pointer;
+
+  .user-profile-name {
+    display: none;
+    font-size: 14px;
+  }
 
   .user-picture {
-    border: 1px solid rgba(158, 158, 158, 0.471);
-    width: 60px;
-    height: 58px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     border-radius: 50%;
     padding: 5px;
-    margin-left: 90px;
     background-color: transparent;
-    cursor: pointer;
+    
+
+  }
+  .open-icon {
+    width: 17px;
   }
 }
+
+.user-nav:active {
+  transform: scale(1.02);
+  transition-duration: 300ms;
+}
+
+
+
 
 .links {
   list-style: none;
@@ -44,14 +63,16 @@
 }
 
 .links li {
-  font-size: 20px;
+  font-size: 18px;
 
 }
 
 .links li:hover {
   transform: scale(1.02);
+  transition-duration: 200ms;
   font-weight: 500;
   cursor: pointer;
+
 }
 
 .logged-in {
@@ -59,9 +80,9 @@
   position: absolute;
   border: 1px solid rgba(188, 188, 188, 0.507);
   border-radius: 5px;
-  padding: 3px 40px 3px 8px;
-  text-align: left;
-  background-color: rgba(234, 234, 234, 0.3);
+  padding: 3px 16px 3px 8px;
+  text-align: center;
+
 
   button {
     border-style: none;
@@ -82,7 +103,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  gap: 20px;
+  gap: 15px;
 }
 
 #nav-login,
@@ -131,13 +152,26 @@
       width: 150px;
     }
   }
+  .user-nav {
+    min-width: 150px;
+    padding: 5px;
+
+    .user-profile-name {
+      display: block;
+      font-size: 14px;
+    }
+  }
+  .logged-in {
+    margin-left: 20px;
+    padding: 3px 30px 3px 8px;
+  }
 
   .logged-out {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    gap: 80px;
+
   }
 
   #nav-login,
@@ -154,12 +188,28 @@
       width: 180px;
     }
   }
+  .user-nav {
+    min-width: 200px;
+
+
+    .user-profile-name {
+      display: block;
+      font-size: 16px;
+    }
+  }
+  .logged-in {
+    margin-left: 40px;
+    padding: 3px 40px 3px 8px;
+
+  }
 
   .logged-out {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    padding-right: 10px;
+
   }
 
   #nav-login,

@@ -20,7 +20,7 @@ function HomePage() {
           Discover peer posts, manage your own, and stay engaged with your
           courses. Sign up or log in to start exploring today!
         </p>
-        <p>Made for students by students.</p>
+        <p className="students-made">Made for students by students ❤️</p>
         <button id="home-button" onClick={handleNavigate} className="primary-button">
           Discover Our Story.
         </button>

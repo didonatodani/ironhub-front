@@ -16,9 +16,13 @@
 .description-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   h1 {
     font-size: 30px;
+    color: var(--primary);
+  }
+
+  .students-made {
     color: var(--primary);
   }
 
