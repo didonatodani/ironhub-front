@@ -121,7 +121,7 @@ function PostDetailsPage() {
                   </p>
                 )}
               </div>
-              <div className="btns-container">
+              <div className="buttons-container">
                 <Link to={"/posts"} className="link-button">
                   <button className="secondary-button danger-button">
                     Go back
@@ -143,7 +143,7 @@ function PostDetailsPage() {
               </div>
             </div>
           </article>
-          <button id="btn-up" onClick={scrollToTop}>
+          <button id="button-up" onClick={scrollToTop}>
             <img src={arrowUp} alt="arrow up icon" />
           </button>
         </>

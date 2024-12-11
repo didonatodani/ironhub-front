@@ -1,4 +1,3 @@
-import "./ProfilePage.css";
 import ProfileCard from "../../components/ProfileCard.jsx/ProfileCard";
 import EditProfileForm from "../../components/Forms/EditProfileForm";
 import { useState, useEffect, useContext } from "react";

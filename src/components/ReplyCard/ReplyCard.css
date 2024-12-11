@@ -21,9 +21,17 @@
     font-size: 14px;
     color: #90aeb6;
   }
+
 }
 
-.reply-btns {
+.link-text {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+.reply-buttons {
   width: fit-content;
   display: flex;
   align-items: center;
@@ -39,7 +47,7 @@
   .reply-container{
     padding: 10px 40px!important;
   }
-  .reply-btns {
+  .reply-buttons {
    align-self: flex-end;
   }
 }

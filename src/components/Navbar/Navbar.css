@@ -39,8 +39,6 @@
     border-radius: 50%;
     padding: 5px;
     background-color: transparent;
-    
-
   }
   .open-icon {
     width: 17px;
@@ -52,28 +50,23 @@
   transition-duration: 300ms;
 }
 
-
-
-
 .links {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  li {
+    font-size: 18px;
+  }
+  li:hover {
+    transform: scale(1.02);
+    transition-duration: 200ms;
+    font-weight: 500;
+    cursor: pointer;
+    }
 }
 
-.links li {
-  font-size: 18px;
-
-}
-
-.links li:hover {
-  transform: scale(1.02);
-  transition-duration: 200ms;
-  font-weight: 500;
-  cursor: pointer;
-
-}
 
 .logged-in {
   z-index: 2;
@@ -82,7 +75,6 @@
   border-radius: 5px;
   padding: 3px 16px 3px 8px;
   text-align: center;
-
 
   button {
     border-style: none;
@@ -190,7 +182,6 @@
   }
   .user-nav {
     min-width: 200px;
-
 
     .user-profile-name {
       display: block;

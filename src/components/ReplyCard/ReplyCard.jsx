@@ -50,7 +50,7 @@ function ReplyCard({ reply, setDetailPost }) {
             </a>
           </p>
         )}
-        <div className="reply-btns">
+        <div className="reply-buttons">
           {name._id === user._id && (
             <>
               {!isEditing && (

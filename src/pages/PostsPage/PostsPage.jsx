@@ -103,7 +103,7 @@ function PostsPage() {
           </section>
         )}
       </section>
-      <button id="btn-up" onClick={scrollToTop}>
+      <button id="button-up" onClick={scrollToTop}>
         <img src={arrowUp} alt="arrow up icon" />
       </button>
     </div>

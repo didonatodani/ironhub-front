@@ -11,7 +11,7 @@
     max-width: 360px;
     border-radius: 20px;
     background-color: var(--background);
-    
+
     .img-div {
         cursor: pointer;
         width: 260px;
@@ -51,10 +51,8 @@
 
 }
 
-
 /* TEAM IMAGES: */
 .dan {
-    /* background-image: url("../../src/assets/dani.png"); */
     background-image: url("../../assets/dani.png");
 }
 
