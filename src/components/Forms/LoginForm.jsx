@@ -30,10 +30,10 @@ function LoginForm() {
       .post(`${API_URL}/auth/login`, newLogin)
       .then((res) => {
         storeToken(res.data.authToken);
-        authenticateUser();
-        setTimeout(() => {
-          navigate("/posts/");
-        }, 100);
+        return authenticateUser();
+      })
+      .then(()=> {
+        navigate("/posts/");
       })
       .catch((err) => {
         setShowErrorPopup(true);
