@@ -29,7 +29,7 @@
         h3 {
             font-weight: 700;
             font-size: 30px;
-            color: var(--background);
+            color: var(--accent);
         }
 
         .error-h3 {
@@ -45,7 +45,6 @@
         }
 
     }
-
     .confirmation {
         border: 2px solid var(--accent);
     }

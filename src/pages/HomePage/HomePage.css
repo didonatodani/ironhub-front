@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - 100px);
-  padding: 40px 20px;
+  padding: 15px 10px;
   gap: 50px;
   background-color: #fff;
   #gif {
@@ -54,6 +53,38 @@
 }
 
 @media (min-width > 650px) and (max-width: 1023px) {
+  .homepage-container {
+    display: flex;
+    flex-direction: row-reverse;
+
+  }
+  .description-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+    .description-title {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 20px;
+    }
+    #about-button {
+      width: 200px;
+      height: 60px;
+      background-color: transparent;
+      font-size: 20px;
+      margin: 0 auto;
+    }
+  }
 }
 
 @media (min-width: 1024px) {

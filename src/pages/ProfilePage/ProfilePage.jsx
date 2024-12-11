@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import "./ProfilePage.css";
 
 import axios from "axios";
+=======
+import ProfileCard from "../../components/ProfileCard.jsx/ProfileCard";
+import EditProfileForm from "../../components/Forms/EditProfileForm";
+>>>>>>> main
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";

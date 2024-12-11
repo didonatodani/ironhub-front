@@ -20,14 +20,10 @@
   flex-direction: column;
   margin-bottom: 10px;
 
-
   h2 {
     font-size: 28px;
     margin-bottom: 20px;
-
   }
-
-
 
   img {
     width: 120px;
@@ -62,7 +58,6 @@
   line-height: 2.5;
   gap: 15px;
 
-
   p {
     font-size: 18px;
     background-color: rgba(228, 228, 228, 0.252);
@@ -85,8 +80,6 @@
   }
 }
 
-
-/* tablet */
 @media (min-width: 650px) and (max-width: 1023px) {
   .user-info {
     flex-direction: row;
@@ -117,8 +110,6 @@
 }
 
 
-
-/* desktop */
 @media (min-width: 1024px){
   .user-info {
     flex-direction: row;
@@ -152,6 +143,5 @@
     padding-bottom: 70px;
     margin-bottom: 70px;
   }
-
 
 }
