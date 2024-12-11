@@ -27,7 +27,6 @@ function PostForm() {
     showConfirmation,
   } = useContext(PopupContext);
 
-  // const [name, setName] = useState("");
   const [course, setCourse] = useState("Web Development");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -41,13 +40,10 @@ function PostForm() {
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
-    //  console.log([...uploadData.entries()]);
 
     service
       .uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
         setLoadingImage(false);
         setPicture(response.fileUrl);
         setImageError(false);
