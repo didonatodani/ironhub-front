@@ -3,9 +3,12 @@
     border-left: 15px #5bb7d3 solid;
     padding: 20px;
     border-radius: 10px;
-    width: 130%;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 100%;  
+    min-width: 250px;
+
+    
     .post-card-header{
         display: flex;
         justify-content: space-between;
@@ -14,18 +17,13 @@
         font-size: 20px;
         padding: 8px 0;
     }
-    #post-card-description {
-        width: 100%;
-        padding: 5px 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
 
     span {
         font-weight: 200;
     }
 }
+
+
 .da{
     border: 2px #FECE64 solid;
     border-left: 15px #FECE64 solid;
@@ -37,4 +35,19 @@
 .ux{
     border: 2px #FF7B63 solid;
     border-left: 15px #FF7B63 solid;
+}
+
+@media (min-width: 650px) and (max-width: 1023px) {
+    .post-card {
+        width: 100%;
+        min-width: 400px
+    }
+}
+
+@media (min-width: 1024px) {
+    .post-card {
+
+        min-width: 800px;
+        
+    }
 }
