@@ -19,13 +19,13 @@ function Footer() {
           <div className="repository-row">
             <div className="repository-column">
               <p>Frontend repository:</p>
-              <a href="https://github.com/didonatodani/ironhub-front">
+              <a href="https://github.com/didonatodani/ironhub-front" target="_blank">
                 <img src={githubLogo} alt="github logo" />
               </a>
             </div>
             <div className="repository-column">
               <p>Backend repository:</p>
-              <a href="https://github.com/phsworks/IronHub-Backend">
+              <a href="https://github.com/phsworks/IronHub-Backend" target="_blank">
                 <img src={githubLogo} alt="github logo" />
               </a>
             </div>

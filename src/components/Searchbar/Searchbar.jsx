@@ -33,7 +33,7 @@ function Searchbar({setSearchResult }) {
       } else {
         setSearchResult(response.data);
       }
-      setSearchResult(response.data);
+      
     } catch (error) {
       console.log("This is the error", error);
       setSearchResult("An error occurred while searching.");

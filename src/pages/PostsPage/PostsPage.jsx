@@ -63,46 +63,43 @@ function PostsPage() {
               <option value="asc">Oldest</option>
             </select>
           </div>
-        <div className="add-post">
-          <NavLink to={"/newpost"}>
-            <button className="primary-button">Add A Post</button>
-          </NavLink>
-        </div>
+          <div className="add-post">
+            <NavLink to={"/newpost"}>
+              <button className="primary-button">Add A Post</button>
+            </NavLink>
+          </div>
         </div>
       </section>
 
       <section className="posts-container">
-        {searchResult ? (
-          // IF we have an input, show it
-          searchResult.map((result) => {
-            return (
+        {Array.isArray(searchResult) && searchResult.length > 0 ? (
+          // If there are search results, display them
+          searchResult.map((result) => (
+            <Link
+              key={result._id}
+              to={`/posts/${result._id}`}
+              className={`post-card ${result.course.toLowerCase().slice(0, 2)}`}
+            >
+              <PostCard post={result} />
+            </Link>
+          ))
+        ) : typeof searchResult === "string" ? (
+          // If there are not search results, display a message for user
+          <p>{searchResult}</p>
+        ) : (
+          // If there is no input, show all posts
+          <section className="posts-container">
+            {postsArray.map((post, index) => (
               <Link
-                key={result._id}
-                to={`/posts/${result._id}`}
-                className={`post-card ${result.course
-                  .toLowerCase()
+                key={index}
+                to={`/posts/${post._id}`}
+                className={`post-card ${post.course
+                  ?.toLowerCase()
                   .slice(0, 2)}`}
               >
-                <PostCard post={result} />
+                <PostCard post={post} />
               </Link>
-            );
-          })
-        ) : (
-          // If we dont have an input, show all post
-          <section className="posts-container">
-            {postsArray.map((post, index) => {
-              return (
-                <Link
-                  key={index}
-                  to={`/posts/${post._id}`}
-                  className={`post-card ${post.course
-                    ?.toLowerCase()
-                    .slice(0, 2)}`}
-                >
-                  <PostCard post={post} />
-                </Link>
-              );
-            })}
+            ))}
           </section>
         )}
       </section>

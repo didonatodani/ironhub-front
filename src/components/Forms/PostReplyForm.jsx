@@ -86,6 +86,8 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   };
 
   const handleCancel = () => setShowReplyForm(false);
+
+  
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>
@@ -121,7 +123,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
         <button type="submit" className="primary-button">
           Save Reply
         </button>
-        <button type="button" onClick={handleCancel}>
+        <button type="button" onClick={handleCancel} className="secondary-button danger-button">
           Cancel
         </button>
       </form>

@@ -27,7 +27,7 @@ function PostDetailsPage() {
     setDeletePost,
     deleteReply,
     setErrorMessage,
-    deletePost
+    deletePost,
   } = useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
@@ -82,13 +82,13 @@ function PostDetailsPage() {
                 <div className="crud-buttons">
                   <button
                     onClick={() => {
-                      setShowErrorPopup(true)
-                        setDeleteOn(true)
-                        setDeletePost(true)
-                        setErrorMessage(
-                          "Are you sure you want to delete the post?"
-                        )
-                        console.log(deletePost)
+                      setShowErrorPopup(true);
+                      setDeleteOn(true);
+                      setDeletePost(true);
+                      setErrorMessage(
+                        "Are you sure you want to delete the post?"
+                      );
+                      console.log(deletePost);
                     }}
                     className="secondary-button danger-button"
                   >
@@ -113,20 +113,31 @@ function PostDetailsPage() {
               <div className="topic-body">
                 <p>{description}</p>
                 {/* <p className="link-text">Image: {picture}</p> */}
-                <img src={picture} alt="picture" />
-                <p>
-                  Link:{" "}
-                  {link && (
-                    <a className="link-text" href={link} target="_blank">
+                {picture && <img src={picture} alt="picture" />}
+                {link && (
+                  <p>
+                    Link:{" "}
+                    <a
+                      className="link-text"
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {link}
                     </a>
-                  )}
-                </p>
+                  </p>
+                )}
               </div>
               <div className="btns-container">
                 <button
                   className="primary-button reply-button-container"
-                  onClick={() => setShowReplyForm(true)}
+                  onClick={() => {
+                    setShowReplyForm(true);
+                    const formDiv = document.querySelector(".primary-button");
+                    if (formDiv) {
+                      formDiv.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                 >
                   <img className="reply" src={replyIcon} alt="reply icon" />
                   Reply
