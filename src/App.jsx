@@ -31,6 +31,7 @@ function App() {
         <Route path="/posts/:_id" element={<IsPrivate><PostDetailsPage /></IsPrivate>} />
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/test" element={<EditReplyForm />} />
       </Routes>
       </div>
       <Footer />
