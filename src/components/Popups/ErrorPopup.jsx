@@ -24,7 +24,7 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
   const navigate = useNavigate();
 
   function deletePostFunc() {
-    console.log(id)
+    console.log(id);
     axios
       .delete(`${API_URL}/posts/${id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -65,48 +65,50 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
   };
 
   return (
-    <article className="pop-up-container error">
-      <img src={errorIcon} alt="error icon" />
-      <h3 className="error-h3">{deleteOn ? "WARNING" : "ERROR"}</h3>
-      <p>{errorMessage}</p>
+    <div className="pop-up-blocker">
+      <article className="pop-up-container error">
+        <img src={errorIcon} alt="error icon" />
+        <h3 className="error-h3">{deleteOn ? "WARNING" : "ERROR"}</h3>
+        <p>{errorMessage}</p>
 
-      {deleteOn ? (
-        <>
+        {deleteOn ? (
+          <>
+            <button
+              onClick={() => {
+                // console.log("deletePost:", deletePost, "deleteReply:", deleteReply)
+                deletePost
+                  ? deletePostFunc()
+                  : deleteReply
+                  ? deleteReplyFunc()
+                  : null;
+                setShowErrorPopup(false);
+              }}
+              className="secondary-button error-button"
+            >
+              Confirm
+            </button>
+            <button
+              onClick={() => {
+                setDeleteOn(false);
+                setShowErrorPopup(false);
+              }}
+              className="secondary-button"
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
           <button
             onClick={() => {
-              // console.log("deletePost:", deletePost, "deleteReply:", deleteReply)
-              deletePost
-                ? deletePostFunc()
-                : deleteReply
-                ? deleteReplyFunc()
-                : null
               setShowErrorPopup(false);
             }}
             className="secondary-button error-button"
           >
-            Confirm
+            Got it
           </button>
-          <button
-            onClick={() => {
-              setDeleteOn(false);
-              setShowErrorPopup(false);
-            }}
-            className="secondary-button"
-          >
-            Cancel
-          </button>
-        </>
-      ) : (
-        <button
-          onClick={() => {
-            setShowErrorPopup(false);
-          }}
-          className="secondary-button error-button"
-        >
-          Got it
-        </button>
-      )}
-    </article>
+        )}
+      </article>
+    </div>
   );
 }
 

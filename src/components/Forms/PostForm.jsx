@@ -1,7 +1,7 @@
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
 
@@ -156,10 +156,14 @@ function PostForm() {
           </label>
           {imageError && <small>{imageMessage}</small>}
         </div>
-        <div className="post-buttons">
+        <div className="submit-buttons">
           {/* FIX THIS BUTTON */}
           {/* IF WE ADD: onClick={()=>{navigate("/posts")}} there is an error for cancelling the post request */}
-          <button className="secondary-button danger-button" onClick={()=>{navigate("/posts")}}>Go back</button>
+          <Link to={"/posts"}>
+            <button type="button" className="secondary-button danger-button">
+              Go back
+            </button>
+          </Link>
           <button
             disabled={loadingImage}
             type="submit"

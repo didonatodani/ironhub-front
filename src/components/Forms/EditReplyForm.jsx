@@ -8,8 +8,12 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
   const { user } = useContext(AuthContext);
-  const { setShowConfirmation, setConfirmationMessage, setErrorMessage, setShowErrorPopup } =
-    useContext(PopupContext);
+  const {
+    setShowConfirmation,
+    setConfirmationMessage,
+    setErrorMessage,
+    setShowErrorPopup,
+  } = useContext(PopupContext);
 
   const [description, setDescription] = useState(reply.description);
   const [link, setLink] = useState(reply.link);
@@ -51,8 +55,8 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
           setShowConfirmation(false);
         }, 1200);
     } catch (error) {
-      setShowErrorPopup(true)
-      setErrorMessage("Error updating reply")
+      setShowErrorPopup(true);
+      setErrorMessage("Error updating reply");
       console.error("Error updating reply:", error);
     }
   };
@@ -63,7 +67,7 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
 
   return (
     <section className="post-form-section">
-      <form className="post-form" onSubmit={handleSubmit}>
+      <form className="post-form edit-reply-form" onSubmit={handleSubmit}>
         <div className="form-div description">
           <label htmlFor="description">Description:</label>
           <textarea
@@ -92,16 +96,18 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
             onChange={(e) => setPicture(e.target.value)}
           />
         </div>
-        <button type="submit" className="primary-button">
-          Update
-        </button>
-        <button
-          type="button"
-          onClick={handleCancel}
-          className="secondary-button danger-button"
-        >
-          Cancel
-        </button>
+        <div className="submit-buttons">
+          <button
+            type="button"
+            onClick={handleCancel}
+            className="secondary-button danger-button"
+          >
+            Cancel
+          </button>
+          <button type="submit" className="primary-button">
+            Update
+          </button>
+        </div>
       </form>
     </section>
   );

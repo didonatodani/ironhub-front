@@ -74,8 +74,16 @@
     .submit-buttons{
         margin-top: 20px;
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
         width: 100%;
-        justify-content: space-between;
     }
-
+}
+.edit-reply-form{
+    min-width: 300px;
+    border: 1px var(--subtitles) solid;
+    padding: 20px;
+    border-radius: 20px;
 }

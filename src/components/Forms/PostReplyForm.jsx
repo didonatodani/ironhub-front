@@ -118,12 +118,18 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           />
           {imageError && <small>{imageMessage}</small>}
         </div>
-        <button type="submit" className="primary-button">
-          Save Reply
-        </button>
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+        <div className="submit-buttons">
+          <button
+            type="button"
+            className="secondary-button danger-button"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button type="submit" className="primary-button">
+            Save Reply
+          </button>
+        </div>
       </form>
     </section>
   );
