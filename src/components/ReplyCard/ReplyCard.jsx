@@ -36,15 +36,20 @@ function ReplyCard({ reply, setDetailPost }) {
           </div>
         </div>
         <p>{description}</p>
-        <img src={picture} alt="picture" />
-        <p>
-          Link:{" "}
-          {link && (
-            <a href={link} target="_blank" rel="noopener noreferrer">
+        {picture && <img src={picture} alt="picture" />}
+        {link && (
+          <p>
+            Link:{" "}
+            <a
+              className="link-text"
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {link}
             </a>
-          )}
-        </p>
+          </p>
+        )}
         <div className="reply-btns">
           {name._id === user._id && (
             <>
