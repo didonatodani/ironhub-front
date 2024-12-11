@@ -16,13 +16,13 @@ function HomePage() {
           <h2>Your Digital Campus Forum</h2>
         </article>
         <p>
-          IronHub is where Ironhack students connect, share, and collaborate.
+          IronHub is where Ironhackers connect, share, and collaborate.
           Discover peer posts, manage your own, and stay engaged with your
           courses. Sign up or log in to start exploring today!
         </p>
-        <p className="students-made">Made for students by students ❤️</p>
+        <h3 className="students-made">Made for Students by Students ❤️</h3>
         <button id="home-button" onClick={handleNavigate} className="primary-button">
-          Discover Our Story.
+          Discover Our Story
         </button>
       </section>
     </div>

@@ -202,7 +202,7 @@ function SignupForm() {
           />
         </div>
         <button type="submit" className="primary-button">
-          Send
+          Sign up
         </button>
       </form>
       {showErrorPopup && <ErrorPopup />}

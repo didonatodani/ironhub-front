@@ -65,7 +65,7 @@ function LoginForm() {
           />
         </div>
         <button type="submit" className="primary-button">
-          Send
+          Take me in
         </button>
       </form>
       {showErrorPopup && <ErrorPopup />}
