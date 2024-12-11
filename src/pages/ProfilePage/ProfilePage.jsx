@@ -5,9 +5,6 @@ import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 
-import ProfileCard from "../../components/ProfileCard.jsx/ProfileCard";
-import EditProfileForm from "../../components/Forms/EditProfileForm";
-
 
 const API_URL = import.meta.env.VITE_API_URL;
 

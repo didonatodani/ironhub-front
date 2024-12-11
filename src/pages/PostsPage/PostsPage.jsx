@@ -1,13 +1,10 @@
 import "./PostsPage.css";
 import arrowUp from "../../assets/arrow-up.png";
-
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-
 import PostCard from "../../components/PostCard/PostCard";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import arrowUp from "../../assets/arrow-up.png";
 import { useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
