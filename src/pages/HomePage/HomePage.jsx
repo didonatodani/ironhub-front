@@ -18,7 +18,7 @@ function HomePage() {
           up or log in to start exploring today!
         </p>
         <h3 className="students-made">Made for Students by Students ❤️</h3>
-        <Link to={"/about"}>
+        <Link to={"/about"} id="link-home-button">
           <button id="home-button" className="primary-button">
             Discover Our Story
           </button>

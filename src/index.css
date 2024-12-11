@@ -51,6 +51,10 @@ a {
     text-decoration: none;
 }
 /* class for blue buttons */
+#link-home-button{
+    display: inline;
+    align-self: center;
+}
 #home-button {
     width: 180px;
     height: 70px;
