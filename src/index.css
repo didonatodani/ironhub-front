@@ -98,6 +98,7 @@ a {
     background-color: rgba(72, 96, 93, 0.488);
     box-shadow: 0 20px 80px -10px rgba(149, 157, 165, 0.2);
 }
+
 .secondary-button.danger-button{
     background: var(--light-background);
     border: 2px solid var(--secondary);

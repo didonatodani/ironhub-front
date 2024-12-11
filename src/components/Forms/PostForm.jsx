@@ -160,13 +160,13 @@ function PostForm() {
           {/* FIX THIS BUTTON */}
           {/* IF WE ADD: onClick={()=>{navigate("/posts")}} there is an error for cancelling the post request */}
           <button className="secondary-button danger-button" onClick={()=>{navigate("/posts")}}>Go back</button>
-          <button
-            disabled={loadingImage}
+          {!loadingImage && <button
+            // disabled={loadingImage}
             type="submit"
             className="primary-button"
           >
             Send
-          </button>
+          </button>}
         </div>
       </form>
 
