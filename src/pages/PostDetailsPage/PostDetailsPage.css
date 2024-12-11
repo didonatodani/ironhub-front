@@ -183,10 +183,17 @@
     text-align: center;
   }
 
-  .btns-container,
-  .main-post-header .crud-buttons {
+  .btns-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
   }
+}
+
+/* NOT WORKING
+ */
+.main-post-header .crud-buttons{
+
+  align-self: flex-end;
+  width: fit-content;
 }

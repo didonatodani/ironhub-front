@@ -157,8 +157,6 @@ function PostForm() {
           {imageError && <small>{imageMessage}</small>}
         </div>
         <div className="submit-buttons">
-          {/* FIX THIS BUTTON */}
-          {/* IF WE ADD: onClick={()=>{navigate("/posts")}} there is an error for cancelling the post request */}
           <Link to={"/posts"}>
             <button type="button" className="secondary-button danger-button">
               Go back

@@ -53,6 +53,7 @@
         }
         textarea{
             min-height: 150px;
+            max-width: 100%;
         }
     }
 
@@ -79,6 +80,9 @@
         justify-content: center;
         gap: 30px;
         width: 100%;
+        .primary-button{
+            margin: 0;
+        }
     }
 }
 .edit-reply-form{
