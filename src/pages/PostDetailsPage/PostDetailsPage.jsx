@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import EditPostForm from "../../components/Forms/EditPostForm";
 import ErrorPopup from "../../components/Popups/ErrorPopup";
@@ -27,7 +27,7 @@ function PostDetailsPage() {
     setDeletePost,
     deleteReply,
     setErrorMessage,
-    deletePost
+    deletePost,
   } = useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
@@ -35,8 +35,6 @@ function PostDetailsPage() {
   const [showReplyForm, setShowReplyForm] = useState(false);
 
   const storedToken = localStorage.getItem("authToken");
-  const navigate = useNavigate();
-
   useEffect(() => {
     axios
       .get(`${API_URL}/posts/${_id}`, {
@@ -49,8 +47,6 @@ function PostDetailsPage() {
         console.log(err);
       });
   }, [_id]);
-
-  const handleNavigate = () => navigate("/posts");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -66,8 +62,6 @@ function PostDetailsPage() {
     detailPost;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
 
-  // const toggleReplyForm = () => setShowReplyForm(!showReplyForm);
-
   return (
     <section className="page-container">
       {!showEditForm ? (
@@ -82,13 +76,13 @@ function PostDetailsPage() {
                 <div className="crud-buttons">
                   <button
                     onClick={() => {
-                      setShowErrorPopup(true)
-                        setDeleteOn(true)
-                        setDeletePost(true)
-                        setErrorMessage(
-                          "Are you sure you want to delete the post?"
-                        )
-                        console.log(deletePost)
+                      setShowErrorPopup(true);
+                      setDeleteOn(true);
+                      setDeletePost(true);
+                      setErrorMessage(
+                        "Are you sure you want to delete the post?"
+                      );
+                      console.log(deletePost);
                     }}
                     className="secondary-button danger-button"
                   >
@@ -124,18 +118,17 @@ function PostDetailsPage() {
                 </p>
               </div>
               <div className="btns-container">
+                <Link to={"/posts"} className="link-button">
+                  <button className="secondary-button danger-button">
+                    Go back
+                  </button>
+                </Link>
                 <button
                   className="primary-button reply-button-container"
                   onClick={() => setShowReplyForm(true)}
                 >
                   <img className="reply" src={replyIcon} alt="reply icon" />
                   Reply
-                </button>
-                <button
-                  className="secondary-button danger-button"
-                  onClick={handleNavigate}
-                >
-                  Go back
                 </button>
               </div>
             </div>

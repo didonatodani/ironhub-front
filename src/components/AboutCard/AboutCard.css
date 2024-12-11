@@ -14,7 +14,7 @@
     
     .img-div {
         cursor: pointer;
-        width: 300px;
+        width: 260px;
         height: 360px;
         object-fit: contain;
         background-position: center;
@@ -79,5 +79,11 @@
 
     100% {
         transform: translateY(0);
+    }
+}
+
+@media (width > 650px){
+    .about-card .img-div{
+        width: 300px;
     }
 }

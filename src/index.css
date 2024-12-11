@@ -112,6 +112,10 @@ a {
     color: var(--light-background)
 }
 
+.link-button{
+    display: inline-block;
+}
+
 .file-upload {
     background-color: #c2e5ec;
     width: 100%;

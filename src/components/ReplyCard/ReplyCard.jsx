@@ -49,34 +49,36 @@ function ReplyCard({ reply, setDetailPost }) {
           {name._id === user._id && (
             <>
               {!isEditing && (
+                <button
+                  onClick={() => {
+                    setShowErrorPopup(true),
+                      setDeleteOn(true),
+                      setDeleteReply(true),
+                      setErrorMessage(
+                        "Are you sure you want to delete the reply?"
+                      );
+                  }}
+                  className="secondary-button danger-button"
+                >
+                  Delete
+                </button>
+              )}
+              {!isEditing && (
                 <button onClick={handleEditing} className="primary-button">
                   Edit
                 </button>
               )}
-              {isEditing && (
-                <ReplyForm
-                  reply={reply}
-                  isEditing={isEditing}
-                  setIsEditing={setIsEditing}
-                  setDetailPost={setDetailPost}
-                />
-              )}
-              <button
-                onClick={() => {
-                  setShowErrorPopup(true),
-                    setDeleteOn(true),
-                    setDeleteReply(true),
-                    setErrorMessage(
-                      "Are you sure you want to delete the reply?"
-                    );
-                }}
-                className="secondary-button danger-button"
-              >
-                Delete
-              </button>
             </>
           )}
         </div>
+        {isEditing && (
+          <ReplyForm
+            reply={reply}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            setDetailPost={setDetailPost}
+          />
+        )}
         {showErrorPopup && deleteReply && (
           <ErrorPopup
             postId={postId}
