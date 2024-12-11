@@ -1,4 +1,3 @@
-import React from "react";
 import "./ProfileCard.css";
 
 function ProfileCard({ user, setShowEditProfile }) {
@@ -12,9 +11,11 @@ function ProfileCard({ user, setShowEditProfile }) {
     languages,
     linkedin,
   } = user;
+
   if (!user) {
     return <p>Loading...</p>;
   }
+
   const formattedDate = new Date(createdAt).toLocaleDateString("en-GB");
 
   return (
@@ -41,12 +42,14 @@ function ProfileCard({ user, setShowEditProfile }) {
         <p>
           Course-type: <span>{schedule}</span>
         </p>
-        <p>
-          Languages: <span>{languages}</span>
-        </p>
+        {languages && (
+          <p>
+            Languages: <span>{languages}</span>
+          </p>
+        )}
         {linkedin && (
           <p>
-            Linkedin: <span>{linkedin}</span>
+            Linkedin: <a href={linkedin} target="_blank" id="linkedin-link">{linkedin}</a>
           </p>
         )}
       </div>

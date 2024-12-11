@@ -1,11 +1,11 @@
+import "../Searchbar/Searchbar.css";
+
 import axios from "axios";
 import { useState } from "react";
 
-import "../Searchbar/Searchbar.css";
-
 const API_URL = import.meta.env.VITE_API_URL;
 
-function Searchbar({setSearchResult }) {
+function Searchbar({ setSearchResult }) {
   const [searchTitle, setSearchTitle] = useState("");
   const storedToken = localStorage.getItem("authToken");
 
@@ -13,10 +13,8 @@ function Searchbar({setSearchResult }) {
     const query = e.target.value;
     setSearchTitle(query);
     if (query.trim() === "") {
-      // When the input is empty, you see all posts
       setSearchResult(null);
-    } 
-    else {
+    } else {
       searchPostByTitle(query);
     }
   };
@@ -25,14 +23,15 @@ function Searchbar({setSearchResult }) {
     try {
       const response = await axios.get(`${API_URL}/posts/search`, {
         headers: { Authorization: `Bearer ${storedToken}` },
-        params: { title }
+        params: { title },
       });
       if (response.data.length === 0) {
-        setSearchResult("The problem you are looking for does not exist. Create a new one!");
+        setSearchResult(
+          "The problem you are looking for does not exist. Create a new one!"
+        );
       } else {
         setSearchResult(response.data);
       }
-      
     } catch (error) {
       console.log("This is the error", error);
       setSearchResult("An error occurred while searching.");

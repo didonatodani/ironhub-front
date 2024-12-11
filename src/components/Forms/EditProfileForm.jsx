@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import "./GeneralFormStyles.css";
+
+import axios from "axios";
+import service from "../../services/file-upload.service";
+import { useState, useContext } from "react";
 import { PopupContext } from "../../context/popups.context";
+
 import ErrorPopup from "../Popups/ErrorPopup";
 import ConfirmationPopup from "../Popups/ConfirmationPopup";
-
-// import { Navigate, useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./GeneralFormStyles.css";
-import service from "../../services/file-upload.service";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -17,6 +17,7 @@ function EditProfileForm({
   setShowEditProfile,
   setUser,
 }) {
+
   const { name, email, course, schedule, languages, picture, linkedin } = user;
 
   const [editedName, setEditedName] = useState(name);
@@ -34,20 +35,17 @@ function EditProfileForm({
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     setLoadingImage(true);
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+
     uploadData.append("picture", e.target.files[0]);
 
     service
       .uploadImage(uploadData)
       .then((response) => {
         setLoadingImage(false);
-        // response carries "fileUrl" which we can use to update the state
         setEditedPicture(response.fileUrl);
         setImageError(false)
       })
       .catch((err) => {
-        console.log("Error while uploading the file: ", err.response.data.message.message)
         setImageError(true)
         setImageMessage(err.response.data.message.message)
       });
@@ -88,7 +86,7 @@ function EditProfileForm({
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>
-        {/* Name Input */}
+
         <div className="form-div name">
           <label htmlFor="name">Name:</label>
           <input
@@ -100,7 +98,6 @@ function EditProfileForm({
           />
         </div>
 
-        {/* Email Input */}
         <div className="form-div email">
           <label htmlFor="email">Email:</label>
           <input
@@ -112,7 +109,6 @@ function EditProfileForm({
           />
         </div>
 
-        {/* Course Selection */}
         <fieldset className="form-div">
           <legend>Course</legend>
           <div className="field-div">
@@ -136,7 +132,6 @@ function EditProfileForm({
           </div>
         </fieldset>
 
-        {/* Schedule Selection */}
         <fieldset className="form-div">
           <legend>Select your course schedule:</legend>
           <div className="field-div">

@@ -1,9 +1,10 @@
-import errorIcon from "../../assets/error-icon.svg";
 import "./PopupStyling.css";
+import errorIcon from "../../assets/error-icon.svg";
+
+import axios from "axios";
 import { PopupContext } from "../../context/popups.context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,23 +25,23 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
   const navigate = useNavigate();
 
   function deletePostFunc() {
-  
-    axios
-      .delete(`${API_URL}/posts/${id}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((res) => {
-        setShowConfirmation(true);
-        setConfirmationMessage("Post deleted successfully");
-        setTimeout(() => {
-          setDeletePost(false);
-          setShowConfirmation(false);
-          navigate("/posts");
-        }, 1200);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      axios
+        .delete(`${API_URL}/posts/${id}`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+        .then((res) => {
+          setShowConfirmation(true);
+          setConfirmationMessage("Post deleted successfully");
+          setTimeout(() => {
+            setDeletePost(false);
+            setShowConfirmation(false);
+            navigate("/posts");
+          }, 1200);
+        });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const deleteReplyFunc = async () => {

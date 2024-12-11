@@ -27,7 +27,7 @@
     font-size: 20px;
   }
 
-  #about-btn {
+  #about-button {
     width: 180px;
     height: 50px;
     background: linear-gradient(to bottom, #3b64b2 5%, #4d84e6 100%);
@@ -47,7 +47,7 @@
     text-align: center;
   }
 
-  #about-btn:hover {
+  #about-button:hover {
     background: linear-gradient(to bottom, #4d84e6 5%, #3b64b2 100%);
     background-color: #4d84e6;
   }
@@ -83,7 +83,7 @@
     p {
       font-size: 20px;
     }
-    #about-btn {
+    #about-button {
       width: 200px;
       height: 60px;
       background-color: transparent;

@@ -1,11 +1,14 @@
-import checkIcon from "../../assets/check-icon.svg";
 import "./PopupStyling.css";
+import checkIcon from "../../assets/check-icon.svg";
 
-import { PopupContext } from "../../context/popups.context";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { PopupContext } from "../../context/popups.context";
 
-function ConfirmationPopup({ navigate, isSignedUp, setIsSignedUp }) {
+function ConfirmationPopup({ isSignedUp, setIsSignedUp }) {
   const { setShowConfirmation, confirmationMessage } = useContext(PopupContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className="pop-up-blocker">
@@ -31,5 +34,3 @@ function ConfirmationPopup({ navigate, isSignedUp, setIsSignedUp }) {
 }
 
 export default ConfirmationPopup;
-
-// navigate("/auth/login")

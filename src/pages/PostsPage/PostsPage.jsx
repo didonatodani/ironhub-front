@@ -1,10 +1,12 @@
+import "./PostsPage.css";
+import arrowUp from "../../assets/arrow-up.png";
+
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import axios from "axios";
+
 import PostCard from "../../components/PostCard/PostCard";
-import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import arrowUp from "../../assets/arrow-up.png";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -48,7 +50,7 @@ function PostsPage() {
         <Searchbar setSearchResult={setSearchResult} />
         <div className="filter-controls">
           <div className="custom-select">
-            <select value={course} onChange={(e) => setCourse(e.target.value)} >
+            <select value={course} onChange={(e) => setCourse(e.target.value)}>
               <option className="option" value="">
                 All Courses
               </option>
@@ -73,7 +75,6 @@ function PostsPage() {
 
       <section className="posts-container">
         {Array.isArray(searchResult) && searchResult.length > 0 ? (
-          // If there are search results, display them
           searchResult.map((result) => (
             <Link
               key={result._id}
@@ -84,10 +85,8 @@ function PostsPage() {
             </Link>
           ))
         ) : typeof searchResult === "string" ? (
-          // If there are not search results, display a message for user
           <p>{searchResult}</p>
         ) : (
-          // If there is no input, show all posts
           <section className="posts-container">
             {postsArray.map((post, index) => (
               <Link
@@ -103,7 +102,7 @@ function PostsPage() {
           </section>
         )}
       </section>
-      <button id="btn-up" onClick={scrollToTop}>
+      <button id="button-up" onClick={scrollToTop}>
         <img src={arrowUp} alt="arrow up icon" />
       </button>
     </div>

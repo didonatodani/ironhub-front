@@ -10,7 +10,9 @@
   img {
     border: 1px solid white;
     padding-bottom: 20px;
+    width: 280px; 
   }
+  
   .back-to-home-button {
     border-style: none;
     background-color: #008BBB;

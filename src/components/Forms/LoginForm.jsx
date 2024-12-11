@@ -19,7 +19,7 @@ function LoginForm() {
   const { setErrorMessage, showErrorPopup, setShowErrorPopup } =
     useContext(PopupContext);
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newLogin = {
       email,
@@ -45,6 +45,7 @@ function LoginForm() {
     <section className="post-form-section">
       <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
+
         <div className="form-div email">
           <label htmlFor="email">Email:</label>
           <input
@@ -54,6 +55,7 @@ function LoginForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div className="form-div password">
           <label htmlFor="password">Password:</label>
           <input
@@ -64,10 +66,12 @@ function LoginForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        
         <button type="submit" className="primary-button">
           Take me in
         </button>
       </form>
+
       {showErrorPopup && <ErrorPopup />}
     </section>
   );

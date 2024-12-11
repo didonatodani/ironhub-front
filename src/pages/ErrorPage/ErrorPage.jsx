@@ -7,9 +7,9 @@ function ErrorPage() {
     <div className="error-container">
       <h1>404</h1>
       <h2>Oops, our dog ate this page...</h2>
-      <img width={280} src={Lucas} alt="lucas-image" />
+      <img src={Lucas} alt="Lucas image not found page" />
       <NavLink to={"/"}>
-        <button className="back-to-home-button">Return to home</button>
+        <button className="back-to-home-button">RETURN HOME</button>
       </NavLink>
     </div>
   );

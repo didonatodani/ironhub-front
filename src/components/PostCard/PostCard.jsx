@@ -1,7 +1,7 @@
 import "./PostCard.css";
 
 function PostCard({ post }) {
-  const { created, description, course, link, name, picture, title } = post;
+  const { created, course, name, title } = post;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
 
   return (
@@ -10,7 +10,7 @@ function PostCard({ post }) {
         <span>{name?.name}</span>
         <span>{formattedDate}</span>
       </div>
-        <span>{course}</span>
+      <span>{course}</span>
       <h2>{title}</h2>
     </article>
   );

@@ -1,12 +1,14 @@
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
+
+import axios from "axios";
+import service from "../../services/file-upload.service";
+
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
 
-import axios from "axios";
-import service from "../../services/file-upload.service";
 import ErrorPopup from "../Popups/ErrorPopup";
 import ConfirmationPopup from "../Popups/ConfirmationPopup";
 
@@ -37,8 +39,6 @@ function PostForm() {
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     setLoadingImage(true);
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
 
     service
@@ -91,7 +91,7 @@ function PostForm() {
     <section className="post-form-section">
       <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
-        {/* Course Selection */}
+
         <fieldset className="form-div">
           <legend>Course</legend>
           <div className="field-div">
@@ -124,6 +124,7 @@ function PostForm() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
+
         <div className="form-div description">
           <label htmlFor="description">Description:</label>
           <textarea
@@ -131,6 +132,7 @@ function PostForm() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
+
         <div className="form-div link">
           <label htmlFor="link">Link (optional):</label>
           <input
@@ -140,6 +142,7 @@ function PostForm() {
             onChange={(e) => setLink(e.target.value)}
           />
         </div>
+
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
           <label htmlFor="file-upload" className="file-upload">
@@ -152,6 +155,7 @@ function PostForm() {
           </label>
           {imageError && <small>{imageMessage}</small>}
         </div>
+
         <div className="submit-buttons">
           <Link to={"/posts"}>
             <button type="button" className="secondary-button danger-button">
@@ -169,7 +173,6 @@ function PostForm() {
       </form>
 
       {showErrorPopup && <ErrorPopup />}
-
       {showConfirmation && <ConfirmationPopup />}
     </section>
   );

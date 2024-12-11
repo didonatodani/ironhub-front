@@ -1,12 +1,13 @@
 import "./GeneralFormStyles.css";
+
+import axios from "axios";
+import service from "../../services/file-upload.service";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
-import axios from "axios";
+
 import ErrorPopup from "../Popups/ErrorPopup";
 import ConfirmationPopup from "../Popups/ConfirmationPopup";
-import service from "../../services/file-upload.service";
-
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -39,23 +40,17 @@ function EditPostForm({
     const uploadData = new FormData();
     setLoadingImage(true);
 
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
-
     service
       .uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
         setLoadingImage(false);
         setEditedPicture(response.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
 
-
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const editedPost = {

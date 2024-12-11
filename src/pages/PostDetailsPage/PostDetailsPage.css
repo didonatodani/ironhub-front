@@ -67,7 +67,7 @@
   }
 }
 
-.btns-container {
+.buttons-container {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -142,7 +142,7 @@
     }
   }
 
-  section .btns-container,
+  section .buttons-container,
   .main-post-header .crud-buttons {
     display: flex;
     flex-direction: row;
@@ -183,7 +183,7 @@
     text-align: center;
   }
 
-  .btns-container {
+  .buttons-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

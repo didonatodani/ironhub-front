@@ -1,17 +1,16 @@
-import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { PopupContext } from "../../context/popups.context";
-
-const API_URL = import.meta.env.VITE_API_URL;
-
-// Importing styles and images
 import "./GeneralFormStyles.css";
 import logo from "../../assets/Logo.svg";
-import ErrorPopup from "../Popups/ErrorPopup";
-import ConfirmationPopup from "../Popups/ConfirmationPopup";
+
+import axios from "axios";
 import service from "../../services/file-upload.service";
 
+import { useState, useContext } from "react";
+import { PopupContext } from "../../context/popups.context";
+
+import ErrorPopup from "../Popups/ErrorPopup";
+import ConfirmationPopup from "../Popups/ConfirmationPopup";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -22,31 +21,28 @@ function SignupForm() {
   const [picture, setPicture] = useState("");
   const [languages, setLanguages] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignedUp, setIsSignedUp] = useState(false)
+  const [isSignedUp, setIsSignedUp] = useState(false);
 
-  const { setErrorMessage, showErrorPopup, setShowErrorPopup, setConfirmationMessage, showConfirmation, setShowConfirmation } =
-    useContext(PopupContext);
-
-  const navigate = useNavigate();
+  const {
+    setErrorMessage,
+    showErrorPopup,
+    setShowErrorPopup,
+    setConfirmationMessage,
+    showConfirmation,
+    setShowConfirmation,
+  } = useContext(PopupContext);
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
-
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
-
 
     service
       .uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
         setPicture(response.fileUrl);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -65,23 +61,21 @@ function SignupForm() {
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((res) => {
-        setShowConfirmation(true)
-        setConfirmationMessage("New user created sucessfully")
-        setIsSignedUp(true)
-
+        setShowConfirmation(true);
+        setConfirmationMessage("New user created sucessfully");
+        setIsSignedUp(true);
       })
       .catch((err) => {
-        setShowErrorPopup(true)
-        setErrorMessage(err.response.data.message)
-
+        setShowErrorPopup(true);
+        setErrorMessage(err.response.data.message);
       });
-
   }
 
   return (
     <section className="post-form-section">
       <img src={logo} alt="ironhub logo" className="form-logo" />
       <form className="post-form" onSubmit={handleSubmit}>
+
         <div className="form-div name">
           <label htmlFor="name">Name:</label>
           <input
@@ -91,6 +85,7 @@ function SignupForm() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
         <div className="form-div email">
           <label htmlFor="email">Email:</label>
           <input
@@ -100,68 +95,51 @@ function SignupForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+        
         <fieldset className="form-div">
-          <legend>Select your course</legend>
+          <legend>Course</legend>
           <div className="field-div">
-            <div>
-              <input
-                type="radio"
-                id="web"
-                name="course"
-                value="Web Development"
-                onChange={(e) => setCourse(e.target.value)}
-                defaultChecked
-              />
-              <label htmlFor="web">W.D.</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="ux"
-                name="course"
-                value="UX/UI Design"
-                onChange={(e) => setCourse(e.target.value)}
-              />
-              <label htmlFor="ux">UX/UI</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="data"
-                name="course"
-                value="Data Analytics"
-                onChange={(e) => setCourse(e.target.value)}
-              />
-              <label htmlFor="data">D.A.</label>
-            </div>
+            {["Web Development", "UX/UI Design", "Data Analytics"].map(
+              (course, idx) => (
+                <div key={course}>
+                  <input
+                    type="radio"
+                    id={course.toLowerCase().replace(" ", "-")}
+                    name="course"
+                    value={course}
+                    onChange={(e) => setCourse(e.target.value)}
+                    defaultChecked={idx === 0}
+                  />
+                  <label htmlFor={course.toLowerCase().replace(" ", "-")}>
+                    {course.slice(0, 2).toUpperCase()}
+                  </label>
+                </div>
+              )
+            )}
           </div>
         </fieldset>
+
         <fieldset className="form-div">
           <legend>Select your course schedule:</legend>
           <div className="field-div">
-            <div>
-              <input
-                type="radio"
-                id="full-time"
-                name="schedule"
-                value="Full-time"
-                onChange={(e) => setSchedule(e.target.value)}
-                defaultChecked
-              />
-              <label htmlFor="full-time">Full-time</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="part-time"
-                name="schedule"
-                value="Part-time"
-                onChange={(e) => setSchedule(e.target.value)}
-              />
-              <label htmlFor="part-time">Part-time</label>
-            </div>
+            {["Full-time", "Part-time"].map((schedule, idx) => (
+              <div key={schedule}>
+                <input
+                  type="radio"
+                  id={schedule.toLowerCase().replace(" ", "-")}
+                  name="schedule"
+                  value={schedule}
+                  onChange={(e) => setSchedule(e.target.value)}
+                  defaultChecked={idx === 0}
+                />
+                <label htmlFor={schedule.toLowerCase().replace(" ", "-")}>
+                  {schedule}
+                </label>
+              </div>
+            ))}
           </div>
         </fieldset>
+
         <div className="form-div linkedin">
           <label htmlFor="picture">Linkedin URL:</label>
           <input
@@ -171,6 +149,7 @@ function SignupForm() {
             onChange={(e) => setLinkedin(e.target.value)}
           />
         </div>
+
         <div className="form-div languages">
           <label htmlFor="course">Language:</label>
           <input
@@ -180,6 +159,7 @@ function SignupForm() {
             onChange={(e) => setLanguages(e.target.value)}
           />
         </div>
+
         <div className="form-div picture">
           <label htmlFor="picture">Image (optional):</label>
           <label htmlFor="file-upload" className="file-upload">
@@ -192,6 +172,7 @@ function SignupForm() {
             />
           </label>
         </div>
+
         <div className="form-div password">
           <label htmlFor="password">Password:</label>
           <input
@@ -201,14 +182,15 @@ function SignupForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <button type="submit" className="primary-button">
           Sign up
         </button>
       </form>
+
       {showErrorPopup && <ErrorPopup />}
       {showConfirmation && (
         <ConfirmationPopup
-          navigate={navigate}
           isSignedUp={isSignedUp}
           setIsSignedUp={setIsSignedUp}
         />

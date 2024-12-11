@@ -79,6 +79,10 @@
   .primary-button {
     padding: 20px;
   }
+  #linkedin-link{
+    color: #00C6FC;
+    text-decoration: underline;
+  }
 }
 
 

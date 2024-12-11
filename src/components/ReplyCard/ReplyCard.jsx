@@ -1,15 +1,20 @@
 import "./ReplyCard.css";
+
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context.jsx";
-import { useState, useContext } from "react";
-import ReplyForm from "../Forms/EditReplyForm.jsx";
 import { useParams } from "react-router-dom";
+import { useState, useContext } from "react";
+
+import ReplyForm from "../Forms/EditReplyForm.jsx";
 import ErrorPopup from "../Popups/ErrorPopup.jsx";
 
 function ReplyCard({ reply, setDetailPost }) {
   const { _id, created, description, link, name, picture } = reply;
+
   const { postId } = useParams();
+
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
+
   const { user } = useContext(AuthContext);
   const {
     setDeleteOn,
@@ -19,11 +24,10 @@ function ReplyCard({ reply, setDetailPost }) {
     deleteReply,
     setErrorMessage,
   } = useContext(PopupContext);
+
   const storedToken = localStorage.getItem("authToken");
 
   const [isEditing, setIsEditing] = useState(false);
-
-  const handleEditing = () => setIsEditing(true);
 
   return (
     <>
@@ -50,7 +54,7 @@ function ReplyCard({ reply, setDetailPost }) {
             </a>
           </p>
         )}
-        <div className="reply-btns">
+        <div className="reply-buttons">
           {name._id === user._id && (
             <>
               {!isEditing && (
@@ -69,7 +73,7 @@ function ReplyCard({ reply, setDetailPost }) {
                 </button>
               )}
               {!isEditing && (
-                <button onClick={handleEditing} className="primary-button">
+                <button onClick={()=>{setIsEditing(true)}} className="primary-button">
                   Edit
                 </button>
               )}

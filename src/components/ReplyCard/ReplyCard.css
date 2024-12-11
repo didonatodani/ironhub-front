@@ -23,7 +23,7 @@
   }
 }
 
-.reply-btns {
+.reply-buttons {
   width: fit-content;
   display: flex;
   align-items: center;
@@ -39,7 +39,7 @@
   .reply-container{
     padding: 10px 40px!important;
   }
-  .reply-btns {
+  .reply-buttons {
    align-self: flex-end;
   }
 }

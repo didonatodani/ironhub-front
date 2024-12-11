@@ -1,7 +1,8 @@
-import { useState } from "react";
+import "./AboutCard.css"; 
 import githubLogo from "../../assets/github-logo.svg";
 import linkedinLogo from "../../assets/linkedin-logo.svg";
-import "./AboutCard.css";
+
+import { useState } from "react";
 
 function AboutCard({ member }) {
   const { name, linkedin, github, description } = member;
@@ -13,7 +14,10 @@ function AboutCard({ member }) {
         className={`img-div ${
           hideDescription && name.toLowerCase().slice(0, 3)
         }`}
-       onClick={()=>{setHideDescription(!hideDescription)}}>
+        onClick={() => {
+          setHideDescription(!hideDescription);
+        }}
+      >
         <p className={`${hideDescription && "hide"}`}>{description}</p>
       </div>
       <h2>{name}</h2>

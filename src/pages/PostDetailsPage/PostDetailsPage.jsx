@@ -1,18 +1,18 @@
+import "./PostDetailsPage.css";
+import replyIcon from "../../assets/reply-message.png";
+import arrowUp from "../../assets/arrow-up.png";
+import ConfirmationPopup from "../../components/Popups/ConfirmationPopup";
+
 import axios from "axios";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
-import { useParams, Link } from "react-router-dom";
 
 import EditPostForm from "../../components/Forms/EditPostForm";
 import ErrorPopup from "../../components/Popups/ErrorPopup";
 import ReplyCard from "../../components/ReplyCard/ReplyCard";
 import PostReplyForm from "../../components/Forms/PostReplyForm";
-
-import "./PostDetailsPage.css";
-import replyIcon from "../../assets/reply-message.png";
-import arrowUp from "../../assets/arrow-up.png";
-import ConfirmationPopup from "../../components/Popups/ConfirmationPopup";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -27,7 +27,6 @@ function PostDetailsPage() {
     setDeletePost,
     deleteReply,
     setErrorMessage,
-    deletePost,
   } = useContext(PopupContext);
 
   const [detailPost, setDetailPost] = useState(null);
@@ -35,6 +34,7 @@ function PostDetailsPage() {
   const [showReplyForm, setShowReplyForm] = useState(false);
 
   const storedToken = localStorage.getItem("authToken");
+
   useEffect(() => {
     axios
       .get(`${API_URL}/posts/${_id}`, {
@@ -58,6 +58,7 @@ function PostDetailsPage() {
   if (!detailPost) {
     return <p>Loading...</p>;
   }
+
   const { name, title, description, created, picture, link, course } =
     detailPost;
   const formattedDate = new Date(created).toLocaleDateString("en-GB");
@@ -98,14 +99,11 @@ function PostDetailsPage() {
             </div>
             <div className="topic-container">
               <div className="topic-header">
-                {/* add user picture here */}
-                {/* <img src={user.picture} alt="" /> */}
                 <p>{name?.name}</p>
                 <p>{formattedDate}</p>
               </div>
               <div className="topic-body">
                 <p>{description}</p>
-                {/* <p className="link-text">Image: {picture}</p> */}
                 {picture && <img src={picture} alt="picture" />}
                 {link && (
                   <p>
@@ -121,7 +119,7 @@ function PostDetailsPage() {
                   </p>
                 )}
               </div>
-              <div className="btns-container">
+              <div className="buttons-container">
                 <Link to={"/posts"} className="link-button">
                   <button className="secondary-button danger-button">
                     Go back
@@ -143,7 +141,7 @@ function PostDetailsPage() {
               </div>
             </div>
           </article>
-          <button id="btn-up" onClick={scrollToTop}>
+          <button id="button-up" onClick={scrollToTop}>
             <img src={arrowUp} alt="arrow up icon" />
           </button>
         </>
@@ -156,6 +154,7 @@ function PostDetailsPage() {
           setShowEditForm={setShowEditForm}
         />
       )}
+
       {/* Conditionally render the ReplyForm */}
       {showReplyForm && (
         <PostReplyForm

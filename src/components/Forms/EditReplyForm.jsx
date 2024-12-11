@@ -1,8 +1,9 @@
+import "./GeneralFormStyles.css";
+
+import axios from "axios";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
-import { useState, useContext } from "react";
-import axios from "axios";
-import "./GeneralFormStyles.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -41,11 +42,9 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
       );
 
       setDetailPost((prevPost) => {
-        // Map over the replies and update the one that matches
         const updatedReplies = prevPost.replies.map((eachPost) =>
           eachPost._id === reply._id ? { ...response.data } : eachPost
         );
-
         return { ...prevPost, replies: updatedReplies };
       });
       setIsEditing(false),

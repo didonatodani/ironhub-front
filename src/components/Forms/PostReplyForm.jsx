@@ -1,17 +1,18 @@
-import { useState, useContext } from "react";
-import axios from "axios";
 import "./GeneralFormStyles.css";
+
+import axios from "axios";
+import service from "../../services/file-upload.service";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import { PopupContext } from "../../context/popups.context";
 
-import service from "../../services/file-upload.service";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const { user } = useContext(AuthContext);
   const {
-    showErrorPopup,
-    showConfirmation,
+    imageError, setImageError,
+    imageMessage, setImageMessage,
     setShowConfirmation,
     setConfirmationMessage,
     setErrorMessage,
@@ -21,8 +22,6 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const [description, setDescription] = useState("");
   const [link, setLink] = useState("");
   const [picture, setPicture] = useState("");
-  const [imageError, setImageError] = useState(false);
-  const [imageMessage, setImageMessage] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
 
   const storedToken = localStorage.getItem("authToken");
@@ -30,15 +29,11 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     setLoadingImage(true);
-    // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
 
     service
       .uploadImage(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
-        // response carries "fileUrl" which we can use to update the state
         setLoadingImage(false);
         setPicture(response.fileUrl);
         setImageError(false);
@@ -67,8 +62,6 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-
-      // Add the newly created reply to the post's replies in state
       setDetailPost((prevPost) => ({
         ...prevPost,
         replies: [...prevPost.replies, response.data.reply],
@@ -85,9 +78,6 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
       setErrorMessage(error.response.data.message);
     }
   };
-
-  const handleCancel = () => setShowReplyForm(false);
-
 
   return (
     <section className="post-form-section">
@@ -125,7 +115,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           <button
             type="button"
             className="secondary-button danger-button"
-            onClick={handleCancel}
+            onClick={()=>{setShowReplyForm(false)}}
           >
             Cancel
           </button>

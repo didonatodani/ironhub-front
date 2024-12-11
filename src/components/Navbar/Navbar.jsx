@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import Logo from "../../assets/Ironhub-logo.png";
-import ArrowDown from "../../assets/arrow-down.png"
+import ArrowDown from "../../assets/arrow-down.png";
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth.context.jsx";
@@ -10,11 +10,10 @@ function Navbar() {
   const { isLoggedIn, user, logOut } = useContext(AuthContext);
   const [isDropped, setIsDropped] = useState(false);
 
-  function showMenu() {
+  const showMenu = () => {
     setIsDropped(!isDropped);
-  }
-
-
+  };
+  
   return (
     <div className="navbar-container">
       {isLoggedIn ? (
