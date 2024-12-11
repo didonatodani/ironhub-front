@@ -3,9 +3,11 @@
     height: 100vh;
     position: fixed;
     top: 0;
-    background-color: rgba(246, 246, 246, 0);
+    left: 0;
+    background-color: rgba(74, 74, 74, 0.391);
     z-index: 2;
     .pop-up-container {
+        min-width: 300px;
         background-color: var(--background);
         border-radius: 20px;
         padding: 40px;
