@@ -23,12 +23,13 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const [picture, setPicture] = useState("");
   const [imageError, setImageError] = useState(false);
   const [imageMessage, setImageMessage] = useState("");
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const storedToken = localStorage.getItem("authToken");
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
-
+    setLoadingImage(true);
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
@@ -38,6 +39,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
       .then((response) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
+        setLoadingImage(false);
         setPicture(response.fileUrl);
         setImageError(false);
       })
@@ -86,7 +88,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
 
   const handleCancel = () => setShowReplyForm(false);
 
-  
+
   return (
     <section className="post-form-section">
       <form className="post-form" onSubmit={handleSubmit}>
@@ -127,7 +129,11 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           >
             Cancel
           </button>
-          <button type="submit" className="primary-button">
+          <button
+            disabled={loadingImage}
+            type="submit"
+            className="primary-button"
+          >
             Save Reply
           </button>
         </div>
