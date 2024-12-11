@@ -16,9 +16,6 @@ import IsPrivate from "./components/IsPrivate/IsPrivate.jsx";
 import IsPublic from "./components/IsPublic/IsPublic.jsx";
 import PostForm from "./components/Forms/PostForm.jsx";
 
-// just testing components:
-import EditReplyForm from "./components/Forms/EditReplyForm.jsx";
-
 function App() {
   return (
     <>
@@ -34,8 +31,6 @@ function App() {
         <Route path="/posts/:_id" element={<IsPrivate><PostDetailsPage /></IsPrivate>} />
         <Route path="/:userId" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="*" element={<ErrorPage />} />
-        {/* just for now!!! */}
-        <Route path="/test" element={<EditReplyForm />} />
       </Routes>
       </div>
       <Footer />
