@@ -5,6 +5,7 @@ import PostCard from "../../components/PostCard/PostCard";
 import "./PostsPage.css";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import arrowUp from "../../assets/arrow-up.png";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -14,6 +15,7 @@ function PostsPage() {
   const [course, setCourse] = useState("All Courses");
   const [sortBy, setSortBy] = useState("created");
   const [order, setOrder] = useState("desc");
+  const navigate = useNavigate();
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -32,6 +34,7 @@ function PostsPage() {
       })
       .catch((err) => {
         console.log(err);
+        navigate("*");
       });
   }, [course, sortBy, order]);
 

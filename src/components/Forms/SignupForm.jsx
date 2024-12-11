@@ -172,7 +172,7 @@ function SignupForm() {
           />
         </div>
         <div className="form-div languages">
-          <label htmlFor="course">Language:</label>
+          <label htmlFor="course">Languages:</label>
           <input
             type="languages"
             name="languages"
