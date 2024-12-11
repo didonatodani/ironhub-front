@@ -57,7 +57,6 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
     } catch (error) {
       setShowErrorPopup(true);
       setErrorMessage("Error updating reply");
-      console.error("Error updating reply:", error);
     }
   };
 

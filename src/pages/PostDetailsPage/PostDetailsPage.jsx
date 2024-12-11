@@ -82,7 +82,6 @@ function PostDetailsPage() {
                       setErrorMessage(
                         "Are you sure you want to delete the post?"
                       );
-                      console.log(deletePost);
                     }}
                     className="secondary-button danger-button"
                   >

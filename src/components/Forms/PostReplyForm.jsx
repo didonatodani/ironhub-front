@@ -65,7 +65,6 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       );
-      console.log("The response: ", response.data.reply);
 
       // Add the newly created reply to the post's replies in state
       setDetailPost((prevPost) => ({

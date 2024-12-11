@@ -11,7 +11,6 @@ function Searchbar({setSearchResult }) {
 
   const handleSearch = (e) => {
     const query = e.target.value;
-    console.log(query);
     setSearchTitle(query);
     if (query.trim() === "") {
       // When the input is empty, you see all posts

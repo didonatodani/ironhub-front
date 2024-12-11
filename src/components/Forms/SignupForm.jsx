@@ -35,7 +35,7 @@ function SignupForm() {
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("picture", e.target.files[0]);
-    console.log([...uploadData.entries()]);
+
 
     service
       .uploadImage(uploadData)
