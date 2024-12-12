@@ -2,10 +2,10 @@
 
 # IronHub - Frontend Repository
 
-This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**
+This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**  
 
 
-![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)
+![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)  
 
 ## Installation
 <details>
@@ -13,24 +13,26 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 
   To install and run the **IronHub** frontend web app locally, follow these steps:
 
-  ### Clone the Frontend Repository
-  Clone the frontend repository to your local machine:
-  
-  1) ``bash
-    git clone <frontend-repository-url>
+  1) Clone the Frontend Repository:
+     ``bash
+     git clone *frontend-repository-url*
 
-  2) cd <frontend-directory>
-  3) npm install react react-router-dom axios cloudinary
+  3) Navigate to the Project Directory:
+     cd <frontend-directory>
   
-    Required Dependencies:
-      react - Frontend library for building user interfaces.
-      react-router-dom - For handling navigation between pages.
-      axios - To make HTTP requests to the backend.
-      cloudinary - For image storage and retrieval
+  5) Install the required dependencies:
+     npm install react react-router-dom axios cloudinary
+  
+      Required Dependencies:
+         - react - Frontend library for building user interfaces.
+         - react-router-dom - For handling navigation between pages.
+         - axios - To make HTTP requests to the backend.
+         - cloudinary - For image storage and retrieval
 
-  4) npm run dev
+  4) Run the development server:
+     npm run dev
+     
 </details>
-
 
 ## Features
 - User Authentication: Sign-up, log-in, and log-out.
@@ -87,6 +89,25 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 </details>
 
 ### Components
+<detail>
+  <summary>Click to view the components</summary>
+  
+   The **IronHub** frontend uses the following components:
+
+  - **AboutCard**: Displays info about the creators.
+  - **Footer**: The bottom section of the app.
+  - **Forms**: Handles login, signup, and post and reply creation and edition forms.
+  - **IsPrivate**: Ensures access to certain pages for authenticated users.
+  - **IsPublic**: Ensures access to certain pages for unauthenticated users.
+  - **Navbar**: Navigation bar with links to various sections.
+  - **Popups**: Modal dialogs for messages or confirmations.
+  - **PostCard**: Displays a post summary.
+  - **ProfileCard**: Shows user profile information.
+  - **ReplyCard**: Displays a post reply.
+  - **Searchbar**: Allows searching posts by title.
+
+  These components are reusable and help maintain a modular structure.
+</detail>
 
 
 
