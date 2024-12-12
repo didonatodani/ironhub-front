@@ -4,7 +4,33 @@
 
 This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**
 
+
 ![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)
+
+## Installation
+<details>
+  <summary>Click to view Frontend Installation Instructions</summary>
+
+  To install and run the **IronHub** frontend web app locally, follow these steps:
+
+  ### Clone the Frontend Repository
+  Clone the frontend repository to your local machine:
+  
+  ``bash
+  git clone <frontend-repository-url>
+
+  cd <frontend-directory>
+  npm install react react-router-dom axios cloudinary
+  
+    Required Dependencies:
+      react - Frontend library for building user interfaces.
+      react-router-dom - For handling navigation between pages.
+      axios - To make HTTP requests to the backend.
+      cloudinary - For image storage and retrieval
+
+  npm run dev
+</details>
+
 
 ## Features
 - User Authentication: Sign-up, log-in, and log-out.
@@ -61,4 +87,6 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 </details>
 
 ### Components
+
+
 
