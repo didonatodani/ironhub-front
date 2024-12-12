@@ -4,8 +4,8 @@
 
 This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**  
 
-**Link to the frontend-repository**:  
-https://github.com/didonatodani/ironhub-front
+**Link to the Back-end repository**:  
+https://github.com/phsworks/IronHub-Backend/blob/main/readme.md  
                            
 ![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)    
 
@@ -109,7 +109,7 @@ https://github.com/didonatodani/ironhub-front
      
 </details>
   
-**Credits**:  
+## Credits:  
 
 - **IronHub was developed by**:
   - **Dani Di Donato**:
