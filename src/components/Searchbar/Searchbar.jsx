@@ -19,23 +19,25 @@ function Searchbar({ setSearchResult }) {
     }
   };
 
-  const searchPostByTitle = async (title) => {
-    try {
-      const response = await axios.get(`${API_URL}/posts/search`, {
+  const searchPostByTitle = (title) => {
+    axios
+      .get(`${API_URL}/posts/search`, {
         headers: { Authorization: `Bearer ${storedToken}` },
         params: { title },
+      })
+      .then((response) => {
+        if (response.data.length === 0) {
+          setSearchResult(
+            "The problem you are looking for does not exist. Create a new one!"
+          );
+        } else {
+          setSearchResult(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log("This is the error", error);
+        setSearchResult("An error occurred while searching.");
       });
-      if (response.data.length === 0) {
-        setSearchResult(
-          "The problem you are looking for does not exist. Create a new one!"
-        );
-      } else {
-        setSearchResult(response.data);
-      }
-    } catch (error) {
-      console.log("This is the error", error);
-      setSearchResult("An error occurred while searching.");
-    }
   };
 
   return (

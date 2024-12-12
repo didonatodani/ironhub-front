@@ -44,25 +44,26 @@ function ErrorPopup({ id, storedToken, postId, _id, setDetailPost }) {
     }
   }
 
-  const deleteReplyFunc = async () => {
-    try {
-      await axios.delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
+  const deleteReplyFunc = () => {
+    axios
+      .delete(`${API_URL}/posts/${postId}/reply/${_id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setDetailPost((prevPost) => ({
+          ...prevPost,
+          replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
+        }));
+        setShowConfirmation(true);
+        setConfirmationMessage("Reply deleted successfully");
+        setTimeout(() => {
+          setDeleteReply(false);
+          setShowConfirmation(false);
+        }, 1200);
+      })
+      .catch((error) => {
+        console.log("Error deleting reply: ", error);
       });
-
-      setDetailPost((prevPost) => ({
-        ...prevPost,
-        replies: prevPost.replies.filter((eachPost) => eachPost._id !== _id),
-      }));
-      setShowConfirmation(true);
-      setConfirmationMessage("Reply deleted successfully");
-      setTimeout(() => {
-        setDeleteReply(false);
-        setShowConfirmation(false);
-      }, 1200);
-    } catch (error) {
-      console.log("Error deleting reply: ", error);
-    }
   };
 
   return (

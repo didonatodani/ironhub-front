@@ -22,7 +22,7 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
 
   const storedToken = localStorage.getItem("authToken");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const editedReply = {
@@ -32,31 +32,28 @@ function EditReplyForm({ reply, setIsEditing, setDetailPost }) {
       picture,
     };
 
-    try {
-      const response = await axios.put(
-        `${API_URL}/posts/${reply.postId}/reply/${reply._id}`,
-        editedReply,
-        {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        }
-      );
-
-      setDetailPost((prevPost) => {
-        const updatedReplies = prevPost.replies.map((eachPost) =>
-          eachPost._id === reply._id ? { ...response.data } : eachPost
-        );
-        return { ...prevPost, replies: updatedReplies };
+    axios
+      .put(`${API_URL}/posts/${reply.postId}/reply/${reply._id}`, editedReply, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setDetailPost((prevPost) => {
+          const updatedReplies = prevPost.replies.map((eachPost) =>
+            eachPost._id === reply._id ? { ...response.data } : eachPost
+          );
+          return { ...prevPost, replies: updatedReplies };
+        });
+        setIsEditing(false),
+          setShowConfirmation(true),
+          setConfirmationMessage("Reply edited successfully!"),
+          setTimeout(() => {
+            setShowConfirmation(false);
+          }, 1200);
+      })
+      .catch((error) => {
+        setShowErrorPopup(true);
+        setErrorMessage("Error updating reply");
       });
-      setIsEditing(false),
-        setShowConfirmation(true),
-        setConfirmationMessage("Reply edited successfully!"),
-        setTimeout(() => {
-          setShowConfirmation(false);
-        }, 1200);
-    } catch (error) {
-      setShowErrorPopup(true);
-      setErrorMessage("Error updating reply");
-    }
   };
 
   const handleCancel = () => {

@@ -11,8 +11,10 @@ const API_URL = import.meta.env.VITE_API_URL;
 function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
   const { user } = useContext(AuthContext);
   const {
-    imageError, setImageError,
-    imageMessage, setImageMessage,
+    imageError,
+    setImageError,
+    imageMessage,
+    setImageMessage,
     setShowConfirmation,
     setConfirmationMessage,
     setErrorMessage,
@@ -44,7 +46,7 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
       });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newReply = {
@@ -54,29 +56,28 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
       picture,
     };
 
-    try {
-      const response = await axios.post(
-        `${API_URL}/posts/${postId}/reply/`,
-        newReply,
-        {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        }
-      );
-      setDetailPost((prevPost) => ({
-        ...prevPost,
-        replies: [...prevPost.replies, response.data.reply],
-      }));
+    axios
+      .post(`${API_URL}/posts/${postId}/reply/`, newReply, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        setDetailPost((prevPost) => ({
+          ...prevPost,
+          replies: [...prevPost.replies, response.data.reply],
+        }));
 
-      setShowReplyForm(false);
-      setShowConfirmation(true);
-      setConfirmationMessage("Reply created successfully!");
-      setTimeout(() => {
-        setShowConfirmation(false);
-      }, 1200);
-    } catch (error) {
-      setShowErrorPopup(true);
-      setErrorMessage(error.response.data.message);
-    }
+        setShowReplyForm(false);
+        setShowConfirmation(true);
+        setConfirmationMessage("Reply created successfully!");
+        setTimeout(() => {
+          setShowConfirmation(false);
+        }, 1200);
+      })
+
+      .catch((error) => {
+        setShowErrorPopup(true);
+        setErrorMessage(error.response.data.message);
+      });
   };
 
   return (
@@ -115,7 +116,9 @@ function PostReplyForm({ postId, setDetailPost, setShowReplyForm }) {
           <button
             type="button"
             className="secondary-button danger-button"
-            onClick={()=>{setShowReplyForm(false)}}
+            onClick={() => {
+              setShowReplyForm(false);
+            }}
           >
             Cancel
           </button>

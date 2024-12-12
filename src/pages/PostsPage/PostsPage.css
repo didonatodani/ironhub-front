@@ -81,7 +81,8 @@
 
 .custom-select select:hover {
   cursor: pointer;
-  border: 1px solid #00c4fa;
+  background-color: rgba(174, 204, 233, 0.2);
+  box-shadow: 0px 1px 2px #00c4fa;
 }
 
 .custom-select select option {
