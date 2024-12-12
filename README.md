@@ -1,62 +1,127 @@
-# IronHub - Frontend
-This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing students to explore, create, and manage posts.
+![Ironhub logo](https://github.com/user-attachments/assets/b27d8d39-3f79-4c7d-9fae-32a4f89bebab)
 
+# IronHub - Frontend Repository
+
+This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**  
+
+**Link to the Back-end repository**:  
+https://github.com/phsworks/IronHub-Backend/blob/main/readme.md  
+                           
+![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)    
+
+                    
 ## Features
 - User Authentication: Sign-up, log-in, and log-out.
 - Post Management: View, create, edit, and delete posts.
+- Replies Management: View, create, edit, and delete replies.
 - Filtering and Sorting: Easily browse posts by course, date, or title.
-- User Profiles: Update personal details and manage user-specific posts.
+- User Profiles: Update personal details in your profile page.
   
 ## Technologies Used
 - React.js: Frontend library for building user interfaces.
 - React Router: For navigation between views.
 - CSS: Custom styling for the app.
-  
-## Pages and Components:
+- Axios: For handling API requests to communicate with the backend.
+- Cloudinary: For managing and hosting media files, such as images.  
 
-### Pages
-1. Homepage
-   - Displays a brief introduction to IronHub.
-   - Includes navigation to the "About" page and buttons for login/sign-up.
-2. About
-   - Contains information about the platform and its creators.
-   - Provides links to sign-up and log-in pages.
-3. Posts
-   - Lists all posts with pagination or infinite scroll for better user experience.
-   - Includes options to filter posts by course, sort by date, and search by title.
-   - Each post is displayed using the **PostCard** component.
-4. PostDetails
-   - Displays the full details of a single post, including title, content, author, date, and comments (if applicable).
-   - Includes "Edit" and "Delete" buttons for the post owner.
-5. Profile
-   - Displays the user's information (name, email, profile picture).
-   - Allows users to update their details.
-   - Includes links to view posts created by the user.
-6. Create Post
-   - A form for users to add new posts to the forum.
-   - Includes fields such as title, description, course, and tags.
+## Pages and Routes  
+<details>
+  <summary>Click to view Pages and Routes</summary>  
+  
+  1. **Homepage**  
+     - **Path:** `/`  
+     - **Description:** Displays a brief introduction to IronHub. Includes navigation to the "About" page and buttons for login/sign-up actions.  
+
+  2. **About**  
+     - **Path:** `/about`  
+     - **Description:** Contains information about the platform and its creators. Provides links to sign-up and log-in pages.  
+
+  3. **Sign-Up**  
+     - **Path:** `/auth/signup`  
+     - **Description:** A public page with a form to create an account.  
+
+  4. **Log-In**  
+     - **Path:** `/auth/login`  
+     - **Description:** A public page where users can log in to the platform.  
+
+  5. **Posts**  
+     - **Path:** `/posts/`  
+     - **Description:** Displays all posts with options to filter, sort, and search. Utilizes the **PostCard** component for each post.  
+
+  6. **Create Post**  
+     - **Path:** `/newpost`  
+     - **Description:** A private page where users can create a new post.  
+
+  7. **Post Details**  
+     - **Path:** `/posts/:_id`  
+     - **Description:** Displays the full details of a single post, including options for the owner to edit or delete the post. Below, the user can see replies to the post and can reply to them as well. The     owners of the replies can edit them too.
+       
+  8. **Profile**  
+     - **Path:** `/:userId`  
+     - **Description:** Shows the user's profile information and allows updates.  
+
+  9. **Error Page**  
+     - **Path:** `*`  
+     - **Description:** Displays an error page for any undefined routes.
+       
+</details>
+
+## Components  
+<details>
+  <summary>Click to view the components</summary>   
+
+  - **AboutCard**: Displays info about the creators.
+  - **Footer**: The bottom section of the app.
+  - **Forms**: Handles login, signup, and post and reply creation and edition forms.
+  - **IsPrivate**: Ensures access to certain pages for authenticated users.
+  - **IsPublic**: Ensures access to certain pages for unauthenticated users.
+  - **Navbar**: Navigation bar with links to various sections.
+  - **Popups**: Modal dialogs for messages or confirmations.
+  - **PostCard**: Displays a post summary.
+  - **ProfileCard**: Shows user profile information.
+  - **ReplyCard**: Displays a post reply.
+  - **Searchbar**: Allows searching posts by title.
+
+  These components are reusable and help maintain a modular structure.  
+</details>  
+
+## Installation  
+
+<details>
+  <summary>Click to view Frontend Installation Instructions</summary>  
+
+**Installation**:
+- Clone the Frontend Repository:
+    - git clone https://github.com/didonatodani/ironhub-front.git
+    - cd ironhub-front
+
+**Install dependencies**:
+  - Required Dependencies:
+         - react - Frontend library for building user interfaces.
+         - react-router-dom - For handling navigation between pages.
+         - axios - To make HTTP requests to the backend.
+         - cloudinary - For image storage and retrieval
+    
+  **npm install react react-router-dom axios cloudinary**
+  
+  **Run the development server**:
+    - npm run dev
      
-### Components
-1. Navbar
-   - Without logging in: Displays the logo, "About Us," and buttons for "Login" and "Sign-Up."
-   - When logged in:
-     - Displays the logo.
-     - Includes a "Create Post" button.
-     - Shows a dropdown menu with the user's name and profile picture.
-       - Dropdown options:
-         - **Profile**: Navigate to the user’s profile.
-         - **Your Posts**: Navigate to the user’s posts.
-         - **Log Out**: Log out the user.
-2. PostCard
-   - A reusable component to display individual posts.
-   - Displays the post's title, description (truncated), author, and date.
-   - Includes a button to view the full post.
-3. Filters
-   - Component for filtering and sorting posts on the "All Posts" page.
-   - Includes radio buttons for course selection, sorting options, and a search bar for titles.
-4. Forms
-   - Used for both creating and editing posts.
-   - Includes validation to ensure required fields are completed.
-5. UserMenu
-   - A dropdown menu in the navbar for profile access, user posts, and logging out.
-   - Displays the user's name and profile picture when logged in.
+</details>
+  
+## Credits:  
+
+- **IronHub was developed by**:
+  - **Dani Di Donato**:
+    - Github-link: https://github.com/didonatodani/
+    - Linkedin-link: https://www.linkedin.com/in/dani-di-donato-web-dev/
+  - **Nigel Ferreres**
+    - Github-link: https://github.com/NigelFerrefe
+    - Linkedin-link: https://www.linkedin.com/in/nigel-ferreres-felix 
+  - **Piet-Hein Schouten**
+    - Github-link: https://github.com/phsworks 
+    - Linkedin-link: https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/
+    
+## Special thanks to:
+
+### Ironhack Instructor: Marcel Bosch. 🚀
