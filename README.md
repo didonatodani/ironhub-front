@@ -94,9 +94,7 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 
 ## Components
 <details>
-  <summary>Click to view the components</summary>
-  
-   The **IronHub** frontend uses the following components:
+  <summary>Click to view the components</summary> 
 
   - **AboutCard**: Displays info about the creators.
   - **Footer**: The bottom section of the app.
@@ -113,7 +111,8 @@ This repository contains the frontend code for **IronHub**, a single-page applic
   These components are reusable and help maintain a modular structure.
 </details>
 
-**Credits**:
+**Credits**:  
+
 - **IronHub was developed by**:
   - **Dani Di Donato**:
     - Github-link: https://github.com/didonatodani/
@@ -125,9 +124,6 @@ This repository contains the frontend code for **IronHub**, a single-page applic
     - Github-link: https://github.com/phsworks 
     - Linkedin-link: https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/
     
-Special thanks to:
+## Special thanks to:
 
-Ironhack Instructor: Marcel Bosch.
-
-</details>
-
+### Ironhack Instructor: Marcel Bosch.
