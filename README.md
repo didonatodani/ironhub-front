@@ -124,4 +124,4 @@ https://github.com/phsworks/IronHub-Backend/blob/main/readme.md
     
 ## Special thanks to:
 
-### Ironhack Instructor: Marcel Bosch.
+### Ironhack Instructor: Marcel Bosch. 🚀
