@@ -4,38 +4,12 @@
 
 This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing Ironhack students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**  
 
+**Link to the frontend-repository**:  
+https://github.com/didonatodani/ironhub-front
                            
-![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)  
+![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)    
 
-                               
-
-## Installation
-<details>
-  <summary>Click to view Frontend Installation Instructions</summary>
-
-  To install and run the **IronHub** frontend web app locally, follow these steps:
-
-  1) Clone the Frontend Repository:
-     ``bash
-     git clone *frontend-repository-url*
-
-  3) Navigate to the Project Directory:
-     cd <frontend-directory>
-  
-  5) Install the required dependencies:
-     npm install react react-router-dom axios cloudinary
-  
-      Required Dependencies:
-         - react - Frontend library for building user interfaces.
-         - react-router-dom - For handling navigation between pages.
-         - axios - To make HTTP requests to the backend.
-         - cloudinary - For image storage and retrieval
-
-  4) Run the development server:
-     npm run dev
-     
-</details>
-
+                    
 ## Features
 - User Authentication: Sign-up, log-in, and log-out.
 - Post Management: View, create, edit, and delete posts.
@@ -48,12 +22,11 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 - React Router: For navigation between views.
 - CSS: Custom styling for the app.
 - Axios: For handling API requests to communicate with the backend.
-- Cloudinary: For managing and hosting media files, such as images.
+- Cloudinary: For managing and hosting media files, such as images.  
 
-
-## Pages and Routes
+## Pages and Routes  
 <details>
-  <summary>Click to view Pages and Routes</summary>
+  <summary>Click to view Pages and Routes</summary>  
   
   1. **Homepage**  
      - **Path:** `/`  
@@ -89,12 +62,13 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 
   9. **Error Page**  
      - **Path:** `*`  
-     - **Description:** Displays an error page for any undefined routes.  
+     - **Description:** Displays an error page for any undefined routes.
+       
 </details>
 
-## Components
+## Components  
 <details>
-  <summary>Click to view the components</summary> 
+  <summary>Click to view the components</summary>   
 
   - **AboutCard**: Displays info about the creators.
   - **Footer**: The bottom section of the app.
@@ -108,9 +82,33 @@ This repository contains the frontend code for **IronHub**, a single-page applic
   - **ReplyCard**: Displays a post reply.
   - **Searchbar**: Allows searching posts by title.
 
-  These components are reusable and help maintain a modular structure.
-</details>
+  These components are reusable and help maintain a modular structure.  
+</details>  
 
+## Installation  
+
+<details>
+  <summary>Click to view Frontend Installation Instructions</summary>  
+
+**Installation**:
+- Clone the Frontend Repository:
+    - git clone https://github.com/didonatodani/ironhub-front.git
+    - cd ironhub-front
+
+**Install dependencies**:
+  - Required Dependencies:
+         - react - Frontend library for building user interfaces.
+         - react-router-dom - For handling navigation between pages.
+         - axios - To make HTTP requests to the backend.
+         - cloudinary - For image storage and retrieval
+    
+  **npm install react react-router-dom axios cloudinary**
+  
+  **Run the development server**:
+    - npm run dev
+     
+</details>
+  
 **Credits**:  
 
 - **IronHub was developed by**:
