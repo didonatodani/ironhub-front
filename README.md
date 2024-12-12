@@ -7,6 +7,8 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 
 ![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)  
 
+
+
 ## Installation
 <details>
   <summary>Click to view Frontend Installation Instructions</summary>
@@ -48,6 +50,7 @@ This repository contains the frontend code for **IronHub**, a single-page applic
 - Axios: For handling API requests to communicate with the backend.
 - Cloudinary: For managing and hosting media files, such as images.
 
+
 ## Pages and Routes
 <details>
   <summary>Click to view Pages and Routes</summary>
@@ -88,8 +91,8 @@ This repository contains the frontend code for **IronHub**, a single-page applic
      - **Description:** Displays an error page for any undefined routes.  
 </details>
 
-### Components
-<detail>
+## Components
+<details>
   <summary>Click to view the components</summary>
   
    The **IronHub** frontend uses the following components:
@@ -107,7 +110,23 @@ This repository contains the frontend code for **IronHub**, a single-page applic
   - **Searchbar**: Allows searching posts by title.
 
   These components are reusable and help maintain a modular structure.
-</detail>
+</details>
 
+**Credits**:
+- **IronHub was developed by**:
+  - **Dani Di Donato**:
+    - Github-link: https://github.com/didonatodani/
+    - Linkedin-link: https://www.linkedin.com/in/dani-di-donato-web-dev/
+  - **Nigel Ferreres**
+    - Github-link: https://github.com/NigelFerrefe
+    - Linkedin-link: https://www.linkedin.com/in/nigel-ferreres-felix 
+  - **Piet-Hein Schouten**
+    - Github-link: https://github.com/phsworks 
+    - Linkedin-link: https://www.linkedin.com/in/piet-hein-schouten-4a2b451bb/
+    
+Special thanks to:
 
+Ironhack Instructor: Marcel Bosch.
+
+</details>
 
