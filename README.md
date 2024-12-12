@@ -1,4 +1,4 @@
-![Ironhub Logo](https://github.com/user-attachments/assets/03b894b5-4ef1-43e0-8a29-f4f99f8ba7f3)
+![Ironhub logo](https://github.com/user-attachments/assets/9551d894-c16f-4f71-8ae4-5475fe2ca25d)
 
 # IronHub - Frontend
 
