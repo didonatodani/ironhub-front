@@ -1,9 +1,17 @@
+
+![Ironhub logo](https://github.com/user-attachments/assets/724f186e-4735-4111-93c1-f33143e4ffe3)
+
 # IronHub - Frontend
-This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing students to explore, create, and manage posts.
+
+This repository contains the frontend code for **IronHub**, a single-page application (SPA) built with **React.js**. It serves as the user interface for the platform, allowing students to post in the forum, reply to others' posts, and manage their own. **IronHub connects Ironhackers**, enabling them to share and collaborate. **Sign up or log in to start exploring today!**
+
+![Ironhub HomePage](https://github.com/user-attachments/assets/e330ac2f-8a8f-45d5-99dd-549c478ab72b)
+
 
 ## Features
 - User Authentication: Sign-up, log-in, and log-out.
 - Post Management: View, create, edit, and delete posts.
+- Replies Management: View, create, edit, and delete replies.
 - Filtering and Sorting: Easily browse posts by course, date, or title.
 - User Profiles: Update personal details and manage user-specific posts.
   
