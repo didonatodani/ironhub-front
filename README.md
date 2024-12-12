@@ -16,11 +16,11 @@ This repository contains the frontend code for **IronHub**, a single-page applic
   ### Clone the Frontend Repository
   Clone the frontend repository to your local machine:
   
-  ``bash
-  git clone <frontend-repository-url>
+  1) ``bash
+    git clone <frontend-repository-url>
 
-  cd <frontend-directory>
-  npm install react react-router-dom axios cloudinary
+  2) cd <frontend-directory>
+  3) npm install react react-router-dom axios cloudinary
   
     Required Dependencies:
       react - Frontend library for building user interfaces.
@@ -28,7 +28,7 @@ This repository contains the frontend code for **IronHub**, a single-page applic
       axios - To make HTTP requests to the backend.
       cloudinary - For image storage and retrieval
 
-  npm run dev
+  4) npm run dev
 </details>
 
 
